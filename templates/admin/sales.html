@@ -1,0 +1,667 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Mojuri Admin</title>
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <!-- DataTables Buttons CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <!-- DataTables Buttons CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/jvectormap/jquery-jvectormap.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.theme.default.min.css' %}">
+
+ 
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+/* DataTables buttons styling */
+.dt-button {
+    color: white !important; /* Set text color to white */
+    background-color: #007bff  !important; /* Default background color, adjust as needed */
+    border: 1px solid #007bff; /* Border color */
+    font-size: 14px; /* Adjust font size as needed */
+    padding: 6px 12px; /* Adjust padding as needed */
+    border-radius: 4px; /* Adjust border radius as needed */
+}
+
+.dt-button:hover {
+    background-color: #007bff  !important; /* Pink hover color */
+    border-color: #007bff; /* Border color on hover */
+    color: white !important; /* Ensure text color remains white on hover */
+}
+
+/* Optional: Add some spacing between buttons */
+.dt-button:not(:last-child) {
+    margin-right: 5px; /* Adjust spacing as needed */
+}
+/* Style the entire DataTables table */
+.dataTables_wrapper {
+    background-color: #171718; /* Set table background color */
+    padding: 10px; /* Adjust padding if needed */
+    border-radius: 4px; /* Optional: Adjust border radius for rounded corners */
+}
+
+/* Style the table itself */
+.dataTables_wrapper table.dataTable {
+    background-color: #d4d8dd00    !important; /* Set table background color */
+    color: white; /* Set table text color */
+}
+
+/* Style table header */
+.dataTables_wrapper table.dataTable thead th {
+    background-color: #16181a00; /* Darker background for table headers */
+    color: white; /* White text color for headers */
+    border-bottom: 2px solid black; /* Optional: Add border below header */
+}
+
+/* Style table rows */
+.dataTables_wrapper table.dataTable tbody tr {
+    background-color: #0a0a0a; /* Row background color */
+    border-bottom: 2px solid black;
+}
+
+/* Style table cells */
+.dataTables_wrapper table.dataTable td {
+    color: white; /* Text color for table cells */
+    background-color: #16181a00;
+    border-bottom: 2px solid black ;
+}
+
+/* Style DataTables filter input */
+.dataTables_filter input {
+    color: white; /* Set text color to white */
+    background-color: #080808 !important ; /* Set background color to dark gray or adjust as needed */
+    border: 1px solid #6c757d; /* Set border color */
+    padding: 5px; /* Adjust padding as needed */
+    border-radius: 4px; /* Adjust border radius as needed */
+}
+
+.dataTables_filter input::placeholder {
+    color: #6c757d; /* Set placeholder text color */
+}
+/* Change text color of the previous button */
+.paginate_button {
+    color: white !important; /* Force the color to apply */
+}
+
+.paginate_button {
+    color: white !important; /* Force the color to apply */
+}
+
+
+</style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="" style="color: white; text-decoration: none;">ADORE</a>
+
+        <a class="sidebar-brand brand-logo-mini" href="" style="color: white; text-decoration: none;">ADORE</a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{%url 'admin_dashboard' %}">
+            <span class="menu-icon">
+              <i class="mdi mdi-speedometer"></i>
+            </span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="{%url 'category' %}" aria-expanded="false"
+            aria-controls="category-menu">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Category</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="category-menu">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{%url 'category' %}">Category</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{%url 'add_category' %}">Add Category</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'category_offers' %}">Category Offers</a></li>
+
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#product-menu" aria-expanded="false"
+            aria-controls="product-menu">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Products</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="product-menu">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{%url 'products' %}">Products</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{%url 'add_products' %}">Add Products</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'product_offers' %}">Product Offers</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{% url 'customers' %}">
+            <span class="menu-icon">
+              <i class="mdi mdi-playlist-play"></i>
+            </span>
+            <span class="menu-title">CUSTOMERS</span>
+          </a>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{% url 'orders' %}">
+            <span class="menu-icon">
+              <i class="mdi mdi-chart-bar"></i>
+            </span>
+            <span class="menu-title">ORDERS</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{% url 'product_return_requests' %}">
+            <span class="menu-icon">
+              <i class="mdi mdi-chart-bar"></i>
+            </span>
+            <span class="menu-title">Return requests</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#coupon-menu" aria-expanded="false"
+            aria-controls="product-menu">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Coupons</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="coupon-menu">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{% url 'coupon' %}">Coupons</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'addcoupon' %}">Add Coupon</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#banner-menu" aria-expanded="false"
+            aria-controls="product-menu">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Banners</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="banner-menu">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="">Banners</a></li>
+              <li class="nav-item"> <a class="nav-link" href="">Add Banners</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="sidebar-brand brand-logo-mini" href="index.html"
+            style="color: white; text-decoration: none;">ADORE</a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                <div class="navbar-profile">
+                  <img class="img-xs rounded-circle" src="{% static 'assets/images/faces/face15.jpg' %}" alt="">
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name">{{request.user.username}}</p>
+                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                aria-labelledby="profileDropdown">
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'adminlogout' %}" class="dropdown-item preview-item"></a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-logout text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject mb-1">Log out</p>
+                  </div>
+                </a>
+
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+
+          <!-- <--------------our content> -->
+            <main id="main" class="main">
+              <div class="row container-fluid mt-4">
+                  <div class="col-md-4 col-sm-12 half-gutter grid-margin mb-4">
+                      <div class="card card-white">
+                          <div class="card-body">
+                              <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a href="#" class="btn btn-tranparent report-type-button" data-report-type="yearly">
+                                      <h4 class="mb-0 text-blue mdi mdi-chart-pie">Yearly Report</h4>
+                                  </a>
+                                  <i class="fas fa-chart-pie text-orange fs-2"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="col-md-4 col-sm-12 half-gutter grid-margin mb-4">
+                      <div class="card card-white">
+                          <div class="card-body">
+                              <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a href="#" class="btn btn-tranparent report-type-button" data-report-type="monthly">
+                                      <h4 class="mb-0 text-blue mdi mdi-chart-pie">Monthly Report</h4>
+                                  </a>
+                                  <i class="fas fa-chart-pie text-blue fs-2"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="col-md-4 col-sm-12 half-gutter grid-margin mb-4">
+                      <div class="card card-white">
+                          <div class="card-body">
+                              <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a href="#" class="btn btn-tranparent report-type-button" data-report-type="daily">
+                                      <h4 class="mb-0 text-blue mdi mdi-chart-pie">Daily Report</h4>
+                                  </a>
+                                  <i class="fas fa-chart-pie text-purple fs-2"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <form id="date_range_form">
+                          <div class="row">
+                              <div class="col-md-4 dateP">
+                                  <div class="">
+                                      <label for="start_date">Start Date</label>
+                                      <input type="date" id="start_date" name="start_date" value="{{ start_date.date }}">
+                                  </div>
+                              </div>
+                              <div class="col-md-4 dateP">
+                                  <div class="">
+                                      <label for="end_date">End Date</label>
+                                      <input type="date" id="end_date" name="end_date" value="{{ end_date.date }}">
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <button type="submit" class="btn btn-primary">Generate Report</button>
+                              </div>
+                          </div>
+                      </form>
+                      <div class="table-responsive mt-4">
+                        <table id="sales_report" class="display">
+                          <thead>
+                              <tr>
+                                  <th>Date</th>
+                                  <th>Total Orders</th>
+                                  <th>Total Product Quantity</th>
+                                  <th>Total Order Price</th>
+                                  <th>Profit</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for sale in sales_data %}
+                            <tr>
+                                <td>
+                                  {% if sale.date %}
+                                    {{ sale.date }}
+                                  {% elif sale.month %}
+                                    {{ sale.month }}
+                                  {% elif sale.year %}
+                                    {{ sale.year }}
+                                  {% else %}
+                                    N/A
+                                  {% endif %}
+                                </td>
+                                
+                                <td>{{sale.total_orders }}</td>
+                                <td>{{sale.total_quantity }}</td>
+                                <td>{{sale.total_sales }}</td>
+                                <td>{{sale.profit }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                              <td><strong>Grand Totals:</strong></td>
+                              <td>{{ grand_total_orders }}</td>
+                              <td>{{ grand_total_quantity }}</td>
+                              <td>{{ grand_total_sales }}</td>
+                              <td>{{ grand_total_profit }}</td>
+                          </tr>
+                      </tfoot>
+                      </table>
+                      </div>
+                  </div>
+              </div>
+          </main>
+          <!-- -----------------end our content -->
+
+
+
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href=""
+                target="_blank"></a></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- ----------------- -->
+
+  <!-- plugins:js -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables Buttons JS -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <!-- JSZip (required for Excel export) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+    <!-- PDFMake (required for PDF export) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    
+    
+    <!-- DataTables Buttons HTML5 JS -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <!-- DataTables Buttons Print JS -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          console.log($('#sales_report')); // Ensure this logs the table element
+      
+          $('#sales_report').DataTable({
+              dom: 'Bfrtip',
+              buttons: [
+                  {
+                      extend: 'copy',
+                      text: 'Copy Table',
+                      title: 'Custom Copy Title'
+                  },
+                  {
+      extend: 'csv',
+      text: 'Download CSV',
+      filename: 'custom-csv-filename',
+      title: 'Custom CSV Title',
+      exportOptions: {
+          format: {
+              header: function (d, columnIdx) {
+                  // Add header titles for your custom CSV format
+                  return d;
+              }
+          }
+      },
+      customize: function (csv) {
+          // Append grand totals to the end of CSV
+          var totalOrders = $('#sales_report').DataTable().column(1).data().reduce(function (a, b) { return a + b; }, 0);
+          var totalQuantity = $('#sales_report').DataTable().column(2).data().reduce(function (a, b) { return a + b; }, 0);
+          var totalSales = $('#sales_report').DataTable().column(3).data().reduce(function (a, b) { return a + b; }, 0);
+          var totalProfit = $('#sales_report').DataTable().column(4).data().reduce(function (a, b) { return a + b; }, 0);
+          
+          csv += `\nGrand Totals,,${totalQuantity},${totalSales},${totalProfit}`;
+          return csv;
+      }
+  }
+  ,
+                  {
+                      extend: 'excel',
+                      text: 'Download Excel',
+                      filename: 'custom-excel-filename',
+                      title: 'Custom Excel Title'
+                  },
+                  {
+                      extend: 'pdf',
+                      text: 'Download PDF',
+                      filename: 'custom-pdf-filename',
+                      title: 'Custom PDF Title', // This sets the header in the PDF file
+                      orientation: 'landscape', // Change to 'landscape' to use more width
+                      pageSize: 'A4',
+                      customize: function (doc) {
+                          if (doc.content.length > 1 && doc.content[1].table) {
+                              doc.content[1].layout = 'lightHorizontalLines'; 
+                              doc.content[1].table.widths = [ '25%', '25%', '25%', '25%', '25%' ];// Add basic layout
+                              doc.content[1].alignment = 'center'; // Center the table
+                              doc.pageMargins = [20, 20, 20, 20]; // Adjust margins
+                          } else {
+                              console.error('Table content not found.');
+                          }
+                      }
+                      
+                  }
+                  ,
+                  {
+                      extend: 'print',
+                      text: 'Print Table',
+                      title: 'Custom Print Title'
+                  }
+              ]
+          });
+      });
+      
+  </script>
+  <script>
+    $(document).ready(function() {
+        // Function to get the CSRF token from the meta tag
+        function getCSRFToken() {
+            return $('meta[name="csrf-token"]').attr('content');
+        }
+  
+        // Include CSRF token in AJAX requests
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                    xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
+                }
+            }
+        });
+  
+        // Handle click event for report type buttons
+        $('.report-type-button').click(function(e) {
+            e.preventDefault();
+            
+            var reportType = $(this).data('report-type');
+            var startDate = $('#start_date').val();
+            var endDate = $('#end_date').val();
+            console.log('Start Date:', startDate, 'End Date:', endDate);
+            
+            $.ajax({
+                url: "{% url 'sales_report' %}",
+                type: 'GET',
+                data: {
+                    report_type: reportType,
+                    start_date: startDate,
+                    end_date: endDate
+                },
+                success: function(data) {
+                    console.log("Sales Data:", data);
+                    console.log("Grand Totals:", data.grand_totals);
+                    updateReportTable(data.sales_data, data.grand_total_sales,data.grand_total_orders,data.grand_total_quantity,data.grand_total_profit);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching report data:', error);
+                }
+            });
+        });
+  
+        // Handle form submission for custom date range
+        $('#date_range_form').submit(function(e) {
+            e.preventDefault();
+    
+            var reportType = 'custom';
+            var startDate = $('#start_date').val();
+            var endDate = $('#end_date').val();
+            console.log('Start Date:', startDate, 'End Date:', endDate);
+    
+            $.ajax({
+                url: "{% url 'sales_report' %}",
+                type: 'GET',
+                data: {
+                    report_type: reportType,
+                    start_date: startDate,
+                    end_date: endDate
+                },
+                success: function(data) {
+                    console.log("Sales Data:", data);
+                    console.log("Grand Totals:", data.grand_totals);
+                    updateReportTable(data.sales_data,  data.grand_total_sales,data.grand_total_orders,data.grand_total_quantity,data.grand_total_profit);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching report data:', error);
+                }
+            });
+        });
+  
+        function updateReportTable(sales_data, grand_total_sales, grand_total_orders, grand_total_quantity, grand_total_profit) {
+          var table = $('#sales_report').DataTable();
+      
+          // Destroy the existing DataTable
+          table.clear().destroy();
+      
+          // Clear the existing table body and footer
+          $('#sales_report tbody').empty();
+          $('#sales_report tfoot').empty();
+      
+          // Populate the table body with new data
+          sales_data.forEach(function(sale) {
+              var date = sale.date || sale.month || sale.year || 'N/A';
+              var row = `
+                  <tr>
+                      <td>${date}</td>
+                      <td>${sale.total_orders || 0}</td>
+                      <td>${sale.total_quantity || 0}</td>
+                      <td>${sale.total_sales || 0}</td>
+                      <td>${sale.profit || 0}</td>
+                  </tr>
+              `;
+              $('#sales_report tbody').append(row);
+          });
+      
+          // Populate the table footer with grand totals
+          var footer = `
+              <tr>
+                  <td><strong>Grand Totals:</strong></td>
+                  <td>${grand_total_orders || 0}</td>
+                  <td>${grand_total_quantity || 0}</td>
+                  <td>${grand_total_sales || 0}</td>
+                  <td>${grand_total_profit || 0}</td>
+              </tr>
+          `;
+          $('#sales_report tfoot').append(footer);
+      
+          // Reinitialize DataTable
+          $('#sales_report').DataTable({
+              dom: 'Bfrtip',
+              buttons: [
+                  {
+                      extend: 'copy',
+                      text: 'Copy Table',
+                      title: 'Custom Copy Title'
+                  },
+                  {
+                      extend: 'csv',
+                      text: 'Download CSV',
+                      filename: 'custom-csv-filename',
+                      title: 'Custom CSV Title'
+                  },
+                  {
+                      extend: 'excel',
+                      text: 'Download Excel',
+                      filename: 'custom-excel-filename',
+                      title: 'Custom Excel Title'
+                  },
+                  {
+                      extend: 'pdf',
+                      text: 'Download PDF',
+                      filename: 'custom-pdf-filename',
+                      title: 'Custom PDF Title',
+                      orientation: 'landscape',
+                      pageSize: 'A4',
+                      customize: function (doc) {
+                          if (doc.content.length > 1 && doc.content[1].table) {
+                              doc.content[1].layout = 'lightHorizontalLines'; 
+                              doc.content[1].table.widths = [ '25%', '25%', '25%', '25%', '25%' ];
+                              doc.content[1].alignment = 'center';
+                              doc.pageMargins = [20, 20, 20, 20];
+                          } else {
+                              console.error('Table content not found.');
+                          }
+                      }
+                  },
+                  {
+                      extend: 'print',
+                      text: 'Print Table',
+                      title: 'Custom Print Title'
+                  }
+              ]
+          });
+      }
+      
+    });
+  </script>
+  
+  
+</body>
+</html>

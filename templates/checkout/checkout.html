@@ -1,0 +1,1629 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-grid-left.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:45:59 GMT -->
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Adore</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'media/favicon.png' %}">
+
+    <!-- Dependency Styles -->
+    <link rel="stylesheet" href="{%static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/feather-font/css/iconfont.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/icomoon-font/css/icomoon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/font-awesome/css/font-awesome.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/wpbingofont/css/wpbingofont.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/elegant-icons/css/elegant.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slick/css/slick.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slick/css/slick-theme.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/mmenu/css/mmenu.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slider/css/jslider.css' %}">
+
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="{%static 'assets/css/app.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'assets/css/responsive.css' %}" type="text/css">
+
+    <!-- Google Web Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
+        rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+		
+		
+
+	</head>
+
+<body class="shop">
+    <div id="page" class="hfeed page-wrapper">
+        <header id="site-header" class="site-header header-v1 ">
+			<!-- mobile view -->
+			<div class="header-mobile">
+				<div class="section-padding">
+					<div class="section-container">
+						<div class="row">
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
+								<div class="navbar-header">
+									<button type="button" id="show-megamenu" class="navbar-toggle"></button>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
+								<div class="site-logo">
+									<a href="{% url 'home'%}">
+										<img width="400" height="79" src="{% static 'media/logo-white.png'%}"
+											alt="Mojuri – Jewelry Store HTML Template" />
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
+								<!-- cart-mobile -->
+								<div class="mojuri-topcart dropdown">
+									<div class="dropdown mini-cart top-cart">
+										<div class="remove-cart-shadow"></div>
+										<a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="cart-link" aria-haspopup="true" aria-expanded="false">
+											<div class="icons-cart">
+											  <i class="icon-large-paper-bag"></i>
+											  {% if request.session.email %}
+												<span class="cart-count">{{ cart_count }}</span>
+											  {% endif %}
+											</div>
+										  </a>
+										  
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- three-dot-menu -->
+				<div class="header-mobile-fixed">
+					<!-- Shop  -->
+					<div class="shop-page">
+						<a href="{% url 'showproducts' %}"><i class="wpb-icon-shop"></i></a>
+					</div>
+
+					<!--my-account-->
+					<div class="my-account">
+						<div class="login-header">
+						  <a id="account-link" href="{% if request.session.email %}{% url 'profile' %}{% else %}#{% endif %}">
+							<i class="wpb-icon-user"></i>
+						  </a>
+						</div>
+					  </div>
+					  
+
+					<!-- Search -->
+					<div class="search-box">
+						<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
+					</div>
+
+					<!-- Wishlist -->
+					<div class="wishlist-box">
+						<a id="wishlist-link" href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}">
+						  <i class="wpb-icon-heart"></i>
+						</a>
+					  </div>
+				</div>
+			</div>
+			<!-- mobile-navbar-view-end desktop-nav-start -->
+			<div class="header-desktop">
+				<div class="header-wrapper">
+					<div class="section-padding">
+						<div class="section-container large p-l-r">
+							<div class="row">
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-left">
+									<div class="site-logo">
+										<a href="{% url 'home'%}">
+											<img width="400" height="140" src="{% static 'media/logo-white.png'%}"
+												alt="Adore – Jewelry Store HTML Template" />
+										</a>
+									</div>
+								</div>
+
+								<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
+									<div class="site-navigation">
+										<nav id="main-navigation">
+											<ul id="menu-main-menu" class="menu">
+												<li class="level-0 menu-item  ">
+													<a href="{% url 'home' %}"><span
+															class="menu-item-text">Home</span></a>
+
+												</li>
+												<li class="level-0 menu-item   ">
+													<a href="{% url 'showproducts' %}"><span
+															class="menu-item-text">Shop</span></a>
+
+												</li>
+
+												<li class="level-0 menu-item ">
+													<a href="#"><span class="menu-item-text">About Us</span></a>
+
+												</li>
+												<li class="level-0 menu-item">
+													<a href="page-contact.html"><span
+															class="menu-item-text">Contact</span></a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-right">
+									<div class="header-page-link">
+										<!-- Search -->
+										<div class="search-box">
+											<div class="search-toggle"><i class="icon-search"></i></div>
+										</div>
+
+										<!-- Login -->
+
+										<div class="login-header icon">
+
+											<a class="active-login" href=""><i class="icon-user"></i></a>
+
+
+											<div class="form-login-register">
+												<div class="box-form-login">
+													<div class="active-login"></div>
+													<div class="box-content">
+														<div class="form-login active">
+
+															<h2>{% if request.session.email %}Profile{% else %}Login/Register{% endif %}</h2>
+															<p class="status"></p>
+															<div class="content">
+																{% if request.session.email %}
+																<a href="{% url 'profile' %}">
+																	<div class="button-next-reregister">Profile</div>
+																</a>
+																<a href="{% url 'logout' %}"><div class="button-next-reregister">Logout</div></a>
+																{% else %}
+																<a href="{% url 'login' %}">
+																	<div class="button-next-reregister">Login</div>
+																</a>
+
+																<a href="{% url 'register' %}">
+																	<div class="button-next-reregister">Register</div>
+																</a>
+
+																{% endif %}
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Wishlist -->
+										<div class="wishlist-box">
+											<a href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}" id="desktop-wishlist-link">
+												<i class="icon-heart"></i>
+											</a>
+											{% if request.session.email %}
+											<span class="count-wishlist">{{ wishlist_count }}</span>
+											{% endif %}
+										</div>
+
+										<!-- Cart -->
+										<div class="mojuri-topcart dropdown light">
+											<div class="dropdown mini-cart top-cart">
+												<div class="remove-cart-shadow"></div>
+												<a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="desktop-cart-link" aria-expanded="false">
+													<div class="icons-cart">
+														<i class="icon-large-paper-bag"></i>
+														{% if request.session.email %}
+														<span class="cart-count">{{ cart_count }}</span>
+														{% endif %}
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+         <!-- our content starts here -->
+
+			<div id="site-main" class="site-main">
+				<div id="main-content" class="main-content">
+					<div id="primary" class="content-area">
+						<div id="title" class="page-title">
+							<div class="section-container">
+								<div class="content-title-heading">
+									<h1 class="text-title-heading">
+										Checkout
+									</h1>
+								</div>
+								<div class="breadcrumbs">
+									<a href="index.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Checkout
+								</div>
+							</div>
+						</div>
+
+						<div id="content" class="site-content" role="main">
+							<div class="section-padding">
+								<div class="section-container p-l-r">
+									<div class="shop-checkout">
+										<form name="checkout" method="post" class="checkout" action="{% url 'checkout' %}" autocomplete="off">
+                                            {% csrf_token %}
+											<div class="row">
+												<div class="col-xl-8 col-lg-7 col-md-12 col-12">
+													<div class="customer-details">
+														
+
+														<div class="my-account-addresses" style="margin: 20px;">
+															<div
+															style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+													<button type="button" class="btn btn-primary" onclick="openModal()"
+														style="padding: 8px 16px; background-color: #111111; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Add	Address</button>
+												</div>
+
+															
+															<div class="addresses" style="display: flex; flex-wrap: wrap; gap: 20px;">
+																
+                                                                {% if addresses %}	
+																{% for address in addresses %}
+																<div id="address-{{ address.id }}" class="addresses-col" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: calc(50% - 10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+																	
+																	<header class="col-title" style="display: flex; justify-content: space-between; align-items: center;">
+																		<h3 style="margin: 0;">{{ address.type }} address </h3>
+																		<div class="actions" style="display: flex; gap: 10px;">
+																			
+																			<a href="#"
+																			onclick="editAddress('{{ address.id }}', '{{ address.fullname }}', '{{ address.country }}', '{{ address.street }}', '{{ address.apartment }}', '{{ address.city }}', '{{  address.district }}', '{{ address.state }}','{{ address.zip_code }}', '{{ address.phone }}')"
+																				style="color: blue; text-decoration: none;">Edit</a>
+																			<a href="#" onclick="deleteAddress('{{ address.id }}')"
+																				style="color: rgba(241, 12, 12, 0.664); text-decoration: none;">Delete</a>
+																		</div>
+																	</header>
+																	<address style="margin-top: 10px;">
+                                                                        {{address.fullname}}<br>
+																		{{ address.street }}<br>
+                                                                        {{ address.apartment }}<br>
+                                                                        {{ address.city }},{{address.district}}, {{ address.state }}<br>
+                                                                        {{ address.zip_code }}<br>
+                                                                        {{ address.country }}<br>
+                                                                        Phone: {{ address.phone }}
+                                                                    </address>
+																	<div style="margin-top: 20px;">
+																		<label>
+																			<input type="radio" name="address" value="{{ address.id }}" style="margin-right: 10px;">
+																			Use this address
+																		</label>
+																	</div>
+																	
+																</div>
+																
+                                                                {% endfor %}
+																
+																{% endif %}																
+															</div>
+														</div>														
+													</div>													
+												</div>
+												<div class="col-xl-4 col-lg-5 col-md-12 col-12">
+													<div class="checkout-review-order">
+										<!-- Coupon section start -->
+											<div style="text-align: center; margin-bottom: 20px;">
+												<div style="display: inline-block;">
+													<input type="text" id="couponCodeInput" placeholder="Enter coupon code" style="padding: 5px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;" />
+													<button type="button" id="applyCouponButton" style="padding: 5px 10px; background-color: #0f0f0f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Apply Coupon</button>
+												</div>
+												<div style="margin-top: 10px;">
+													<a href="#" id="view-coupon-link" style="color: #007bff; text-decoration: none;">View Coupon</a>
+													<a href="#" id="removeCouponLink" style="color: #ff0000; text-decoration: none; display: none; margin-left: 10px">Remove Applied Coupon</a>
+
+												</div>
+											</div>
+										<!-- Coupon section end -->
+											 <!-- checkout -->
+														<div class="checkout-review-order-table">
+															<h3 class="review-order-title">Product</h3>
+															<div class="cart-items">
+                                                                {% for item in cart_items %}
+																<div class="cart-item"  data-product-id="{{ item.product.id }}">
+																	<div class="info-product">
+																		<div class="product-thumbnail">
+																			<img width="600" height="600" src="{{ item.product.images.first.image.url }}" alt="{{ item.product.name }}">					
+																		</div>
+																		<div class="product-name">
+																			{{ item.product.name }}
+																			<strong class="product-quantity">QTY : {{ item.quantity }}</strong>											
+																		</div>
+																	</div>
+																	<div class="product-total">
+																		<span>{{ item.get_item_price }}</span>
+																	</div>
+																</div>
+																{% endfor %}
+															</div>
+															<div class="cart-subtotal">
+																<h2>Subtotal</h2>
+																<div class="subtotal-price">
+																	<span>Rs<span id="subtotalAmount"> {{ cart_subtotal }}</span></span>
+																</div>
+															</div>
+															<div class="shipping-totals shipping">
+																<h2>Shipping</h2>
+																<div data-title="Shipping">
+																	<ul class="shipping-methods custom-radio">
+																		<li>
+																			<input type="radio" name="shipping_method" data-index="0" value="fixed_shipping" class="shipping_method" checked="checked"><label>Fixed shipping: Rs.40</label>
+																		</li>
+																		
+																	</ul>
+																</div>
+																
+															</div>
+															<div >
+																
+															</div>
+															<div class="total-details">
+																<div class="total-shipping" style="display: flex; justify-content: space-between;">
+																	<span>Shipping: </span><span id="shipping">Rs.40.00</span>
+																</div>
+																<div class="total-shipping" style="display: flex; justify-content: space-between;">
+																	<span>Discount: </span><span id="discountAmount">Rs.0.00</span>
+																</div>
+																
+															</div>
+															<div class="order-total">
+														       <h2>Total</h2>
+																<div class="total-price">
+																	<strong>
+																		<span>Rs<span id="totalAmount">{{ order_total }}</span></span>
+																	</strong> 
+																</div>
+															</div>
+														</div>
+														<div id="payment" class="checkout-payment">
+															<ul class="payment-methods methods custom-radio">																
+																<li class="payment-method">
+																	<input type="radio" class="input-radio" name="payment_method" value="cod" id="payment_method_cod" checked>
+																	<label for="payment_method_cod">Cash on delivery</label>
+																	<div class="payment-box">
+																		<p>Pay with cash upon delivery.</p>
+																	</div>
+																</li>
+																<li class="payment-method">
+																	<input type="radio" class="input-radio" name="payment_method" value="wallet" id="payment_method_wallet">
+																	<label for="payment_method_wallet">Wallet Payment</label>
+																	<div class="payment-box">
+																		<p>Pay with wallet balance</p>
+																	</div>
+																</li>
+																<li class="payment-method">
+																	<input type="radio" class="input-radio" name="payment_method" value="online">
+																	<label>Razorpay</label>
+																	<div class="payment-box">
+																		<p>Pay via razorpay; you can pay with your credit card if you don’t have a Razorpay account.</p>
+																	</div>
+																</li>
+															</ul>
+															<div class="form-row place-order">
+																<div class="terms-and-conditions-wrapper">
+																	<div class="privacy-policy-text"></div>
+																</div>
+																<button type="submit" class="button alt" name="checkout_place_order" value="Place order">Place order</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="couponModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
+				<div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 600px; border-radius: 8px;">
+					<span class="close" onclick="document.getElementById('couponModal').style.display='none'" style="color: grey; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+					<h2 style="text-align: center;">Available Coupons</h2>
+					<ul id="couponList" style="list-style-type: none; padding: 0;">
+						{% for coupon in available_coupons %}
+							<li style="background-color: black; margin-bottom: 10px; border-radius: 5px; padding: 10px; list-style-type: none; cursor: pointer;" data-coupon-code="{{ coupon.coupon_code }}" data-discount-price="{{ coupon.discount_price }}">
+								<div>
+									<h5 style="margin: 0; color: white; font-family: 'Times New Roman', Times, serif;">{{ coupon.coupon_code }}</h5>
+									<p style="margin: 5px 0; color: white; font-family: 'Times New Roman', Times, serif;">Rs.{{ coupon.discount_price }} off on purchases of Rs. {{ coupon.minimum_amount }}</p>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+					
+					
+				</div>
+			</div>
+
+			<!-- Adddress Modal -->
+										<!-- Modal for Adding Address -->
+										<div id="addAddressModal" class="modal"
+											style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+											<div class="modal-dialog" style="margin: 15% auto; width: 80%;">
+												<div class="modal-content"
+													style="background-color: #fefefe; border: 1px solid #888; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+													<div class="modal-header"
+														style="padding: 10px 20px; background-color: #f5f5f5; border-bottom: 1px solid #ddd;">
+														<h5 class="modal-title">Add Address</h5>
+
+													</div>
+													<div class="modal-body" style="padding: 10px 20px;">
+														<form id="">
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="fullname">Full Name</label>
+																<input type="text" class="form-control" id="fullname"
+																	name="fullname" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="country">Country/Region</label>
+																<input type="text" class="form-control" id="country"
+																	name="country" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="street">Street Address</label>
+																<input type="text" class="form-control" id="street"
+																	name="street" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="apartment">Apartment, Suite, Unit
+																	(optional)</label>
+																<input type="text" class="form-control" id="apartment"
+																	name="apartment" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="city">Town/City</label>
+																<input type="text" class="form-control" id="city"
+																	name="city" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="district">District</label>
+																<input type="text" class="form-control" id="district"
+																	name="district" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="state">State/Province/Region</label>
+																<input type="text" class="form-control" id="state"
+																	name="state" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="zip">Postal/Zip Code</label>
+																<input type="text" class="form-control" id="zip"
+																	name="zip" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="phone">Phone</label>
+																<input type="tel" class="form-control" id="phone"
+																	name="phone" style="width: 100%; padding: 8px;">
+															</div>
+														</form>
+													</div>
+													<div class="modal-footer"
+														style="padding: 10px 20px; background-color: #f5f5f5; border-top: 1px solid #ddd; text-align: right;">
+														<button type="button" class="btn btn-secondary"
+															onclick="closeModal()"
+															style="padding: 8px 16px; background-color: #6c757d; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+														<button type="button" class="btn btn-primary"
+															onclick="addAddress()"
+															style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Add
+															Address</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Modal -->
+	<div id="editModal" class="modal" tabindex="-1" role="dialog"
+		style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 80%; max-height: 80%; overflow-y: auto; background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
+		<div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
+			<h5 class="modal-title">Edit Address</h5>
+			<button type="button" onclick="closeEditModal()"
+				style="background: none; border: none; font-size: 20px;">&times;</button>
+		</div>
+		<div class="modal-body">
+			<form id="editForm">
+				<div style="margin-bottom: 10px;">
+					<label for="editFullname">Full Name</label>
+					<input type="text" id="editFullname" name="fullname" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editCountry">Country</label>
+					<input type="text" id="editCountry" name="country" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editStreet">Street</label>
+					<input type="text" id="editStreet" name="street" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editApartment">Apartment</label>
+					<input type="text" id="editApartment" name="apartment" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editCity">City</label>
+					<input type="text" id="editCity" name="city" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editDistrict">District</label>
+					<input type="text" id="editDistrict" name="district" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editState">State</label>
+					<input type="text" id="editState" name="state" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editZip">Zip</label>
+					<input type="text" id="editZip" name="zip" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editPhone">Phone</label>
+					<input type="text" id="editPhone" name="phone" style="width: 100%;">
+				</div>
+				<button type="button" onclick="saveEdit()"
+					style="width: 100%; background-color: black; color: white; border: none; padding: 10px; cursor: pointer;">Save</button>
+
+			</form>
+		</div>
+	</div>
+	<!-- Overlay -->
+	<div id="modalOverlay"
+		style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"
+		onclick="closeEditModal()"></div>
+
+
+			<footer id="site-footer" class="site-footer background four-columns">
+				<div class="footer">
+					<div class="section-padding">
+						<div class="section-container">
+							<div class="block-widget-wrap">
+								<div class="row">
+									<div class="col-lg-3 col-md-6 column-1">
+										<div class="block block-menu m-b-20">
+											<h2 class="block-title">Contact Us</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<span>Head Office:</span> 26 Wyle Cop, Shrewsbury, Shropshire, SY1 1XD
+													</li>
+													<li>
+														<span>Tel:</span> 01743 234500
+													</li>
+													<li>
+														<span>Email:</span> <a href="mailto:support@mojuri.com">support@mojuri.com</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+										<div class="block block-social">
+											<ul class="social-link">
+												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+												<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+												<li><a href="#"><i class="fa fa-behance"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-2">
+										<div class="block block-menu">
+											<h2 class="block-title">Customer Services</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="shop-grid-left.html">Contact Us</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Track Your Order</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Product Care & Repair</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Book an Appointment</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Frequently Asked Questions</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Shipping & Returns</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-3">
+										<div class="block block-menu">
+											<h2 class="block-title">About Us</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="#">About Us</a>
+													</li>
+													<li>
+														<a href="#">FAQ</a>
+													</li>
+													<li>
+														<a href="#">Our Producers</a>
+													</li>
+													<li>
+														<a href="#">Sitemap</a>
+													</li>
+													<li>
+														<a href="#">Terms & Conditions</a>
+													</li>
+													<li>
+														<a href="#">Privacy Policy</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-4">
+										<div class="block block-menu">
+											<h2 class="block-title">Catalog</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="shop-grid-left.html">Earrings</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Necklaces</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Bracelets</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Rings</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Jewelry Box</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Studs</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="section-padding">
+						<div class="section-container">
+							<div class="block-widget-wrap">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="footer-left">
+											<p class="copyright">Copyright © 2023. All Right Reserved</p>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="footer-right">
+											<div class="block block-image">
+												<img width="309" height="32" src="{% static 'media/payments.png' %}" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Back Top button -->
+		<div class="back-top button-show">
+			<i class="arrow_carrot-up"></i>
+		</div>
+
+		<!-- Search -->
+		<div class="search-overlay">
+			<div class="close-search"></div>
+			<div class="wrapper-search">
+				<form role="search" method="get" class="search-from ajax-search" action="#">
+					<a href="#" class="search-close"></a>
+					<div class="search-box">
+						<button id="searchsubmit" class="btn" type="submit">
+							<i class="icon-search"></i>
+						</button>
+						<input type="text" autocomplete="off" value="" name="s" class="input-search s" placeholder="Search...">
+						<div class="content-menu_search">
+							<label>Suggested</label>
+							<ul id="menu_search" class="menu">
+								<li><a href="#">Earrings</a></li>
+								<li><a href="#">Necklaces</a></li>
+								<li><a href="#">Bracelets</a></li>
+								<li><a href="#">Jewelry Box</a></li>
+							</ul>			
+						</div>
+					</div>
+				</form>	
+			</div>	
+		</div>
+
+		<!-- Wishlist -->
+		<div class="wishlist-popup">
+			<div class="wishlist-popup-inner">
+                <div class="wishlist-popup-content">
+                    <div class="wishlist-popup-content-top">
+                        <span class="wishlist-name">Wishlist</span>
+						<span class="wishlist-count-wrapper"><span class="wishlist-count">2</span></span>                                
+						<span class="wishlist-popup-close"></span>
+                    </div>
+                    <div class="wishlist-popup-content-mid">
+						<table class="wishlist-items">                        
+							<tbody>
+								<tr class="wishlist-item">
+									<td class="wishlist-item-remove"><span></span></td>
+									<td class="wishlist-item-image">
+                                    	<a href="shop-details.html">
+											<img width="600" height="600" src="{% static 'media/product/3.jpg' %}" alt="">                                        
+										</a>
+		                       		</td>
+			                        <td class="wishlist-item-info">
+										<div class="wishlist-item-name">
+											<a href="shop-details.html">Twin Hoops</a>
+										</div>
+										<div class="wishlist-item-price">
+											<span>$150.00</span>
+										</div>
+										<div class="wishlist-item-time">June 4, 2022</div>                                
+									</td>
+			                        <td class="wishlist-item-actions">
+			                            <div class="wishlist-item-stock">
+											In stock 
+										</div>
+			                            <div class="wishlist-item-add">
+											<div data-title="Add to cart">
+												<a rel="nofollow" href="#">Add to cart</a>
+											</div>
+										</div>
+	                                </td>
+								</tr>
+								<tr class="wishlist-item">
+									<td class="wishlist-item-remove"><span></span></td>
+									<td class="wishlist-item-image">
+                                    	<a href="shop-details.html">
+											<img width="600" height="600" src="{% static 'media/product/4.jpg' %}" alt="">                                        
+										</a>
+		                       		</td>
+			                        <td class="wishlist-item-info">
+										<div class="wishlist-item-name">
+											<a href="shop-details.html">Yilver And Turquoise Earrings</a>
+										</div>
+										<div class="wishlist-item-price">
+											<del aria-hidden="true"><span>$150.00</span></del> 
+											<ins><span>$100.00</span></ins>
+										</div>
+										<div class="wishlist-item-time">June 4, 2022</div>                                
+									</td>
+			                        <td class="wishlist-item-actions">
+			                            <div class="wishlist-item-stock">
+											In stock 
+										</div>
+			                            <div class="wishlist-item-add">
+											<div data-title="Add to cart">
+												<a rel="nofollow" href="#">Add to cart</a>
+											</div>
+										</div>
+	                                </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                    <div class="wishlist-popup-content-bot">
+                        <div class="wishlist-popup-content-bot-inner">
+                            <a class="wishlist-page" href="shop-wishlist.html">
+								Open wishlist page                                    
+							</a>
+                            <span class="wishlist-continue" data-url="">
+                                Continue shopping                                        
+                            </span>
+                        </div>
+                        <div class="wishlist-notice wishlist-notice-show">Added to the wishlist!</div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+		<!-- Compare -->
+		<div class="compare-popup">
+		    <div class="compare-popup-inner">
+		        <div class="compare-table">
+		            <div class="compare-table-inner">
+                    	<a href="#" id="compare-table-close" class="compare-table-close">
+                    		<span class="compare-table-close-icon"></span>
+                    	</a>
+                    	<div class="compare-table-items">
+                    		<table id="product-table" class="product-table">
+                    			<thead>
+                    				<tr>
+                    					<th>
+                    						<a href="#" class="compare-table-settings">Settings</a>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Twin Hoops</a> <span class="remove">remove</span>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Medium Flat Hoops</a> <span class="remove">remove</span>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Bold Pearl Hoop Earrings</a> <span class="remove">remove</span>
+                    					</th>
+                    				</tr>
+                    			</thead>
+                    			<tbody>
+                    				<tr class="tr-image">
+                    					<td class="td-label">Image</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{% static 'media/product/3.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{% static 'media/product/1.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{% static 'media/product/2.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    				</tr>
+                    				<tr class="tr-sku">
+                    					<td class="td-label">SKU</td>
+                    					<td>VN00189</td>
+                    					<td></td>
+                    					<td>D1116</td>
+                    				</tr>
+                    				<tr class="tr-rating">
+                    					<td class="td-label">Rating</td>
+                    					<td>
+                    						<div class="star-rating">
+                    							<span style="width:80%"></span>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div class="star-rating">
+                    							<span style="width:100%"></span>
+                    						</div>
+                    					</td>
+                    					<td></td>
+                    				</tr>
+                    				<tr class="tr-price">
+                    					<td class="td-label">Price</td>
+                    					<td><span class="amount">$150.00</span></td>
+                    					<td><del><span class="amount">$150.00</span></del> <ins><span class="amount">$100.00</span></ins></td>
+                    					<td><span class="amount">$200.00</span></td>
+                    				</tr>
+                    				<tr class="tr-add-to-cart">
+                    					<td class="td-label">Add to cart</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    				</tr>
+                    				<tr class="tr-description">
+                    					<td class="td-label">Description</td>
+                    					<td>Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</td>
+                    					<td>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece comfort all year around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by using recycled polyester.7.8 ounce fleece sweatshirt made with up to 5 percent polyester created from recycled plastic.</td>
+                    				</tr>
+                    				<tr class="tr-content">
+                    					<td class="td-label">Content</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    				</tr>
+                    				<tr class="tr-dimensions">
+                    					<td class="td-label">Dimensions</td>
+                    					<td>N/A</td>
+                    					<td>N/A</td>
+                    					<td>N/A</td>
+                    				</tr>
+                    			</tbody>
+                    		</table>
+                    	</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+		<!-- Page Loader -->
+		<div class="page-preloader">
+	    	<div class="loader">
+	    		<div></div>
+	    		<div></div>
+	    	</div>
+	    </div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script>
+			// JavaScript to show modal on link click
+			document.getElementById("view-coupon-link").onclick = function() {
+				document.getElementById("couponModal").style.display = "block";
+			};
+		
+			// Close the modal if the user clicks anywhere outside the modal content
+			window.onclick = function(event) {
+				var modal = document.getElementById("couponModal");
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			};
+		</script>  
+		
+	
+		<script>
+			function clearModal() {
+				// Clear the modal fields or content
+				document.getElementById('fullname').value = '';
+				document.getElementById('country').value = '';
+				document.getElementById('street').value = '';
+				document.getElementById('apartment').value = '';
+				document.getElementById('city').value = '';
+				document.getElementById('district').value = '';
+				document.getElementById('state').value = '';
+				document.getElementById('zip').value = '';
+				document.getElementById('phone').value = '';
+		
+				// Hide the modal
+				document.getElementById("couponModal").style.display = "none";
+			}
+
+			function openModal() {
+				var modal = document.getElementById('addAddressModal');
+				modal.style.display = 'block';
+			}
+	
+			function closeModal() {
+				var modal = document.getElementById('addAddressModal');
+				modal.style.display = 'none';
+			}
+	
+			function addAddress() {
+				// Add logic here to handle form submission or other actions
+				closeModal(); // Close modal after adding address
+			}
+	
+		</script>
+		<script>
+			function closeModal() {
+				document.getElementById('addAddressModal').style.display = 'none';
+			}
+	
+			function showToast(message, type = 'info') {
+    		Toastify({
+        		text: message,
+        		duration: 3000,
+        		close: true,
+        		gravity: "top", // top or bottom
+        		position: "right", // left, center, or right
+        		backgroundColor: type === 'success' ? "green" : (type === 'error' ? "red" : "blue"),
+        		stopOnFocus: true, // Prevent dismissing of toast on hover
+    		}).showToast();
+		}
+		function addAddress() {
+		const fullname = document.getElementById('fullname').value.trim();
+				const country = document.getElementById('country').value.trim();
+				const street = document.getElementById('street').value.trim();
+				const apartment = document.getElementById('apartment').value.trim();
+				const city = document.getElementById('city').value.trim();
+				const district = document.getElementById('district').value.trim();
+				const state = document.getElementById('state').value.trim();
+				const zip = document.getElementById('zip').value.trim();
+				const phone = document.getElementById('phone').value.trim();
+	
+				const fields = {
+					fullname: fullname,
+					country: country,
+					street: street,
+					apartment: apartment,
+					city: city,
+					district: district,
+					state: state,
+					zip: zip,
+					phone: phone
+				};
+	
+				let valid = true;
+	
+				for (const [field, value] of Object.entries(fields)) {
+					if (!value) {
+						showToast(`${field} cannot be empty or contain only spaces.`, 'error');
+						valid = false;
+					}
+				}
+	
+				if (!valid) {
+					return;
+				}
+	
+				fetch('/save-address/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRFToken': '{{ csrf_token }}'
+					},
+					body: JSON.stringify(fields)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data)
+						if (data.success) {
+							const address = data.address;
+           const addressHtml = `<div id="address-${address.id}" class="addresses-col" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: calc(50% - 10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <header class="col-title" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0;">${address.type} address </h3>
+                        <div class="actions" style="display: flex; gap: 10px;">
+                            <a href="#" onclick="editAddress('${address.id}', '${address.fullname}', '${address.country}', '${address.street}', '${address.apartment}', '${address.city}', '${address.district}', '${address.state}', '${address.zip_code}', '${address.phone}')" style="color: blue; text-decoration: none;">Edit</a>
+                            <a href="#" onclick="deleteAddress('${address.id}')" style="color: rgba(241, 12, 12, 0.664); text-decoration: none;">Delete</a>
+                        </div>
+                    </header>
+                    <address style="margin-top: 10px;">
+                        ${address.fullname}<br>
+                        ${address.street}<br>
+                        ${address.apartment}<br>
+                        ${address.city}, ${address.district}, ${address.state}<br>
+                        ${address.zip_code}<br>
+                        ${address.country}<br>
+                        Phone: ${address.phone}
+                    </address>
+                    <div style="margin-top: 20px;">
+                        <label>
+                            <input type="radio" name="address" value="${address.id}" style="margin-right: 10px;">
+                            Use this address
+                        </label>
+                    </div>
+                </div>
+            `
+
+            // Add new address to the addresses container
+            document.querySelector('.addresses').insertAdjacentHTML('beforeend', addressHtml);
+			                clearModal()
+							closeModal();
+							//window.location.reload();
+						} else {
+							showToast(data.error, 'error');
+						}
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						showToast('An error occurred while adding the address.', 'error');
+					});
+	
+	
+	
+			}
+			
+	
+		</script>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', (event) => {
+				const urlParams = new URLSearchParams(window.location.search);
+				if (urlParams.has('success')) {
+					showToast('Address added successfully.', 'success');
+					// Remove the query parameter from the URL without reloading the page
+					history.replaceState(null, '', window.location.pathname);
+				}
+			});
+		</script>
+		<!-- editaddress -->
+		<script>
+			let currentAddressId;
+			function editAddress(id, fullname, country, street, apartment, city, district, state, zip, phone) {
+				var address = {
+					id: id,
+					fullname: fullname,
+					country: country,
+					street: street,
+					apartment: apartment,
+					city: city,
+					district: district,
+					state: state,
+					zip: zip,
+					phone: phone
+				};
+				console.log(address)
+				currentAddressId = id;
+				//openEditModal(address);
+				getEditAddress(id)
+			}
+	        function getEditAddress(id) {
+				fetch(`/get-address/${id}/`) // Fetch the latest address data from the server
+					.then(response => response.json())
+					.then(data => {
+						console.log('Editing address:', data);  // Debugging line
+						openEditModal(data);
+					})
+					.catch(error => console.error('Error fetching address:', error));
+			}
+			function openEditModal(address) {
+	
+	
+				document.getElementById('editFullname').value = address.fullname;
+				document.getElementById('editCountry').value = address.country;
+				document.getElementById('editStreet').value = address.street;
+				document.getElementById('editApartment').value = address.apartment;
+				document.getElementById('editCity').value = address.city;
+				document.getElementById('editDistrict').value = address.district;
+				document.getElementById('editState').value = address.state;
+				document.getElementById('editZip').value = address.zip;
+				document.getElementById('editPhone').value = address.phone;
+	
+				document.getElementById('editModal').style.display = 'block';
+				document.getElementById('modalOverlay').style.display = 'block';
+			}
+	
+			function closeEditModal() {
+				document.getElementById('editModal').style.display = 'none';
+				document.getElementById('modalOverlay').style.display = 'none';
+			}
+	
+			function saveEdit() {
+				const editedData = {
+					fullname: document.getElementById('editFullname').value.trim(),
+					country: document.getElementById('editCountry').value.trim(),
+					street: document.getElementById('editStreet').value.trim(),
+					apartment: document.getElementById('editApartment').value.trim(),
+					city: document.getElementById('editCity').value.trim(),
+					district: document.getElementById('editDistrict').value.trim(),
+					state: document.getElementById('editState').value.trim(),
+					zip: document.getElementById('editZip').value.trim(),
+					phone: document.getElementById('editPhone').value.trim()
+				};
+	
+				// Check if any field is empty
+				for (let key in editedData) {
+					if (editedData[key] === "") {
+						showToast(`The ${key} field cannot be empty.`, 'error');
+						return; // Exit the function if any field is empty
+					}
+				}
+	
+	
+				console.log(editedData);
+	
+				fetch(`/update-address/${currentAddressId}/`, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRFToken': '{{ csrf_token }}'
+					},
+					body: JSON.stringify(editedData)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						if (data.success) {
+							updateAddressInDOM(currentAddressId, data.address);
+							closeEditModal();
+							clearModal();
+
+							showToast('Address updated successfully.', 'success');
+						} else {
+							showToast(data.error, 'error');
+						}
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						showToast('An error occurred while updating the address.', 'error');
+					});
+			}
+	
+			// Check for the flag on page load and show the toast if necessary
+			window.addEventListener('load', () => {
+				if (localStorage.getItem('showSuccessToast') === 'true') {
+					showToast('Address updated successfully.', 'success');
+					localStorage.removeItem('showSuccessToast');
+				}
+			});
+			
+			function updateAddressInDOM(addressId, addressData) {
+				console.log("hii",addressData)
+				const addressElement = document.getElementById(`address-${addressId}`);
+				if (addressElement) {
+					addressElement.querySelector('address').innerHTML = `
+						${addressData.fullname}<br>
+						${addressData.street}<br>
+						${addressData.apartment}<br>
+						${addressData.city}, ${addressData.district}, ${addressData.state}<br>
+						${addressData.zip}<br>
+						${addressData.country}<br>
+						Phone: ${addressData.phone}
+					`;
+					// If necessary, update the address type
+					const addressTypeHeader = addressElement.querySelector('h3');
+					if (addressTypeHeader) {
+						addressTypeHeader.textContent = `${addressData.type} address`;
+					}
+				}
+			}
+			function clearModal() {
+				document.getElementById('editFullname').value = '';
+				document.getElementById('editCountry').value = '';
+				document.getElementById('editStreet').value = '';
+				document.getElementById('editApartment').value = '';
+				document.getElementById('editCity').value = '';
+				document.getElementById('editDistrict').value = '';
+				document.getElementById('editState').value = '';
+				document.getElementById('editZip').value = '';
+				document.getElementById('editPhone').value = '';
+			}
+
+		</script>
+		<script>
+			function deleteAddress(addressId) {
+				Swal.fire({
+					title: 'Are you sure?',
+					text: 'You want to delete this address?',
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						fetch(`/delete-address/${addressId}/`, {
+							method: 'GET',
+							headers: {
+								'X-CSRFToken': '{{ csrf_token }}'
+							}
+						})
+						.then(response => response.json())
+						.then(data => {
+							if (data.success) {
+								// Remove the address div from the DOM
+								document.getElementById(`address-${addressId}`).remove();
+								Swal.fire('Deleted!', 'Your address has been deleted.', 'success');
+							} else {
+								Swal.fire('Failed!', 'Failed to delete address.', 'error');
+							}
+						})
+						.catch(error => {
+							console.error('Error:', error);
+							Swal.fire('Error!', 'An error occurred. Please try again later.', 'error');
+						});
+					}
+				});
+			}
+		</script>
+			
+			<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+// Function to apply the coupon
+function applyCoupon(couponCode, discountPrice) {
+	let subtotalAmountElement = document.getElementById('subtotalAmount');
+	let totalAmountElement = document.getElementById('totalAmount');
+	let discountAmountElement = document.getElementById('discountAmount');
+	let shippingElement = document.getElementById('shipping');
+
+	if (!subtotalAmountElement || !totalAmountElement || !discountAmountElement || !shippingElement) {
+		console.error('Element with ID "subtotalAmount", "totalAmount", "discountAmount", or "shipping" not found.');
+		return;
+	}
+
+	let subtotal = parseFloat(subtotalAmountElement.innerText);
+	let shippingCost = parseFloat(shippingElement.innerText.replace('Rs.', ''));
+	let discountedTotal = subtotal - discountPrice + shippingCost;
+
+	// Update the displayed total amount and discount amount
+	totalAmountElement.innerText = discountedTotal.toFixed(2); // Ensure 2 decimal places
+	discountAmountElement.innerText = 'Rs.' + discountPrice.toFixed(2); // Ensure 2 decimal places
+
+	// Show remove coupon link
+	document.getElementById('removeCouponLink').style.display = 'block';
+	document.getElementById('couponCodeInput').value = couponCode;
+}
+
+
+
+// Function to remove the applied coupon
+function removeCoupon() {
+	let subtotalAmountElement = document.getElementById('subtotalAmount');
+	let totalAmountElement = document.getElementById('totalAmount');
+	let discountAmountElement = document.getElementById('discountAmount');
+	let shippingElement = document.getElementById('shipping');
+
+	let subtotal = parseFloat(subtotalAmountElement.innerText);
+	let shippingCost = parseFloat(shippingElement.innerText.replace('Rs.', ''));
+
+	// Recalculate total without discount
+	let totalWithoutDiscount = subtotal + shippingCost;
+
+	// Update the displayed total amount and discount amount
+	totalAmountElement.innerText = totalWithoutDiscount.toFixed(2);
+	discountAmountElement.innerText = 'Rs.0.00';
+
+	// Hide remove coupon link
+	document.getElementById('removeCouponLink').style.display = 'none';
+	document.getElementById('couponCodeInput').value = '';
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	let couponListItems = document.querySelectorAll('#couponList li');
+
+	couponListItems.forEach(function (item) {
+		item.addEventListener('click', function () {
+			let couponCode = this.dataset.couponCode;
+			let discountPrice = parseFloat(this.dataset.discountPrice);
+
+			console.log(`Clicked on coupon: ${couponCode} with discount: ${discountPrice}`);
+
+			// Apply the coupon
+			applyCoupon(couponCode, discountPrice);
+
+			// Close the modal
+			document.getElementById('couponModal').style.display = 'none';
+		});
+	});
+
+	document.getElementById('view-coupon-link').addEventListener('click', function (event) {
+		event.preventDefault();
+		document.getElementById('couponModal').style.display = 'block';
+	});
+
+	document.getElementById('applyCouponButton').addEventListener('click', function () {
+		let couponCodeInput = document.getElementById('couponCodeInput').value.trim();
+		if (couponCodeInput) {
+			let  matchedCoupon = Array.from(couponListItems).find(item => item.dataset.couponCode === couponCodeInput);
+			if (matchedCoupon) {
+				let discountPrice = parseFloat(matchedCoupon.dataset.discountPrice);
+				applyCoupon(couponCodeInput, discountPrice);
+			} else {
+				showToast('Invalid coupon code');
+			}
+		} else {
+			showToast('Please enter a coupon code');
+		}
+	});
+
+	document.getElementById('removeCouponLink').addEventListener('click', function (event) {
+		event.preventDefault();
+		removeCoupon();
+	});
+
+	document.querySelector('button[name="checkout_place_order"]').addEventListener('click', function (event) {
+		event.preventDefault();
+	
+		// Collect the required data
+		let cartItems = [...document.querySelectorAll('.cart-item')].map(item => {
+			return {
+				variant_id: item.dataset.productId,
+				quantity: item.querySelector('.product-quantity').innerText.replace('QTY : ', '')
+			};
+		});
+	
+		let shippingAmount = parseFloat(document.getElementById('shipping').innerText.replace('Rs.', ''));
+		let addressElement = document.querySelector('input[name="address"]:checked');
+		let paymentMethodElement = document.querySelector('input[name="payment_method"]:checked');
+		
+		if (!addressElement) {
+			showToast('Please choose an address.','error');
+			return;
+		}
+		
+		if (!paymentMethodElement) {
+			showToast('Please choose a payment method.','error');
+			return;
+		}
+		const queryString = window.location.search;
+
+		// Create a URLSearchParams object
+		const urlParams = new URLSearchParams(queryString);
+
+		let addressId = addressElement.value;
+		let paymentMethod = paymentMethodElement.value;
+		let couponCode = document.getElementById('couponCodeInput').value;
+		const cartId = urlParams.get('cart_id');
+	
+		let orderData = {
+			cartItems: cartItems,
+			addressId: addressId,
+			paymentMethod: paymentMethod,
+			shippingAmount: shippingAmount,
+			couponCode: couponCode,
+			cartId: cartId
+		};
+	
+		console.log("HIIII", orderData);
+		 if(paymentMethod==="cod"){
+		// Send the data to the backend (example using fetch)
+		fetch('/place_order/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRFToken': '{{ csrf_token }}'
+			},
+			body: JSON.stringify(orderData)
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log(data)
+			if (data.success) {
+				// Clear the entire URL
+			   window.history.replaceState({}, document.title, '/');
+
+				window.location.href = `/order_success/${data.order_id}/`;
+				// Redirect to success page or show success message
+			} else {
+				showToast(data.message ? data.message : 'Order placement failed.','error');
+				
+				// Handle error
+			}
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+	}else if(paymentMethod==="online"){
+		fetch('/create_razorpay_order/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRFToken': '{{ csrf_token }}'
+			},
+			body: JSON.stringify(orderData)
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				var options = {
+					"key": "rzp_test_JFRhohewvJ81Dl",
+					"amount": data.amount,
+					"currency": "INR",
+					"name": "Adore",
+					"description": "Test Transaction",
+					"order_id": data.order_id,
+					"handler": function (response){
+						// Call the backend to verify the payment
+						fetch('/verify_razorpay_payment/', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								'X-CSRFToken': '{{ csrf_token }}'
+							},
+							body: JSON.stringify({
+								razorpay_payment_id: response.razorpay_payment_id,
+								razorpay_order_id: response.razorpay_order_id,
+								razorpay_signature: response.razorpay_signature,
+								orderData:orderData
+							})
+						})
+						.then(response => response.json())
+						.then(data => {
+							if (data.success) {
+								window.location.href = `/order_success/${data.order_id}/`;
+							} else {
+								showToast('Payment verification failed.','error');
+							}
+							
+						});
+					},
+					"prefill": {
+						"name": "Your Name",
+						"email": "Your Email",
+						"contact": "Your Phone"
+					},
+					"theme": {
+						"color": "#F37254"
+					}
+				};
+				var rzp1 = new Razorpay(options);
+				rzp1.once('payment.failed', function (response) {
+                console.log("Payment failed handler triggered");
+                rzp1.close();
+                
+                // Call the backend to handle the failed payment
+                fetch('/handle_failed_payment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+					body: JSON.stringify(orderData)
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						// Redirect to the order failed page if payment failed handling was successful
+						window.location.href = `/order_failed/${data.order_id}/`;
+					} else {
+						console.error('Failed to handle payment failure:', data.message);
+					}
+				})
+				.catch(error => {
+					console.error('Error handling payment failure:', error);
+				});
+			});
+				rzp1.open();
+			} else {
+				showToast(data.message ? data.message : 'Order creation failed.','error');
+			}
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+	}else if (paymentMethod === "wallet") {
+            fetch('/create_wallet_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(orderData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Process wallet payment logic
+                        // Example: show success message and redirect to success page
+                        showToast('Wallet payment successful.', 'success');
+                        window.location.href = `/order_success/${data.order_id}/`;
+                    } else {
+                        showToast(data.message ? data.message : 'Wallet payment failed.', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    });
+});
+</script>
+                       
+		<!-- Dependency Scripts -->
+		<script src="{% static 'libs/popper/js/popper.min.js' %}"></script>
+		<script src="{% static 'libs/jquery/js/jquery.min.js' %}"></script>
+		<script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'libs/slick/js/slick.min.js' %}"></script>
+		<script src="{% static 'libs/mmenu/js/jquery.mmenu.all.min.js' %}"></script>
+		<script src="{% static 'libs/slider/js/tmpl.js' %}"></script>
+		<script src="{% static 'libs/slider/js/jquery.dependClass-0.1.js' %}"></script>
+		<script src="{% static 'libs/slider/js/draggable-0.1.js' %}"></script>
+		<script src="{% static 'libs/slider/js/jquery.slider.js' %}"></script>
+		<script src="{% static 'libs/elevatezoom/js/jquery.elevatezoom.js' %}"></script>
+		<script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
+		
+		<!-- Site Scripts -->
+		<script src="{% static 'assets/js/app.js' %}"></script>
+	</body>
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:05 GMT -->
+</html>

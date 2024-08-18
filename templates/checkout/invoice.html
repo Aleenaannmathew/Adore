@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+        }
+        .header h4 {
+            color: #666;
+            margin: 0;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            background: #fafafa;
+        }
+        .card-header {
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            color: black;
+        }
+        .card-body {
+            color: #333;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .table th {
+            background-color: black;
+            color: #fff;
+        }
+        .summary {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .summary div {
+            margin-bottom: 5px;
+        }
+        .total {
+            color: #28a745;
+            font-size: 1.2em;
+        }
+        address {
+            line-height: 1.6;
+        }
+        .thank-you {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .logo {
+            max-width: 150px;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Invoice</h1>
+            <h4>Order ID: {{ order.id }}</h4>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                Order Details
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order_items %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.variant.color }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.subtotal }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="summary">
+                    <div>Shipping: + {{ order.shipping_charge }}</div>
+                    <div>Coupon: - {{ order.coupon.discount_price|default:0 }}</div>
+                    <div class="total">Total: {{ order.total_price }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Shipping Address
+            </div>
+            <div class="card-body">
+                <address>
+                    {{ order.address.fullname }}<br>
+                    {{ order.address.apartment }} {{ order.address.street }}<br>
+                    {{ order.address.city }}<br>
+                    {{ order.address.district }}<br>
+                    {{ order.address.state }}<br>
+                    {{ order.address.country }}<br>
+                    {{ order.address.zip_code }}<br>
+                    {{ order.address.phone }}<br>
+                </address>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Payment Mode
+            </div>
+            <div class="card-body">
+                {{ order.payment_method }}
+            </div>
+        </div>
+
+        <div class="thank-you">
+            Thank you for shopping with us!
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-grid-left.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:45:59 GMT -->
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Adore</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'media/favicon.png' %}">
+
+    <!-- Dependency Styles -->
+    <link rel="stylesheet" href="{%static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/feather-font/css/iconfont.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/icomoon-font/css/icomoon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/font-awesome/css/font-awesome.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/wpbingofont/css/wpbingofont.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/elegant-icons/css/elegant.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slick/css/slick.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slick/css/slick-theme.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/mmenu/css/mmenu.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'libs/slider/css/jslider.css' %}">
+
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="{%static 'assets/css/app.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'assets/css/responsive.css' %}" type="text/css">
+
+    <!-- Google Web Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
+        rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+		<style>
+			
+			  .modal-body {
+				max-height: calc(90vh - 190px); /* Limit the height of the modal body */
+				overflow-y: auto; /* Enable vertical scrolling */
+				overflow-x: hidden; /* Disable horizontal scrolling */
+				z-index: 5;
+			  }
+			  .col-md-4 img {
+				width: 100%; /* Ensure image does not cause overflow */
+			  }
+			.variant-option {
+				border: 1px solid #ccc;
+				margin-bottom: 10px;
+				padding: 10px;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+			}
+			
+			.variant-option.selected {
+				border-color: #007bff;
+			}
+			
+			.variant-details {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+			}
+			
+			.variant-color {
+				width: 30px;
+				height: 30px;
+				border-radius: 50px;
+				border: 1px solid #000;
+				margin-right: 10px;
+			}
+			
+			.variant-price {
+				font-weight: bold;
+			}
+			
+			.wishlist-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				border: 1px solid #ddd;
+				padding: 20px;
+				width: 300px;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				position: relative;
+				transition: all 0.3s ease;
+			}
+			
+			.wishlist-item img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.wishlist-item-info {
+				text-align: center;
+				margin-top: 10px;
+			}
+			
+			.wishlist-item-name {
+				font-size: 18px;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+			
+			.wishlist-item-price {
+				font-size: 16px;
+				color: #ff6600;
+				margin-bottom: 5px;
+			}
+			
+			.wishlist-item-stock {
+				font-size: 14px;
+				color: #28a745;
+				margin-bottom: 10px;
+			}
+			
+			.wishlist-item-stock.out-of-stock {
+				color: #dc3545;
+			}
+			
+			.wishlist-item-add .product-btn {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: #007bff;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+			
+			.wishlist-item .remove-wishlist-item {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				cursor: pointer;
+				font-size: 24px;
+				color: #dc3545;
+			}
+			
+			@media (max-width: 600px) {
+				.wishlist-item {
+					flex-direction: row;
+					align-items: flex-start;
+					width: 100%;
+					padding: 10px;
+				}
+			
+				.wishlist-item img {
+					max-width: 100px;
+					height: auto;
+					margin-right: 100px;
+					margin-left: 100px;
+				}
+			
+				.wishlist-item-info {
+					
+					margin-top: 0;
+					flex: 1;
+				}
+			
+				.wishlist-item-name {
+					font-size: 16px;
+					margin-bottom: 3px;
+				}
+			
+				.wishlist-item-price {
+					font-size: 14px;
+					margin-bottom: 3px;
+				}
+			
+				.wishlist-item-stock {
+					font-size: 12px;
+					margin-bottom: 5px;
+				}
+			
+				.wishlist-item-add .product-btn {
+					padding: 5px 10px;
+					font-size: 14px;
+				}
+			
+				.remove-wishlist-item {
+					top: 5px;
+					right: 5px;
+					font-size: 20px;
+				}
+			}
+			</style>
+ 	</head>
+
+<body class="shop">
+    <div id="page" class="hfeed page-wrapper">
+		<header id="site-header" class="site-header header-v1 ">
+			<!-- mobile view -->
+			<div class="header-mobile">
+				<div class="section-padding">
+					<div class="section-container">
+						<div class="row">
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
+								<div class="navbar-header">
+									<button type="button" id="show-megamenu" class="navbar-toggle"></button>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
+								<div class="site-logo">
+									<a href="{% url 'home'%}">
+										<img width="400" height="79" src="{% static 'media/logo-white.png'%}"
+											alt="Mojuri – Jewelry Store HTML Template" />
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
+								<!-- cart-mobile -->
+								<div class="mojuri-topcart dropdown">
+									<div class=" mini-cart top-cart">
+										<div class="remove-cart-shadow"></div>
+										<a class="toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="cart-link" aria-haspopup="true" aria-expanded="false" style="color: #000;text-decoration: none;">
+											<div class="icons-cart">
+											  <i class="icon-large-paper-bag"></i>
+											  {% if request.session.email %}
+												<span class="cart-count">{{ cart_count }}</span>
+											  {% endif %}
+											</div>
+										  </a>
+										  
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- three-dot-menu -->
+				<div class="header-mobile-fixed">
+					<!-- Shop  -->
+					<div class="shop-page">
+						<a href="{% url 'showproducts' %}"><i class="wpb-icon-shop"></i></a>
+					</div>
+
+					<!--my-account-->
+					<div class="my-account">
+						<div class="login-header">
+						  <a id="account-link" href="{% if request.session.email %}{% url 'profile' %}{% else %}#{% endif %}">
+							<i class="wpb-icon-user"></i>
+						  </a>
+						</div>
+					  </div>
+					  
+
+					<!-- Search -->
+					<div class="search-box">
+						<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
+					</div>
+
+					<!-- Wishlist -->
+					<div class="wishlist-box">
+						<a id="wishlist-link" href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}">
+						  <i class="wpb-icon-heart"></i>
+						</a>
+					  </div>
+				</div>
+			</div>
+			<!-- mobile-navbar-view-end desktop-nav-start -->
+			<div class="header-desktop">
+				<div class="header-wrapper">
+					<div class="section-padding">
+						<div class="section-container large p-l-r">
+							<div class="row">
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-left">
+									<div class="site-logo">
+										<a href="{% url 'home'%}">
+											<img width="400" height="140" src="{% static 'media/logo-white.png'%}"
+												alt="Adore – Jewelry Store HTML Template" />
+										</a>
+									</div>
+								</div>
+
+								<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
+									<div class="site-navigation">
+										<nav id="main-navigation">
+											<ul id="menu-main-menu" class="menu">
+												<li class="level-0 menu-item  ">
+													<a href="{% url 'home' %}"><span
+															class="menu-item-text">Home</span></a>
+
+												</li>
+												<li class="level-0 menu-item  ">
+													<a href="{% url 'showproducts' %}"><span
+															class="menu-item-text">Shop</span></a>
+
+												</li>
+
+												<li class="level-0 menu-item ">
+													<a href="#"><span class="menu-item-text">About Us</span></a>
+
+												</li>
+												<li class="level-0 menu-item">
+													<a href="page-contact.html"><span
+															class="menu-item-text">Contact</span></a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-right">
+									<div class="header-page-link">
+										<!-- Search -->
+										<div class="search-box">
+											<div class="search-toggle"><i class="icon-search"></i></div>
+										</div>
+
+										<!-- Login -->
+
+										<div class="login-header icon">
+
+											<a class="active-login" href="" style="color: #000; text-decoration: none;"><i class="icon-user"></i></a>
+
+
+											<div class="form-login-register">
+												<div class="box-form-login">
+													<div class="active-login"></div>
+													<div class="box-content">
+														<div class="form-login active">
+
+															<h2>{% if request.session.email %}Profile{% else %}Login/Register{% endif %}</h2>
+															<p class="status"></p>
+															<div class="content">
+																{% if request.session.email %}
+																<a href="{% url 'profile' %}">
+																	<div class="button-next-reregister">Profile</div>
+																</a>
+																<a href="{% url 'logout' %}"><div class="button-next-reregister">Logout</div></a>
+																{% else %}
+																<a href="{% url 'login' %}">
+																	<div class="button-next-reregister">Login</div>
+																</a>
+
+																<a href="{% url 'register' %}">
+																	<div class="button-next-reregister">Register</div>
+																</a>
+
+																{% endif %}
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Wishlist -->
+										<div class="wishlist-box">
+											<a href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}" id="desktop-wishlist-link" style="text-decoration: none; color: #000;">
+												<i class="icon-heart"></i>
+											</a>
+											{% if request.session.email %}
+											<span class="count-wishlist" id="count-wishlist">{{ wishlist_count }}</span>
+											{% endif %}
+										</div>
+
+										<!-- Cart -->
+										<div class="mojuri-topcart dropdown light">
+											<div class=" mini-cart top-cart">
+												<div class="remove-cart-shadow"></div>
+												<a class="toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="desktop-cart-link" aria-expanded="false" style="text-decoration: none;color: #000;">
+													<div class="icons-cart">
+														<i class="icon-large-paper-bag"></i>
+														{% if request.session.email %}
+														<span id="cart-count" class="cart-count">{{ cart_count }}</span>
+														{% endif %}
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+            <!-- our content starts here -->
+			<div id="site-main" class="site-main">
+				<div id="main-content" class="main-content">
+					<div id="primary" class="content-area">
+						<div id="title" class="page-title">
+							<div class="section-container">
+								<div class="content-title-heading">
+									<h1 class="text-title-heading">
+										Wishlist
+									</h1>
+								</div>
+								<div class="breadcrumbs">
+									<a href="index.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Shopping Cart
+								</div>
+							</div>
+						</div>
+
+						
+                    <div id="content" class="site-content" role="main">
+						<div class="section-padding">
+						<div class="wishlist-items" style="display: flex; flex-wrap: wrap; gap: 20px;">
+							{% for item in items %}
+							<div class="wishlist-item" data-item-id="{{ item.id }}">
+								<div class="wishlist-item-image">
+									<a href="{% url 'shop_details' item.product.slug %}">
+										<img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+									</a>
+								</div>
+								<div class="wishlist-item-info">
+									<div class="wishlist-item-name">
+										<a href="{% url 'shop_details' item.product.slug %}">{{ item.product.name }}</a>
+									</div>
+									<div class="wishlist-item-price">
+										{% if item.product.get_discounted_price %}
+										<span>Rs {{ item.product.get_discounted_price }}</span>
+										{% else %}
+										<span>Rs {{ item.product.variants.first.price }}</span>
+										{% endif %}
+									</div>
+									<div class="wishlist-item-stock">
+										{% if item.product.is_available %}
+										In stock
+										{% else %}
+										Out of stock
+										{% endif %}
+									</div>
+									<div class="wishlist-item-add">
+										<div class="add-to-cart"
+											data-title="Add to cart"
+											data-item-id="{{ item.product.id }}"
+											data-remove-id="{{ item.id}}"
+											data-item-name="{{ item.product.name }}"
+											data-item-image="{{ item.product.image.url }}">
+											<a rel="nofollow" href="#" class="product-btn">
+												Add to cart
+											</a>
+										</div>
+										</div>
+									</div>
+								<div class="remove-wishlist-item" data-item-id="{{ item.id }}">
+									<span>x</span>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+						
+					</div>
+				</div>
+			</div>
+             <!-- modal -->
+			 <!-- Modal Structure -->
+<div id="variantModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="variantModalLabel"
+aria-hidden="true">
+<div class="modal-dialog  modal-dialog-centered" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="variantModalLabel">Choose Your Variant</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-4">
+					<img id="productImage" src="" alt="Product Image" style="width: 100%;">
+				</div>
+				<div class="col-md-8">
+					<h5 id="productName"></h5>
+					<div id="variantOptions">
+						<!-- Variant options will be added dynamically here -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" id="confirmVariant">Confirm</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+</div>
+</div>
+
+			<footer id="site-footer" class="site-footer background four-columns">
+				<div class="footer">
+					<div class="section-padding">
+						<div class="section-container">
+							<div class="block-widget-wrap">
+								<div class="row">
+									<div class="col-lg-3 col-md-6 column-1">
+										<div class="block block-menu m-b-20">
+											<h2 class="block-title">Contact Us</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<span>Head Office:</span> 26 Wyle Cop, Shrewsbury, Shropshire, SY1 1XD
+													</li>
+													<li>
+														<span>Tel:</span> 01743 234500
+													</li>
+													<li>
+														<span>Email:</span> <a href="mailto:support@mojuri.com">support@mojuri.com</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+										<div class="block block-social">
+											<ul class="social-link">
+												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+												<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+												<li><a href="#"><i class="fa fa-behance"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-2">
+										<div class="block block-menu">
+											<h2 class="block-title">Customer Services</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="shop-grid-left.html">Contact Us</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Track Your Order</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Product Care & Repair</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Book an Appointment</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Frequently Asked Questions</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Shipping & Returns</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-3">
+										<div class="block block-menu">
+											<h2 class="block-title">About Us</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="#">About Us</a>
+													</li>
+													<li>
+														<a href="#">FAQ</a>
+													</li>
+													<li>
+														<a href="#">Our Producers</a>
+													</li>
+													<li>
+														<a href="#">Sitemap</a>
+													</li>
+													<li>
+														<a href="#">Terms & Conditions</a>
+													</li>
+													<li>
+														<a href="#">Privacy Policy</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 column-4">
+										<div class="block block-menu">
+											<h2 class="block-title">Catalog</h2>
+											<div class="block-content">
+												<ul>
+													<li>
+														<a href="shop-grid-left.html">Earrings</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Necklaces</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Bracelets</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Rings</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Jewelry Box</a>
+													</li>
+													<li>
+														<a href="shop-grid-left.html">Studs</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="section-padding">
+						<div class="section-container">
+							<div class="block-widget-wrap">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="footer-left">
+											<p class="copyright">Copyright © 2023. All Right Reserved</p>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="footer-right">
+											<div class="block block-image">
+												<img width="309" height="32" src="{%static 'media/payments.png' %}" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Back Top button -->
+		<div class="back-top button-show">
+			<i class="arrow_carrot-up"></i>
+		</div>
+
+		<!-- Search -->
+		<div class="search-overlay">
+			<div class="close-search"></div>
+			<div class="wrapper-search">
+				<form role="search" method="get" class="search-from ajax-search" action="#">
+					<a href="#" class="search-close"></a>
+					<div class="search-box">
+						<button id="searchsubmit" class="btn" type="submit">
+							<i class="icon-search"></i>
+						</button>
+						<input type="text" autocomplete="off" value="" name="s" class="input-search s" placeholder="Search...">
+						<div class="content-menu_search">
+							<label>Suggested</label>
+							<ul id="menu_search" class="menu">
+								<li><a href="#">Earrings</a></li>
+								<li><a href="#">Necklaces</a></li>
+								<li><a href="#">Bracelets</a></li>
+								<li><a href="#">Jewelry Box</a></li>
+							</ul>			
+						</div>
+					</div>
+				</form>	
+			</div>	
+		</div>
+
+		<!-- Wishlist -->
+		<div class="wishlist-popup">
+			<div class="wishlist-popup-inner">
+                <div class="wishlist-popup-content">
+                    <div class="wishlist-popup-content-top">
+                        <span class="wishlist-name">Wishlist</span>
+						<span class="wishlist-count-wrapper"><span class="wishlist-count">2</span></span>                                
+						<span class="wishlist-popup-close"></span>
+                    </div>
+                    <div class="wishlist-popup-content-mid">
+						<table class="wishlist-items">                        
+							<tbody>
+								<tr class="wishlist-item">
+									<td class="wishlist-item-remove"><span></span></td>
+									<td class="wishlist-item-image">
+                                    	<a href="shop-details.html">
+											<img width="600" height="600" src="{%static 'media/product/3.jpg' %}" alt="">                                        
+										</a>
+		                       		</td>
+			                        <td class="wishlist-item-info">
+										<div class="wishlist-item-name">
+											<a href="shop-details.html">Twin Hoops</a>
+										</div>
+										<div class="wishlist-item-price">
+											<span>$150.00</span>
+										</div>
+										<div class="wishlist-item-time">June 4, 2022</div>                                
+									</td>
+			                        <td class="wishlist-item-actions">
+			                            <div class="wishlist-item-stock">
+											In stock 
+										</div>
+			                            <div class="wishlist-item-add">
+											<div data-title="Add to cart">
+												<a rel="nofollow" href="#">Add to cart</a>
+											</div>
+										</div>
+	                                </td>
+								</tr>
+								<tr class="wishlist-item">
+									<td class="wishlist-item-remove"><span></span></td>
+									<td class="wishlist-item-image">
+                                    	<a href="shop-details.html">
+											<img width="600" height="600" src="{%static 'media/product/4.jpg' %}" alt="">                                        
+										</a>
+		                       		</td>
+			                        <td class="wishlist-item-info">
+										<div class="wishlist-item-name">
+											<a href="shop-details.html">Yilver And Turquoise Earrings</a>
+										</div>
+										<div class="wishlist-item-price">
+											<del aria-hidden="true"><span>$150.00</span></del> 
+											<ins><span>$100.00</span></ins>
+										</div>
+										<div class="wishlist-item-time">June 4, 2022</div>                                
+									</td>
+			                        <td class="wishlist-item-actions">
+			                            <div class="wishlist-item-stock">
+											In stock 
+										</div>
+			                            <div class="wishlist-item-add">
+											<div data-title="Add to cart">
+												<a rel="nofollow" href="#">Add to cart</a>
+											</div>
+										</div>
+	                                </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                    <div class="wishlist-popup-content-bot">
+                        <div class="wishlist-popup-content-bot-inner">
+                            <a class="wishlist-page" href="shop-wishlist.html">
+								Open wishlist page                                    
+							</a>
+                            <span class="wishlist-continue" data-url="">
+                                Continue shopping                                        
+                            </span>
+                        </div>
+                        <div class="wishlist-notice wishlist-notice-show">Added to the wishlist!</div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+		<!-- Compare -->
+		<div class="compare-popup">
+		    <div class="compare-popup-inner">
+		        <div class="compare-table">
+		            <div class="compare-table-inner">
+                    	<a href="#" id="compare-table-close" class="compare-table-close">
+                    		<span class="compare-table-close-icon"></span>
+                    	</a>
+                    	<div class="compare-table-items">
+                    		<table id="product-table" class="product-table">
+                    			<thead>
+                    				<tr>
+                    					<th>
+                    						<a href="#" class="compare-table-settings">Settings</a>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Twin Hoops</a> <span class="remove">remove</span>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Medium Flat Hoops</a> <span class="remove">remove</span>
+                    					</th>
+                    					<th>
+                    						<a href="shop-details.html">Bold Pearl Hoop Earrings</a> <span class="remove">remove</span>
+                    					</th>
+                    				</tr>
+                    			</thead>
+                    			<tbody>
+                    				<tr class="tr-image">
+                    					<td class="td-label">Image</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{%static 'media/product/3.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{%static 'media/product/1.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    					<td>
+                    						<a href="shop-details.html">
+                    							<img width="600" height="600" src="{%static 'media/product/2.jpg' %}" alt="">
+                    						</a>
+                    					</td>
+                    				</tr>
+                    				<tr class="tr-sku">
+                    					<td class="td-label">SKU</td>
+                    					<td>VN00189</td>
+                    					<td></td>
+                    					<td>D1116</td>
+                    				</tr>
+                    				<tr class="tr-rating">
+                    					<td class="td-label">Rating</td>
+                    					<td>
+                    						<div class="star-rating">
+                    							<span style="width:80%"></span>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div class="star-rating">
+                    							<span style="width:100%"></span>
+                    						</div>
+                    					</td>
+                    					<td></td>
+                    				</tr>
+                    				<tr class="tr-price">
+                    					<td class="td-label">Price</td>
+                    					<td><span class="amount">$150.00</span></td>
+                    					<td><del><span class="amount">$150.00</span></del> <ins><span class="amount">$100.00</span></ins></td>
+                    					<td><span class="amount">$200.00</span></td>
+                    				</tr>
+                    				<tr class="tr-add-to-cart">
+                    					<td class="td-label">Add to cart</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    					<td>
+                    						<div data-title="Add to cart">
+                    							<a href="#" class="button">Add to cart</a>
+                    						</div>
+                    					</td>
+                    				</tr>
+                    				<tr class="tr-description">
+                    					<td class="td-label">Description</td>
+                    					<td>Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</td>
+                    					<td>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece comfort all year around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by using recycled polyester.7.8 ounce fleece sweatshirt made with up to 5 percent polyester created from recycled plastic.</td>
+                    				</tr>
+                    				<tr class="tr-content">
+                    					<td class="td-label">Content</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+                    				</tr>
+                    				<tr class="tr-dimensions">
+                    					<td class="td-label">Dimensions</td>
+                    					<td>N/A</td>
+                    					<td>N/A</td>
+                    					<td>N/A</td>
+                    				</tr>
+                    			</tbody>
+                    		</table>
+                    	</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+		<!-- Page Loader -->
+		<div class="page-preloader">
+	    	<div class="loader">
+	    		<div></div>
+	    		<div></div>
+	    	</div>
+	    </div>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const removeButtons = document.querySelectorAll('.remove-wishlist-item');
+			
+				removeButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						const itemId = this.getAttribute('data-item-id');
+						console.log(itemId)
+						//const row = document.querySelector(`tr[data-item-id="${itemId}"]`);
+						const row=document.querySelector(`div[data-item-id="${itemId}"]`);
+			
+						$.ajax({
+							url: `/remove-from-wishlist/${itemId}/`,
+							type: 'DELETE',
+							headers: {
+								'X-CSRFToken': '{{ csrf_token }}'
+							},
+							success: function(data) {
+								if (data.message === 'Product removed from wishlist') {
+									document.getElementById('count-wishlist').textContent=data.wishlist_count
+									toastr.success('Product removed from wishlist')
+									row.remove();
+								} else {
+									console.error('Error:', data.error);
+								}
+							},
+							error: function(error) {
+								console.error('Error:', error);
+							}
+						});
+					});
+				});
+			});
+			</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.add-to-cart').on('click', function(e) {
+			e.preventDefault(); // Prevent default action of anchor tag
+	        var itemId=$(this).data('remove-id');
+			var productId = $(this).data('item-id');
+			var productName = $(this).data('item-name');
+			var productImage = $(this).data('item-image');
+			console.log("helllo",productId)
+	      
+			// AJAX request to fetch variants
+			$.ajax({
+				url: '/get-variants/',  // Replace with your Django URL endpoint
+				method: 'GET',
+				data: {
+					'product_id': productId
+				},
+				dataType: 'json',
+				success: function(data) {
+					console.log('Received variants data:', data);
+					// Process 'data' to display variants in a modal or other UI
+					showVariantsModal(productName, productImage, data.variants,itemId);
+				},
+				error: function(xhr, status, error) {
+					console.error('Error fetching variants:', error);
+					// Handle error scenario
+				}
+			});
+		});
+	
+		// Function to display variants in the modal
+		function showVariantsModal(productName, productImage, variants,productId) {
+			// Update modal content with product details
+			$('#productName').text(productName);
+			$('#productImage').attr('src', productImage);
+	
+			// Clear previous options and populate new ones
+			var variantOptions = $('#variantOptions');
+			variantOptions.empty();
+	
+			// Iterate over variants and display them
+			variants.forEach(function(variant) {
+				var variantOption = $('<div class="variant-option"></div>');
+				var variantDetails = $('<div class="variant-details"></div>');
+	
+				// Create elements for color and price
+				var colorDiv = $('<div class="variant-color"></div>').css('background-color', variant.color);
+				var variantName = $('<div class="variant-name"></div>').text(variant.color);
+				var priceDiv = $('<div class="variant-price"></div>').text('Price: ' + variant.price);
+	
+				// Append color and price to the details div
+				variantDetails.append(colorDiv);
+				variantDetails.append(variantName);
+				variantDetails.append(priceDiv);
+	
+				// Append details div to the variant option div
+				variantOption.append(variantDetails);
+				variantOption.attr('data-variant-id', variant.id);
+				variantOption.attr('data-product-id', productId);
+				variantOption.attr('title', variant.color + ' - ' + variant.price); // Tooltip with color and price
+	
+				variantOption.click(function() {
+					$(this).addClass('selected').siblings().removeClass('selected');
+				});
+	
+				variantOptions.append(variantOption);
+			});
+	
+			// Show the modal
+			$('#variantModal').modal('show');
+		}
+	
+		// Confirm button click handler
+		$('#confirmVariant').click(function() {
+			var selectedVariant = $('#variantOptions .variant-option.selected');
+		
+			
+			console.log("hiiiii",itemId)
+			if (selectedVariant.length > 0) {
+				var variantId = selectedVariant.data('variant-id');
+				var itemId = selectedVariant.data('product-id');
+				const row=document.querySelector(`div[data-item-id="${itemId}"]`);
+				var variantColor = selectedVariant.attr('title').split(' - ')[0];
+				console.log('Selected Variant ID:', variantId);
+				console.log("pid",itemId)
+				console.log('Selected Variant Color:', variantColor);
+				if (variantId && variantColor) {
+					$.ajax({
+						url: '/add-to-cart/' + variantId + '/',
+						method: 'GET',
+						data: {
+							'color': variantColor,
+							'variant_id': variantId
+						},
+						success: function(response) {
+							console.log(response);
+							var cartCountElement = document.getElementById('cart-count');
+							if (cartCountElement) {
+								cartCountElement.textContent = response.cart_count;
+							} else {
+								console.error("Element with ID 'cart-count' not found.");
+							}
+							// Optionally update the UI or notify the user about the successful addition
+							if (response.success) {
+								// Show toast notification
+								toastr.options = {
+									"closeButton": true,
+									"debug": false,
+									"newestOnTop": false,
+									"progressBar": true,
+									"positionClass": "toast-top-right",
+									"preventDuplicates": false,
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut",
+									"backgroundColor": "#000",  // Black background
+									"color": "#fff"  // White text
+								}
+								toastr.success('Product added to cart');
+								$.ajax({
+									url: `/remove-from-wishlist/${itemId}/`,
+									type: 'DELETE',
+									headers: {
+										'X-CSRFToken': '{{ csrf_token }}'
+									},
+									success: function(data) {
+										if (data.message === 'Product removed from wishlist') {
+											document.getElementById('count-wishlist').textContent = data.wishlist_count;
+											toastr.success('Product removed from wishlist');
+											// Optionally remove the product row from the UI
+											 row.remove();
+										} else {
+											console.error('Error:', data.error);
+										}
+									},
+									error: function(error) {
+										toastr.error(error.responseJSON ? error.responseJSON.error : 'Unknown error');
+									}
+								});
+							} else {
+								toastr.error(response.error);
+							}
+						},
+						error: function(err) {
+							console.error('Error adding product to cart:', err);
+							toastr.error(err.responseJSON ? err.responseJSON.error : 'Unknown error');
+						}
+					});
+				} else {
+					console.error('No variant selected.');
+					toastr.error('No variant selected.');
+				}
+			} else {
+				console.error('No variant selected.');
+				toastr.error('No variant selected.');
+			}
+			$('#variantModal').modal('hide');
+		});
+	});
+	</script>
+	
+			
+		<!-- Dependency Scripts -->
+		<script src="{%static 'libs/popper/js/popper.min.js' %}"></script>
+		<script src="{%static 'libs/jquery/js/jquery.min.js' %}"></script>
+		<script src="{%static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+		<script src="{%static 'libs/slick/js/slick.min.js' %}"></script>
+		<script src="{%static 'libs/mmenu/js/jquery.mmenu.all.min.js' %}"></script>
+		<script src="{%static 'libs/slider/js/tmpl.js' %}"></script>
+		<script src="{%static 'libs/slider/js/jquery.dependClass-0.1.js' %}"></script>
+		<script src="{%static 'libs/slider/js/draggable-0.1.js' %}"></script>
+		<script src="{%static 'libs/slider/js/jquery.slider.js' %}"></script>
+		<script src="{%static 'libs/elevatezoom/js/jquery.elevatezoom.js' %}"></script>
+		
+		<!-- Site Scripts -->
+		<script src="{%static 'assets/js/app.js' %}"></script>
+	</body>
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:04 GMT -->
+</html>

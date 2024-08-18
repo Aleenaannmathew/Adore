@@ -1,0 +1,1739 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:03 GMT -->
+
+<head>
+	<!-- Meta Data -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Adore</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{%static 'media/favicon.png' %}">
+
+	<!-- Dependency Styles -->
+	<link rel="stylesheet" href="{%static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/feather-font/css/iconfont.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/icomoon-font/css/icomoon.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/font-awesome/css/font-awesome.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/wpbingofont/css/wpbingofont.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/elegant-icons/css/elegant.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/slick/css/slick.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/slick/css/slick-theme.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/mmenu/css/mmenu.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'libs/slider/css/jslider.css' %}">
+
+	<!-- Site Stylesheet -->
+	<link rel="stylesheet" href="{%static 'assets/css/app.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'assets/css/responsive.css' %}" type="text/css">
+
+	<!-- Google Web Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
+		rel="stylesheet">
+	<!-- Include jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+		.color-swatch {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			margin-right: 5px;
+			vertical-align: middle;
+		}
+		.media-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .media-body .right-column {
+            text-align: right;
+        }
+	</style>
+
+</head>
+
+<body class="shop">
+	<div id="page" class="hfeed page-wrapper">
+		<header id="site-header" class="site-header header-v1 ">
+			<!-- mobile view -->
+			<div class="header-mobile">
+				<div class="section-padding">
+					<div class="section-container">
+						<div class="row">
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
+								<div class="navbar-header">
+									<button type="button" id="show-megamenu" class="navbar-toggle"></button>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
+								<div class="site-logo">
+									<a href="{% url 'home'%}">
+										<img width="400" height="79" src="{% static 'media/logo-white.png'%}"
+											alt="Mojuri – Jewelry Store HTML Template" />
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
+								<!-- cart-mobile -->
+								<div class="mojuri-topcart dropdown">
+									<div class="dropdown mini-cart top-cart">
+										<div class="remove-cart-shadow"></div>
+										<a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="cart-link" aria-haspopup="true" aria-expanded="false">
+											<div class="icons-cart">
+											  <i class="icon-large-paper-bag"></i>
+											  {% if request.session.email %}
+												<span class="cart-count">{{ cart_count }}</span>
+											  {% endif %}
+											</div>
+										  </a>
+										  
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- three-dot-menu -->
+				<div class="header-mobile-fixed">
+					<!-- Shop  -->
+					<div class="shop-page">
+						<a href="{% url 'showproducts' %}"><i class="wpb-icon-shop"></i></a>
+					</div>
+
+					<!--my-account-->
+					<div class="my-account">
+						<div class="login-header">
+						  <a id="account-link" href="{% if request.session.email %}{% url 'profile' %}{% else %}#{% endif %}">
+							<i class="wpb-icon-user"></i>
+						  </a>
+						</div>
+					  </div>
+					  
+
+					<!-- Search -->
+					<div class="search-box">
+						<div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
+					</div>
+
+					<!-- Wishlist -->
+					<div class="wishlist-box">
+						<a id="wishlist-link" href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}">
+						  <i class="wpb-icon-heart"></i>
+						</a>
+					  </div>
+				</div>
+			</div>
+			<!-- mobile-navbar-view-end desktop-nav-start -->
+			<div class="header-desktop">
+				<div class="header-wrapper">
+					<div class="section-padding">
+						<div class="section-container large p-l-r">
+							<div class="row">
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-left">
+									<div class="site-logo">
+										<a href="{% url 'home'%}">
+											<img width="400" height="140" src="{% static 'media/logo-white.png'%}"
+												alt="Adore – Jewelry Store HTML Template" />
+										</a>
+									</div>
+								</div>
+
+								<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
+									<div class="site-navigation">
+										<nav id="main-navigation">
+											<ul id="menu-main-menu" class="menu">
+												<li class="level-0 menu-item  ">
+													<a href="{% url 'home' %}"><span
+															class="menu-item-text">Home</span></a>
+
+												</li>
+												<li class="level-0 menu-item  ">
+													<a href="{% url 'showproducts' %}"><span
+															class="menu-item-text">Shop</span></a>
+
+												</li>
+
+												<li class="level-0 menu-item ">
+													<a href="#"><span class="menu-item-text">About Us</span></a>
+
+												</li>
+												<li class="level-0 menu-item">
+													<a href="page-contact.html"><span
+															class="menu-item-text">Contact</span></a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-right">
+									<div class="header-page-link">
+										<!-- Search -->
+										<div class="search-box">
+											<div class="search-toggle"><i class="icon-search"></i></div>
+										</div>
+
+										<!-- Login -->
+
+										<div class="login-header icon">
+
+											<a class="active-login" href=""><i class="icon-user"></i></a>
+
+
+											<div class="form-login-register">
+												<div class="box-form-login">
+													<div class="active-login"></div>
+													<div class="box-content">
+														<div class="form-login active">
+
+															<h2>{% if request.session.email %}Profile{% else %}Login/Register{% endif %}</h2>
+															<p class="status"></p>
+															<div class="content">
+																{% if request.session.email %}
+																<a href="{% url 'profile' %}">
+																	<div class="button-next-reregister">Profile</div>
+																</a>
+																<a href="{% url 'logout' %}"><div class="button-next-reregister">Logout</div></a>
+																{% else %}
+																<a href="{% url 'login' %}">
+																	<div class="button-next-reregister">Login</div>
+																</a>
+
+																<a href="{% url 'register' %}">
+																	<div class="button-next-reregister">Register</div>
+																</a>
+
+																{% endif %}
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Wishlist -->
+										<div class="wishlist-box">
+											<a href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}" id="desktop-wishlist-link">
+												<i class="icon-heart"></i>
+											</a>
+											{% if request.session.email %}
+											<span class="count-wishlist">{{ wishlist_count }}</span>
+											{% endif %}
+										</div>
+
+										<!-- Cart -->
+										<div class="mojuri-topcart dropdown light">
+											<div class="dropdown mini-cart top-cart">
+												<div class="remove-cart-shadow"></div>
+												<a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="desktop-cart-link" aria-expanded="false">
+													<div class="icons-cart">
+														<i class="icon-large-paper-bag"></i>
+														{% if request.session.email %}
+														<span class="cart-count">{{ cart_count }}</span>
+														{% endif %}
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- our content starts here -->
+		<div id="site-main" class="site-main">
+			<div id="main-content" class="main-content">
+				<div id="primary" class="content-area">
+					<div id="title" class="page-title">
+						<div class="section-container">
+							<div class="content-title-heading">
+								<h1 class="text-title-heading">
+									My Account
+								</h1>
+							</div>
+							<div class="breadcrumbs">
+								<a href="index.html">Home</a><span class="delimiter"></span>My Account
+							</div>
+						</div>
+					</div>
+
+					<div id="content" class="site-content" role="main">
+						<div class="section-padding">
+							<div class="section-container p-l-r">
+								<div class="page-my-account">
+									<div class="my-account-wrap clearfix">
+										<nav class="my-account-navigation">
+											<ul class="nav nav-tabs">
+												<li class="nav-item">
+													<a class="nav-link active" data-toggle="tab" href="#dashboard"
+														role="tab">Dashboard</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" data-toggle="tab" href="#orders"
+														role="tab">Orders</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" data-toggle="tab" href="#addresses"
+														role="tab">Addresses</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" data-toggle="tab" href="#account-details"
+														role="tab">Change Password</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" data-toggle="tab" href="#wallet"
+														role="tab">wallet</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+												</li>
+											</ul>
+										</nav>
+										<div class="my-account-content tab-content">
+											<div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+												<div class="my-account-dashboard" style="display: flex; align-items: center;">
+													<div class="profile-image" id="profile-image" style="width: 100px; height: 100px; border-radius: 10px; background-color: #ccc; 
+															background-image: url('{% if user.profile_photo %}{{ user.profile_photo.url }}{% else %}https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png{% endif %}'); 
+															background-size: cover; background-position: center; margin-right: 20px;">
+															</div>
+													<div class="profile-info" style="flex-grow: 1;">
+														<p>Hello <strong>{{ user.name }}</strong></p>
+													</div>
+													<div class="profile-buttons" style="margin-left: 20px;">
+														<button id="remove-button" style="margin-left: 10px; background-color: black; color: white; border-radius:10px; padding: 10px; ">Remove</button>
+														<button id="change-button" style="margin-left: 10px; background-color: black; color: white; border-radius:10px; padding: 10px;">Change</button>
+													</div>
+													<!-- Hidden input for file upload -->
+													<input type="file" id="file-input" style="display: none;">
+												</div>
+												<!-- Dashboard -->
+												<div class="my-account-details" style="width: 100%; cursor: default;" readonly>
+													<div class="input-row"
+														style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+														<div class="input-group" style="flex: 1; margin-right: 10px;">
+															<label for="full-name">Full Name</label>
+															<input type="text" id="full-name" name="full-name"
+																value="{{ user.name }}" style="width: 100%; cursor: default;" readonly>
+														</div>
+														<div class="input-group" style="flex: 1;">
+															<label for="email">Email</label>
+															<input type="email" id="email" name="email"
+																value="{{ user.email }}" style="width: 100%; cursor: default;" readonly>
+														</div>
+													</div>
+													<div class="input-row"
+														style="display: flex; justify-content: space-between;">
+														<div class="input-group" style="flex: 1; margin-right: 10px;">
+															<label for="total-orders">Total Orders</label>
+															<input type="number" id="total-orders" name="total-orders" value="{{ total_orders }}"
+																value="" style="width: 100%; cursor: default;" readonly>
+														</div>
+														<div class="input-group" style="flex: 1;">
+															<label for="contact-number">Contact Number</label>
+															<input type="tel" id="contact-number" name="contact-number"
+																value="{{ user.phone }}" style="width: 100%; cursor: default;" readonly>
+														</div>
+													</div>
+													<div class="edit-button"
+														style="display: flex; justify-content: flex-end; margin-top: 10px;">
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#editDetailsModal"
+															onclick="toggleModal()">
+															Edit Details
+														</button>
+													</div>
+													<p class="text mb-1">Referral Code</p>
+													<div style="display: flex;">
+        											<p class="text-muted mb-1" style="border: 1px solid #646262; padding: 10px; border-radius: 5px; width: 100px; position: relative;">
+														{{ user.referral_code }}
+														
+													</p>
+													<i class="fa-regular fa-copy" onclick="copyToClipboard()" style=" cursor: pointer; padding: 10px; font-size: larger; width: 50px; "></i>
+												</div>
+												</div>
+											</div>
+
+											<!--Edit Modal -->
+											<div id="editDetailsModalOverlay" class="modal-overlay"
+												style="display: none;">
+												<div class="modal-content"
+													style="width: 400px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+													<div style="text-align: right;">
+														<button onclick="toggleModal()"
+															style="background-color: transparent; border: none; cursor: pointer; font-size: 1.5rem;">&times;</button>
+													</div>
+													<h2 style="margin-bottom: 20px;">Edit Details</h2>
+													<form id="editDetailsForm">
+														<div class="form-group">
+															<label for="modal-full-name">Full Name</label>
+															<input type="text" id="modal-full-name"
+																name="modal-full-name" value="{{ user.name }}"
+																style="width: 100%; padding: 8px; margin-bottom: 10px;">
+														</div>
+														<div class="form-group">
+															<label for="modal-contact-number">Contact Number</label>
+															<input type="tel" id="modal-contact-number"
+																name="modal-contact-number" value="{{ user.phone }}"
+																style="width: 100%; padding: 8px; margin-bottom: 10px;">
+														</div>
+														<div style="text-align: center;">
+															<button type="button" onclick="saveChanges()"
+																style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Save
+																Changes
+															</button>
+
+													</form>
+												</div>
+											</div>
+										</div>
+										<!-- Orders -->
+										<div class="tab-pane fade" id="orders" role="tabpanel">
+											<div class="my-account-orders">
+												<div class="table-responsive">
+													<table
+														style="width: 100%; border-collapse: collapse;  margin: 20px;">
+														<thead>
+															<tr>
+																
+																<th
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+																	Order ID</th>
+																<th
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+																	Date</th>
+																<th
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+																	Status</th>
+																<th
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+																	Total</th>
+																<th
+																	style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+																	Actions</th>
+															</tr>
+														</thead>
+														<tbody>
+															{% for order in orders %}
+															<tr>
+																
+																<td
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">#{{ order.id }}</td>
+																<td
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ order.order_date }}</td>
+																<td
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{ order.order_status }}</td>
+																<td
+																	style="border: 1px solid #ddd; padding: 8px; text-align: left;">Rs.{{ order.total_price }}</td>
+																<td
+																	style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+																	<a href="{% url 'order_details' order.id %}"
+																		style="font-size: 0.875rem; display: block; text-align: center; padding: 6px 12px; margin: 5px auto; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; text-decoration: none;">View
+																		Details</a>
+																</td>
+															</tr>
+															{% empty %}
+                    										<tr>
+                        										<td colspan="6" style="border: 1px solid #ddd; padding: 8px; text-align: center;">No orders found.</td>
+                    										</tr>
+                    										{% endfor %}
+															
+															
+														</tbody>
+													</table>
+													</table>
+												</div>
+											</div>
+										</div>
+										<!-- Address -->
+										<div class="tab-pane fade" id="addresses" role="tabpanel">
+											<div class="my-account-addresses">
+												<p>
+													The following addresses will be used on the checkout page by
+													default.
+												</p>
+												<div
+													style="display: flex; justify-content: flex-end; margin-top: 20px;">
+													<button type="button" class="btn btn-primary" onclick="openModal()"
+														style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Add
+														Address</button>
+												</div>
+
+												<div class="addresses">
+													{% for address in user_address %}
+													<div class="addresses-col" id="address-{{ address.id }}">
+														<header class="col-title"
+															style="display: flex; justify-content: space-between; align-items: center;">
+															<h3>{{ address.type }}</h3>
+															<div class="actions" style="display: flex; gap: 10px;">
+																<a href="#"
+																onclick="editAddress('{{ address.id }}', '{{ address.fullname }}', '{{ address.country }}', '{{ address.street }}', '{{ address.apartment }}', '{{ address.city }}', '{{  address.district }}', '{{ address.state }}','{{ address.zip_code }}', '{{ address.phone }}')"
+																	style="color: rgb(7, 7, 6); text-decoration: none;">Edit</a>
+																<a href="#" onclick="deleteAddress('{{ address.id }}')"
+																	style="color: rgba(241, 12, 12, 0.664); text-decoration: none;">Delete</a>
+															</div>
+														</header>
+														<address>
+															{{ address.fullname }}<br>
+															{{ address.apartment }}, {{ address.street }}<br>{{address.city}}<br>{{ address.district}}<br>
+															{{ address.state}}<br>{{ address.country}}<br>{{address.zip_code}}<br>
+															{{ address.phone}}<br>
+														</address>
+													</div>
+													{% endfor %}
+												</div>
+
+											</div>
+										</div>
+										<!-- Adddress Modal -->
+										<!-- Modal for Adding Address -->
+										<div id="addAddressModal" class="modal"
+											style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+											<div class="modal-dialog" style="margin: 15% auto; width: 80%;">
+												<div class="modal-content"
+													style="background-color: #fefefe; border: 1px solid #888; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+													<div class="modal-header"
+														style="padding: 10px 20px; background-color: #f5f5f5; border-bottom: 1px solid #ddd;">
+														<h5 class="modal-title">Add Address</h5>
+
+													</div>
+													<div class="modal-body" style="padding: 10px 20px;">
+														<form id="">
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="fullname">Full Name</label>
+																<input type="text" class="form-control" id="fullname"
+																	name="fullname" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="country">Country/Region</label>
+																<input type="text" class="form-control" id="country"
+																	name="country" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="street">Street Address</label>
+																<input type="text" class="form-control" id="street"
+																	name="street" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="apartment">Apartment, Suite, Unit
+																	(optional)</label>
+																<input type="text" class="form-control" id="apartment"
+																	name="apartment" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="city">Town/City</label>
+																<input type="text" class="form-control" id="city"
+																	name="city" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="district">District</label>
+																<input type="text" class="form-control" id="district"
+																	name="district" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="state">State/Province/Region</label>
+																<input type="text" class="form-control" id="state"
+																	name="state" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="zip">Postal/Zip Code</label>
+																<input type="text" class="form-control" id="zip"
+																	name="zip" style="width: 100%; padding: 8px;">
+															</div>
+															<div class="form-group" style="margin-bottom: 15px;">
+																<label for="phone">Phone</label>
+																<input type="tel" class="form-control" id="phone"
+																	name="phone" style="width: 100%; padding: 8px;">
+															</div>
+														</form>
+													</div>
+													<div class="modal-footer"
+														style="padding: 10px 20px; background-color: #f5f5f5; border-top: 1px solid #ddd; text-align: right;">
+														<button type="button" class="btn btn-secondary"
+															onclick="closeModal()"
+															style="padding: 8px 16px; background-color: #6c757d; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+														<button type="button" class="btn btn-primary"
+															onclick="addAddress()"
+															style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Add
+															Address</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<!-- account details -->
+										<div class="tab-pane fade" id="account-details" role="tabpanel">
+											<div class="my-account-account-details">
+												<form class="edit-account" action="{% url 'password_change' user.id %}" method="post">
+													{% csrf_token %}
+													<fieldset>
+														<legend>Password change</legend>
+														<p class="form-row">
+															<label>Current password </label>
+															<input type="password" class="input-text"
+																name="current_password" autocomplete="off" required>
+														</p>
+														<p class="form-row">
+															<label>New password </label>
+															<input type="password" class="input-text" name="password1"
+																autocomplete="off" required>
+														</p>
+														<p class="form-row">
+															<label>Confirm new password</label>
+															<input type="password" class="input-text" name="password2"
+																autocomplete="off" required>
+														</p>
+													</fieldset>
+													<div class="clear"></div>
+													<p class="form-row">
+														<button type="submit" class="button" name="save_account_details"
+															value="Save changes">Save
+															changes</button>
+													</p>
+												</form>
+												
+											</div>
+										</div>
+										<div class="tab-pane fade" id="wallet" role="tabpanel">
+											<div class="container-fluid">
+												<div class="row mt-4">
+													<div class="col-md-8 mx-auto">
+														<div class="card rounded">
+															<div class="card-body d-flex justify-content-between py-3 px-4">
+																<span class="text-black">Available Balance</span>
+																<div class="col-lg-2 col-4 bg-white py-3 border-left-custom text-center bg-custom">
+																	<span class="text-dark font-weight-bold-custom"><span id="balance"></span></span>
+																</div>
+															</div>
+														</div>
+											
+														<div class="mt-4">
+															<div class="card">
+																<div class="card-body">
+																	<h5 class="card-title mb-4">Transaction History</h5>
+																	<div class="transaction-history">
+																		<!-- Transaction history items will be dynamically added here -->
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									{% if messages %}
+                								<script>
+                  								document.addEventListener("DOMContentLoaded", function () {
+                    								{% for message in messages %}
+                    								Swal.fire({
+                      								icon: "{{ message.tags|escapejs }}",
+                      								text: "{{ message|escapejs }}",
+                      								confirmButtonText: 'OK',
+                      								timer: 5000,
+                      								timerProgressBar: true,
+                    								});
+                    								{% endfor %}
+                  								});
+                								</script>
+                								{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div id="editModal" class="modal" tabindex="-1" role="dialog"
+		style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 80%; max-height: 80%; overflow-y: auto; background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
+		<div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
+			<h5 class="modal-title">Edit Address</h5>
+			<button type="button" onclick="closeEditModal()"
+				style="background: none; border: none; font-size: 20px;">&times;</button>
+		</div>
+		<div class="modal-body">
+			<form id="editForm">
+				<div style="margin-bottom: 10px;">
+					<label for="editFullname">Full Name</label>
+					<input type="text" id="editFullname" name="fullname" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editCountry">Country</label>
+					<input type="text" id="editCountry" name="country" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editStreet">Street</label>
+					<input type="text" id="editStreet" name="street" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editApartment">Apartment</label>
+					<input type="text" id="editApartment" name="apartment" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editCity">City</label>
+					<input type="text" id="editCity" name="city" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editDistrict">District</label>
+					<input type="text" id="editDistrict" name="district" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editState">State</label>
+					<input type="text" id="editState" name="state" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editZip">Zip</label>
+					<input type="text" id="editZip" name="zip" style="width: 100%;">
+				</div>
+				<div style="margin-bottom: 10px;">
+					<label for="editPhone">Phone</label>
+					<input type="text" id="editPhone" name="phone" style="width: 100%;">
+				</div>
+				<button type="button" onclick="saveEdit()"
+					style="width: 100%; background-color: black; color: white; border: none; padding: 10px; cursor: pointer;">Save</button>
+
+			</form>
+		</div>
+	</div>
+
+	<!-- Overlay -->
+	<div id="modalOverlay"
+		style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"
+		onclick="closeEditModal()"></div>
+
+
+	<footer id="site-footer" class="site-footer background four-columns">
+		<div class="footer">
+			<div class="section-padding">
+				<div class="section-container">
+					<div class="block-widget-wrap">
+						<div class="row">
+							<div class="col-lg-3 col-md-6 column-1">
+								<div class="block block-menu m-b-20">
+									<h2 class="block-title">Contact Us</h2>
+									<div class="block-content">
+										<ul>
+											<li>
+												<span>Head Office:</span> 26 Wyle Cop, Shrewsbury, Shropshire, SY1
+												1XD
+											</li>
+											<li>
+												<span>Tel:</span> 01743 234500
+											</li>
+											<li>
+												<span>Email:</span> <a
+													href="mailto:support@mojuri.com">support@mojuri.com</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="block block-social">
+									<ul class="social-link">
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+										<li><a href="#"><i class="fa fa-behance"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 column-2">
+								<div class="block block-menu">
+									<h2 class="block-title">Customer Services</h2>
+									<div class="block-content">
+										<ul>
+											<li>
+												<a href="shop-grid-left.html">Contact Us</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Track Your Order</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Product Care & Repair</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Book an Appointment</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Frequently Asked Questions</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Shipping & Returns</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 column-3">
+								<div class="block block-menu">
+									<h2 class="block-title">About Us</h2>
+									<div class="block-content">
+										<ul>
+											<li>
+												<a href="#">About Us</a>
+											</li>
+											<li>
+												<a href="#">FAQ</a>
+											</li>
+											<li>
+												<a href="#">Our Producers</a>
+											</li>
+											<li>
+												<a href="#">Sitemap</a>
+											</li>
+											<li>
+												<a href="#">Terms & Conditions</a>
+											</li>
+											<li>
+												<a href="#">Privacy Policy</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 column-4">
+								<div class="block block-menu">
+									<h2 class="block-title">Catalog</h2>
+									<div class="block-content">
+										<ul>
+											<li>
+												<a href="shop-grid-left.html">Earrings</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Necklaces</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Bracelets</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Rings</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Jewelry Box</a>
+											</li>
+											<li>
+												<a href="shop-grid-left.html">Studs</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="section-padding">
+				<div class="section-container">
+					<div class="block-widget-wrap">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="footer-left">
+									<p class="copyright">Copyright © 2023. All Right Reserved</p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="footer-right">
+									<div class="block block-image">
+										<img width="309" height="32" src="{%static 'media/payments.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</div>
+
+	<!-- Back Top button -->
+	<div class="back-top button-show">
+		<i class="arrow_carrot-up"></i>
+	</div>
+
+	<!-- Search -->
+	<div class="search-overlay">
+		<div class="close-search"></div>
+		<div class="wrapper-search">
+			<form role="search" method="get" class="search-from ajax-search" action="#">
+				<a href="#" class="search-close"></a>
+				<div class="search-box">
+					<button id="searchsubmit" class="btn" type="submit">
+						<i class="icon-search"></i>
+					</button>
+					<input type="text" autocomplete="off" value="" name="s" class="input-search s"
+						placeholder="Search...">
+					<div class="content-menu_search">
+						<label>Suggested</label>
+						<ul id="menu_search" class="menu">
+							<li><a href="#">Earrings</a></li>
+							<li><a href="#">Necklaces</a></li>
+							<li><a href="#">Bracelets</a></li>
+							<li><a href="#">Jewelry Box</a></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Wishlist -->
+	<div class="wishlist-popup">
+		<div class="wishlist-popup-inner">
+			<div class="wishlist-popup-content">
+				<div class="wishlist-popup-content-top">
+					<span class="wishlist-name">Wishlist</span>
+					<span class="wishlist-count-wrapper"><span class="wishlist-count">2</span></span>
+					<span class="wishlist-popup-close"></span>
+				</div>
+				<div class="wishlist-popup-content-mid">
+					<table class="wishlist-items">
+						<tbody>
+							<tr class="wishlist-item">
+								<td class="wishlist-item-remove"><span></span></td>
+								<td class="wishlist-item-image">
+									<a href="shop-details.html">
+										<img width="600" height="600" src="{%static 'media/product/3.jpg' %}" alt="">
+									</a>
+								</td>
+								<td class="wishlist-item-info">
+									<div class="wishlist-item-name">
+										<a href="shop-details.html">Twin Hoops</a>
+									</div>
+									<div class="wishlist-item-price">
+										<span>$150.00</span>
+									</div>
+									<div class="wishlist-item-time">June 4, 2022</div>
+								</td>
+								<td class="wishlist-item-actions">
+									<div class="wishlist-item-stock">
+										In stock
+									</div>
+									<div class="wishlist-item-add">
+										<div data-title="Add to cart">
+											<a rel="nofollow" href="#">Add to cart</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr class="wishlist-item">
+								<td class="wishlist-item-remove"><span></span></td>
+								<td class="wishlist-item-image">
+									<a href="shop-details.html">
+										<img width="600" height="600" src="{%static 'media/product/4.jpg' %}" alt="">
+									</a>
+								</td>
+								<td class="wishlist-item-info">
+									<div class="wishlist-item-name">
+										<a href="shop-details.html">Yilver And Turquoise Earrings</a>
+									</div>
+									<div class="wishlist-item-price">
+										<del aria-hidden="true"><span>$150.00</span></del>
+										<ins><span>$100.00</span></ins>
+									</div>
+									<div class="wishlist-item-time">June 4, 2022</div>
+								</td>
+								<td class="wishlist-item-actions">
+									<div class="wishlist-item-stock">
+										In stock
+									</div>
+									<div class="wishlist-item-add">
+										<div data-title="Add to cart">
+											<a rel="nofollow" href="#">Add to cart</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="wishlist-popup-content-bot">
+					<div class="wishlist-popup-content-bot-inner">
+						<a class="wishlist-page" href="shop-wishlist.html">
+							Open wishlist page
+						</a>
+						<span class="wishlist-continue" data-url="">
+							Continue shopping
+						</span>
+					</div>
+					<div class="wishlist-notice wishlist-notice-show">Added to the wishlist!</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Compare -->
+	<div class="compare-popup">
+		<div class="compare-popup-inner">
+			<div class="compare-table">
+				<div class="compare-table-inner">
+					<a href="#" id="compare-table-close" class="compare-table-close">
+						<span class="compare-table-close-icon"></span>
+					</a>
+					<div class="compare-table-items">
+						<table id="product-table" class="product-table">
+							<thead>
+								<tr>
+									<th>
+										<a href="#" class="compare-table-settings">Settings</a>
+									</th>
+									<th>
+										<a href="shop-details.html">Twin Hoops</a> <span class="remove">remove</span>
+									</th>
+									<th>
+										<a href="shop-details.html">Medium Flat Hoops</a> <span
+											class="remove">remove</span>
+									</th>
+									<th>
+										<a href="shop-details.html">Bold Pearl Hoop Earrings</a> <span
+											class="remove">remove</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tr-image">
+									<td class="td-label">Image</td>
+									<td>
+										<a href="shop-details.html">
+											<img width="600" height="600" src="{%static 'media/product/3.jpg' %}"
+												alt="">
+										</a>
+									</td>
+									<td>
+										<a href="shop-details.html">
+											<img width="600" height="600" src="{%static 'media/product/1.jpg' %}"
+												alt="">
+										</a>
+									</td>
+									<td>
+										<a href="shop-details.html">
+											<img width="600" height="600" src="{%static 'media/product/2.jpg' %}"
+												alt="">
+										</a>
+									</td>
+								</tr>
+								<tr class="tr-sku">
+									<td class="td-label">SKU</td>
+									<td>VN00189</td>
+									<td></td>
+									<td>D1116</td>
+								</tr>
+								<tr class="tr-rating">
+									<td class="td-label">Rating</td>
+									<td>
+										<div class="star-rating">
+											<span style="width:80%"></span>
+										</div>
+									</td>
+									<td>
+										<div class="star-rating">
+											<span style="width:100%"></span>
+										</div>
+									</td>
+									<td></td>
+								</tr>
+								<tr class="tr-price">
+									<td class="td-label">Price</td>
+									<td><span class="amount">$150.00</span></td>
+									<td><del><span class="amount">$150.00</span></del> <ins><span
+												class="amount">$100.00</span></ins></td>
+									<td><span class="amount">$200.00</span></td>
+								</tr>
+								<tr class="tr-add-to-cart">
+									<td class="td-label">Add to cart</td>
+									<td>
+										<div data-title="Add to cart">
+											<a href="#" class="button">Add to cart</a>
+										</div>
+									</td>
+									<td>
+										<div data-title="Add to cart">
+											<a href="#" class="button">Add to cart</a>
+										</div>
+									</td>
+									<td>
+										<div data-title="Add to cart">
+											<a href="#" class="button">Add to cart</a>
+										</div>
+									</td>
+								</tr>
+								<tr class="tr-description">
+									<td class="td-label">Description</td>
+									<td>Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida
+										nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec
+										dignissim viverra nunc, ut aliquet magna posuere eget.</td>
+									<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+										incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+										nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+										fugiat nulla pariatur.</td>
+									<td>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece
+										comfort all year around. Feel better in this sweatshirt because Hanes keeps
+										plastic bottles of landfills by using recycled polyester.7.8 ounce fleece
+										sweatshirt made with up to 5 percent polyester created from recycled plastic.
+									</td>
+								</tr>
+								<tr class="tr-content">
+									<td class="td-label">Content</td>
+									<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+										incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+										nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+										fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+										culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
+										omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+										rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+										beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+										aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+										ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+										quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+										tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+									<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+										incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+										nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+										fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+										culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
+										omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+										rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+										beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+										aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+										ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+										quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+										tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+									<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+										incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+										nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+										fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+										culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
+										omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+										rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+										beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+										aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+										ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+										quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+										tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
+								</tr>
+								<tr class="tr-dimensions">
+									<td class="td-label">Dimensions</td>
+									<td>N/A</td>
+									<td>N/A</td>
+									<td>N/A</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Quickview -->
+	<div class="quickview-popup">
+		<div id="quickview-container">
+			<div class="quickview-container">
+				<a href="#" class="quickview-close"></a>
+				<div class="quickview-notices-wrapper"></div>
+				<div class="product single-product product-type-simple">
+					<div class="product-detail">
+						<div class="row">
+							<div class="img-quickview">
+								<div class="product-images-slider">
+									<div id="quickview-slick-carousel">
+										<div class="images">
+											<div class="scroll-image">
+												<div class="slick-wrap">
+													<div class="slick-sliders image-additional" data-dots="true"
+														data-columns4="1" data-columns3="1" data-columns2="1"
+														data-columns1="1" data-columns="1" data-nav="true">
+														<div class="img-thumbnail slick-slide">
+															<a href="{%static 'media/product/3.jpg' %}"
+																class="image-scroll" title="">
+																<img width="900" height="900"
+																	src="{%static 'media/product/3.jpg' %}" alt="">
+															</a>
+														</div>
+														<div class="img-thumbnail slick-slide">
+															<a href="{%static 'media/product/3-2.jpg' %}"
+																class="image-scroll" title="">
+																<img width="900" height="900"
+																	src="{%static 'media/product/3-2.jpg' %}" alt="">
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="quickview-single-info">
+								<div class="product-content-detail entry-summary">
+									<h1 class="product-title entry-title">Twin Hoops</h1>
+									<div class="price-single">
+										<div class="price">
+											<del><span>$150.00</span></del>
+											<span>$100.00</span>
+										</div>
+									</div>
+
+									<div class="product-rating">
+										<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+											<span style="width:80%">Rated <strong class="rating">4.00</strong> out of 5
+												based on <span class="rating">1</span> customer rating</span>
+										</div>
+										<a href="#" class="review-link">(<span class="count">1</span> customer
+											review)</a>
+									</div>
+									<div class="description">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+											quis…</p>
+									</div>
+									<form class="cart" method="post" enctype="multipart/form-data">
+										<div class="quantity-button">
+											<div class="quantity">
+												<button type="button" class="plus">+</button>
+												<input type="number" class="input-text qty text" step="1" min="1" max=""
+													name="quantity" value="1" title="Qty" size="4" placeholder=""
+													inputmode="numeric" autocomplete="off">
+												<button type="button" class="minus">-</button>
+											</div>
+											<button type="submit" class="single-add-to-cart-button button alt">Add to
+												cart</button>
+										</div>
+										<button class="button quick-buy">Buy It Now</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Page Loader -->
+	<div class="page-preloader">
+		<div class="loader">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		function toggleModal() {
+			var modalOverlay = document.getElementById('editDetailsModalOverlay');
+			modalOverlay.style.display = modalOverlay.style.display === 'block' ? 'none' : 'block';
+		}
+	
+		function saveChanges() {
+			var fullName = document.getElementById('modal-full-name').value.trim();
+			var contactNumber = document.getElementById('modal-contact-number').value.trim();
+	
+			// Regular expressions for validation
+			var nameRegex = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/; // Only letters and one space allowed after each word
+			var indianPhoneRegex = /^[6-9]\d{9}$/; // Indian phone number pattern
+	
+			var isValid = true;
+			var errorMessage = '';
+	
+			if (!fullName.match(nameRegex)) {
+				errorMessage += 'Full Name should contain only letters with one space after each word.\n';
+				isValid = false;
+			}
+	
+			if (!contactNumber.match(indianPhoneRegex)) {
+				errorMessage += 'Contact Number should be a valid Indian phone number.\n';
+				isValid = false;
+			}
+	
+			if (!isValid) {
+				showToast(errorMessage,'error');
+				return;
+			}
+	
+			// If valid, proceed with saving changes
+			var form = document.getElementById('editDetailsForm');
+			var formData = new FormData(form);
+	
+			fetch('{% url "edit_user_details" %}', {
+				method: 'POST',
+				headers: {
+					'X-CSRFToken': '{{ csrf_token }}'
+				},
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					// Update displayed user details on the page if needed
+					document.getElementById('full-name').textContent = formData.get('modal-full-name');
+					document.getElementById('contact-number').textContent = formData.get('modal-contact-number');
+					showToast('Details updated successfully!','success');
+					toggleModal();
+				} else {
+					showToast('Failed to update details.','error');
+					if (data.error) {
+						console.error('Error:', data.error);
+					}
+				}
+			})
+			.catch(error => {
+        		console.error('Error:', error);
+        		showToast('An error occurred while saving changes.', 'error');
+    		});
+		}
+
+		function showToast(message, type = 'info') {
+    		Toastify({
+        		text: message,
+        		duration: 3000,
+        		close: true,
+        		gravity: "top", // top or bottom
+        		position: "right", // left, center, or right
+        		backgroundColor: type === 'success' ? "green" : (type === 'error' ? "red" : "blue"),
+        		stopOnFocus: true, // Prevent dismissing of toast on hover
+    		}).showToast();
+		}
+	</script>
+
+	<script>
+		function openModal() {
+			var modal = document.getElementById('addAddressModal');
+			modal.style.display = 'block';
+		}
+
+		function closeModal() {
+			var modal = document.getElementById('addAddressModal');
+			modal.style.display = 'none';
+		}
+
+		function addAddress() {
+			// Add logic here to handle form submission or other actions
+			closeModal(); // Close modal after adding address
+		}
+
+	</script>
+	<script>
+		function closeModal() {
+			document.getElementById('addAddressModal').style.display = 'none';
+		}
+
+		function showToast(message, type = 'info') {
+			Toastify({
+				text: message,
+				duration: 3000,
+				close: true,
+				gravity: "top", // top or bottom
+				position: "right", // left, center or right
+				backgroundColor: type === 'success' ? "green" : (type === 'error' ? "red" : "blue"),
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+			}).showToast();
+		}
+
+		function addAddress() {
+			const fullname = document.getElementById('fullname').value.trim();
+			const country = document.getElementById('country').value.trim();
+			const street = document.getElementById('street').value.trim();
+			const apartment = document.getElementById('apartment').value.trim();
+			const city = document.getElementById('city').value.trim();
+			const district = document.getElementById('district').value.trim();
+			const state = document.getElementById('state').value.trim();
+			const zip = document.getElementById('zip').value.trim();
+			const phone = document.getElementById('phone').value.trim();
+
+			const fields = {
+				fullname: fullname,
+				country: country,
+				street: street,
+				apartment: apartment,
+				city: city,
+				district: district,
+				state: state,
+				zip: zip,
+				phone: phone
+			};
+
+			let valid = true;
+
+			for (const [field, value] of Object.entries(fields)) {
+				if (!value) {
+					showToast(`${field} cannot be empty or contain only spaces.`, 'error');
+					valid = false;
+				}
+			}
+
+			if (!valid) {
+				return;
+			}
+
+			fetch('/save-address/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRFToken': '{{ csrf_token }}'
+				},
+				body: JSON.stringify(fields)
+			})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						window.location.href = window.location.pathname + '?success=true';
+					} else {
+						showToast('Failed to add address.', 'error');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					showToast('An error occurred while adding the address.', 'error');
+				});
+
+
+
+		}
+
+	</script>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', (event) => {
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.has('success')) {
+				showToast('Address added successfully.', 'success');
+				// Remove the query parameter from the URL without reloading the page
+				history.replaceState(null, '', window.location.pathname);
+			}
+		});
+	</script>
+	<!-- editaddress -->
+	<script>
+		let currentAddressId;
+		function editAddress(id, fullname, country, street, apartment, city, district, state, zip, phone) {
+			var address = {
+				id: id,
+				fullname: fullname,
+				country: country,
+				street: street,
+				apartment: apartment,
+				city: city,
+				district: district,
+				state: state,
+				zip: zip,
+				phone: phone
+			};
+			console.log(address)
+			currentAddressId = id;
+			openEditModal(address);
+		}
+
+		function openEditModal(address) {
+
+
+			document.getElementById('editFullname').value = address.fullname;
+			document.getElementById('editCountry').value = address.country;
+			document.getElementById('editStreet').value = address.street;
+			document.getElementById('editApartment').value = address.apartment;
+			document.getElementById('editCity').value = address.city;
+			document.getElementById('editDistrict').value = address.district;
+			document.getElementById('editState').value = address.state;
+			document.getElementById('editZip').value = address.zip;
+			document.getElementById('editPhone').value = address.phone;
+
+			document.getElementById('editModal').style.display = 'block';
+			document.getElementById('modalOverlay').style.display = 'block';
+		}
+
+		function closeEditModal() {
+			document.getElementById('editModal').style.display = 'none';
+			document.getElementById('modalOverlay').style.display = 'none';
+		}
+
+		function saveEdit() {
+			const editedData = {
+				fullname: document.getElementById('editFullname').value.trim(),
+				country: document.getElementById('editCountry').value.trim(),
+				street: document.getElementById('editStreet').value.trim(),
+				apartment: document.getElementById('editApartment').value.trim(),
+				city: document.getElementById('editCity').value.trim(),
+				district: document.getElementById('editDistrict').value.trim(),
+				state: document.getElementById('editState').value.trim(),
+				zip: document.getElementById('editZip').value.trim(),
+				phone: document.getElementById('editPhone').value.trim()
+			};
+
+			// Check if any field is empty
+			for (let key in editedData) {
+				if (editedData[key] === "") {
+					showToast(`The ${key} field cannot be empty.`, 'error');
+					return; // Exit the function if any field is empty
+				}
+			}
+
+
+			console.log(editedData);
+
+			fetch(`/update-address/${currentAddressId}/`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRFToken': '{{ csrf_token }}'
+				},
+				body: JSON.stringify(editedData)
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					if (data.success) {
+						localStorage.setItem('showSuccessToast', 'true');
+						location.reload();
+					} else {
+						showToast('Failed to update address.', 'error');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					showToast('An error occurred while updating the address.', 'error');
+				});
+		}
+
+		// Check for the flag on page load and show the toast if necessary
+		window.addEventListener('load', () => {
+			if (localStorage.getItem('showSuccessToast') === 'true') {
+				showToast('Address updated successfully.', 'success');
+				localStorage.removeItem('showSuccessToast');
+			}
+		});
+
+
+	</script>
+	<script>
+		function deleteAddress(addressId) {
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					fetch(`/delete-address/${addressId}/`, {
+						method: 'GET',
+						headers: {
+							'X-CSRFToken': '{{ csrf_token }}'
+						}
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.success) {
+							// Remove the address div from the DOM
+							document.getElementById(`address-${addressId}`).remove();
+							Swal.fire(
+								'Deleted!',
+								'Your address has been deleted.',
+								'success'
+							);
+						} else {
+							Swal.fire(
+								'Failed!',
+								'Failed to delete address: ' + data.error,
+								'error'
+							);
+						}
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						Swal.fire(
+							'Error!',
+							'An error occurred. Please try again later.',
+							'error'
+						);
+					});
+				}
+			});
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		// Function to load wallet data
+		function loadWalletData() {
+			$.ajax({
+				url: "{% url 'get_wallet_data' %}",
+				method: "GET",
+				success: function(data) {
+					// Update balance
+					$('#balance').text('₹' + data.balance);
+					
+					// Update transaction history
+					var transactionHistory = '';
+					data.transactions.forEach(function(txn) {
+						var iconUrl = txn.transaction_type == 'credit' ? 'https://img.icons8.com/bubbles/200/plus.png' : 'https://img.icons8.com/bubbles/150/minus.png';
+						var transactionTypeText = txn.transaction_type == 'credit' ? 'Credited' : 'Debited';
+						transactionHistory += `
+							<div class="media mb-3">
+								<img src="${iconUrl}" class="mr-3" alt="Transaction icon" style="width: 60px;">
+								<div class="media-body">
+									<h5 class="mt-0 text-dark">&#x20B9;${txn.amount} ${transactionTypeText} to Wallet</h5>
+									<p class="text-secondary mb-0">Updated Balance: &#x20B9;${txn.new_balance}</p>
+									<p class="text-secondary mb-0">Updated Date: ${txn.updated_date}</p>
+								</div>
+							</div>
+						`;
+					});
+	
+					// Update transaction history in the DOM
+					$('.transaction-history').html(transactionHistory);
+				}
+			});
+		}
+	
+		// Load wallet data when the document is ready
+		loadWalletData();
+	});
+	</script>
+	<script>
+		function showToast(message, type = 'info') {
+			Toastify({
+				text: message,
+				duration: 3000,
+				close: true,
+				gravity: "top", // top or bottom
+				position: "right", // left, center or right
+				backgroundColor: type === 'success' ? "green" : (type === 'error' ? "red" : "blue"),
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+			}).showToast();
+		}
+
+		function copyToClipboard() {
+			// Create a temporary input element to hold the text
+			const text = document.querySelector('.text-muted').innerText;
+			const input = document.createElement('input');
+			input.value = text;
+			document.body.appendChild(input);
+			input.select();
+			document.execCommand('copy');
+			document.body.removeChild(input);
+		    showToast('Copied to clipboard!', 'success');
+			// Optional: Show a message or change the icon color to indicate success
+			
+		}
+		</script>
+
+		<script>
+			function showToast(message, type = 'info') {
+				Toastify({
+					text: message,
+					duration: 3000,
+					close: true,
+					gravity: "top", // top or bottom
+					position: "right", // left, center or right
+					backgroundColor: type === 'success' ? "green" : (type === 'error' ? "red" : "blue"),
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+				}).showToast();
+			}
+	
+			document.getElementById('change-button').addEventListener('click', function() {
+				document.getElementById('file-input').click();
+			});
+		
+			document.getElementById('file-input').addEventListener('change', function(event) {
+				const file = event.target.files[0];
+				if (file) {
+					const formData = new FormData();
+					formData.append('profile_photo', file);
+		
+					fetch('/change-profile/', {
+						method: 'POST',
+						body: formData,
+						headers: {
+							'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+						}
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.error) {
+							//alert('Error: ' + data.error);
+							showToast(data.error, 'error');
+						} else {
+							//alert(data.message);
+							showToast(data.message, 'success');
+							document.getElementById('profile-image').style.backgroundImage = `url('${data.profile_photo_url}')`;
+						}
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
+				}
+			});
+		
+			document.getElementById('remove-button').addEventListener('click', function() {
+				fetch('/remove-profile-picture/', {
+					method: 'POST',
+					headers: {
+						'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.error) {
+						//alert('Error: ' + data.error);
+						showToast(data.error, 'error');
+					} else {
+						//alert(data.message);
+						showToast(data.message, 'success');
+						document.getElementById('profile-image').style.backgroundImage = "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')";
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+			});
+		</script>
+	<!-- Dependency Scripts -->
+	<script src="{%static 'libs/popper/js/popper.min.js' %}"></script>
+	<script src="{%static 'libs/jquery/js/jquery.min.js' %}"></script>
+	<script src="{%static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{%static 'libs/slick/js/slick.min.js' %}"></script>
+	<script src="{%static 'libs/mmenu/js/jquery.mmenu.all.min.js' %}"></script>
+	<script src="{%static 'libs/slider/js/tmpl.js' %}"></script>
+	<script src="{%static 'libs/slider/js/jquery.dependClass-0.1.js' %}"></script>
+	<script src="{%static 'libs/slider/js/draggable-0.1.js' %}"></script>
+	<script src="{%static 'libs/slider/js/jquery.slider.js' %}"></script>
+
+	<!-- Site Scripts -->
+	<script src="{%static 'assets/js/app.js' %}"></script>
+</body>
+
+<!-- Mirrored from caketheme.com/html/mojuri/shop-grid-left.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:03 GMT -->
+
+</html>
