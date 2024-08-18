@@ -107,10 +107,13 @@ def admin_dashboard(request):
     total_orders_previous = Order.objects.filter(order_date__date__range=(previous_start_date, previous_end_date)).count()
 
     # Calculate percentage changes
-    revenue_change = ((float(revenue_current) - float(revenue_previous)) / float(revenue_previous) * 100) if revenue_previous else 0
-    income_change = ((float(daily_income) - float(daily_income_previous)) / float(daily_income_previous) * 100) if daily_income_previous else 0
-    orders_change = ((total_orders - total_orders_previous) / total_orders_previous * 100) if total_orders_previous else 0
-
+    # revenue_change = ((float(revenue_current) - float(revenue_previous)) / float(revenue_previous) * 100) if revenue_previous else 0
+    # income_change = ((float(daily_income) - float(daily_income_previous)) / float(daily_income_previous) * 100) if daily_income_previous else 0
+    # orders_change = ((total_orders - total_orders_previous) / total_orders_previous * 100) if total_orders_previous else 0
+    revenue_change = ((float(revenue_current) - float(revenue_previous)) / float(revenue_previous) * 100) if revenue_previous and float(revenue_previous) != 0 else 0
+    income_change = ((float(daily_income) - float(daily_income_previous)) / float(daily_income_previous) * 100) if daily_income_previous and float(daily_income_previous) != 0 else 0
+    orders_change = ((total_orders - total_orders_previous) / total_orders_previous * 100) if total_orders_previous != 0 else 0
+    
     # Prepare data for the chart
     date_range = [start_date + timezone.timedelta(days=i) for i in range((end_date - start_date).days)]
     revenue_data = []
