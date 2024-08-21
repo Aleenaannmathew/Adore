@@ -1,0 +1,701 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	
+<!-- Mirrored from caketheme.com/html/mojuri/page-contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:33 GMT -->
+<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Contact | Mojuri</title>
+		
+		<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'media/favicon.png'%}">
+
+	<!-- Dependency Styles -->
+	<link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/feather-font/css/iconfont.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/icomoon-font/css/icomoon.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/font-awesome/css/font-awesome.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/wpbingofont/css/wpbingofont.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/elegant-icons/css/elegant.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/slick/css/slick.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/slick/css/slick-theme.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/mmenu/css/mmenu.min.css'%}" type="text/css">
+
+	<!-- Site Stylesheet -->
+	<link rel="stylesheet" href="{% static 'assets/css/app.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}" type="text/css">
+		
+		<!-- Google Web Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap" rel="stylesheet">
+	</head>
+	
+	<body class="page">
+		<div id="page" class="hfeed page-wrapper">
+			<header id="site-header" class="site-header header-v1 ">
+                <!-- mobile view -->
+                <div class="header-mobile">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
+                                    <div class="navbar-header">
+                                        <button type="button" id="show-megamenu" class="navbar-toggle"></button>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
+                                    <div class="site-logo">
+                                        <a href="{% url 'home'%}">
+                                            <img width="400" height="79" src="{% static 'media/logo-white.png'%}"
+                                                alt="Mojuri – Jewelry Store HTML Template" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
+                                    <!-- cart-mobile -->
+                                    <div class="mojuri-topcart dropdown">
+                                        <div class="dropdown mini-cart top-cart">
+                                            <div class="remove-cart-shadow"></div>
+                                            <a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="cart-link" aria-haspopup="true" aria-expanded="false">
+                                                <div class="icons-cart">
+                                                  <i class="icon-large-paper-bag"></i>
+                                                  {% if request.session.email %}
+                                                    <span class="cart-count">{{ cart_count }}</span>
+                                                  {% endif %}
+                                                </div>
+                                              </a>
+                                              
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- three-dot-menu -->
+                    <div class="header-mobile-fixed">
+                        <!-- Shop  -->
+                        <div class="shop-page">
+                            <a href="{% url 'showproducts' %}"><i class="wpb-icon-shop"></i></a>
+                        </div>
+    
+                        <!--my-account-->
+                        <div class="my-account">
+                            <div class="login-header">
+                              <a id="account-link" href="{% if request.session.email %}{% url 'profile' %}{% else %}#{% endif %}">
+                                <i class="wpb-icon-user"></i>
+                              </a>
+                            </div>
+                          </div>
+                          
+    
+                        <!-- Search -->
+                        <div class="search-box">
+                            <div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
+                        </div>
+    
+                        <!-- Wishlist -->
+                        <div class="wishlist-box">
+                            <a id="wishlist-link" href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}">
+                              <i class="wpb-icon-heart"></i>
+                            </a>
+                          </div>
+                    </div>
+                </div>
+                <!-- mobile-navbar-view-end desktop-nav-start -->
+                <div class="header-desktop">
+                    <div class="header-wrapper">
+                        <div class="section-padding">
+                            <div class="section-container large p-l-r">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-left">
+                                        <div class="site-logo">
+                                            <a href="{% url 'home'%}">
+                                                <img width="400" height="140" src="{% static 'media/logo-white.png'%}"
+                                                    alt="Adore – Jewelry Store HTML Template" />
+                                            </a>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
+                                        <div class="site-navigation">
+                                            <nav id="main-navigation">
+                                                <ul id="menu-main-menu" class="menu">
+                                                    <li class="level-0 menu-item  ">
+                                                        <a href="{% url 'home' %}"><span
+                                                                class="menu-item-text">Home</span></a>
+    
+                                                    </li>
+                                                    <li class="level-0 menu-item  current-menu-item ">
+                                                        <a href="{% url 'showproducts' %}"><span
+                                                                class="menu-item-text">Shop</span></a>
+    
+                                                    </li>
+    
+                                                    <li class="level-0 menu-item ">
+                                                        <a href="{% url 'about' %}"><span class="menu-item-text">About Us</span></a>
+    
+                                                    </li>
+                                                    <li class="level-0 menu-item">
+                                                        <a href="{% url 'contact' %}"><span
+                                                                class="menu-item-text">Contact</span></a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-right">
+                                        <div class="header-page-link">
+                                            <!-- Search -->
+                                            <div class="search-box">
+                                                <div class="search-toggle"><i class="icon-search"></i></div>
+                                            </div>
+    
+                                            <!-- Login -->
+    
+                                            <div class="login-header icon">
+    
+                                                <a class="active-login" href=""><i class="icon-user"></i></a>
+    
+    
+                                                <div class="form-login-register">
+                                                    <div class="box-form-login">
+                                                        <div class="active-login"></div>
+                                                        <div class="box-content">
+                                                            <div class="form-login active">
+    
+                                                                <h2>{% if request.session.email %}Profile{% else %}Login/Register{% endif %}</h2>
+                                                                <p class="status"></p>
+                                                                <div class="content">
+                                                                    {% if request.session.email %}
+                                                                    <a href="{% url 'profile' %}">
+                                                                        <div class="button-next-reregister">Profile</div>
+                                                                    </a>
+                                                                    <a href="{% url 'logout' %}"><div class="button-next-reregister">Logout</div></a>
+                                                                    {% else %}
+                                                                    <a href="{% url 'login' %}">
+                                                                        <div class="button-next-reregister">Login</div>
+                                                                    </a>
+    
+                                                                    <a href="{% url 'register' %}">
+                                                                        <div class="button-next-reregister">Register</div>
+                                                                    </a>
+    
+                                                                    {% endif %}
+                                                                </div>
+    
+                                                            </div>
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <!-- Wishlist -->
+                                            <div class="wishlist-box">
+                                                <a href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}" id="desktop-wishlist-link">
+                                                    <i class="icon-heart"></i>
+                                                </a>
+                                                {% if request.session.email %}
+                                                <span class="count-wishlist">{{ wishlist_count }}</span>
+                                                {% endif %}
+                                            </div>
+    
+                                            <!-- Cart -->
+                                            <div class="mojuri-topcart dropdown light">
+                                                <div class="dropdown mini-cart top-cart">
+                                                    <div class="remove-cart-shadow"></div>
+                                                    <a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="desktop-cart-link" aria-expanded="false">
+                                                        <div class="icons-cart">
+                                                            <i class="icon-large-paper-bag"></i>
+                                                            {% if request.session.email %}
+                                                            <span class="cart-count">{{ cart_count }}</span>
+                                                            {% endif %}
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+			<div id="site-main" class="site-main">
+				<div id="main-content" class="main-content">
+					<div id="primary" class="content-area">
+						<div id="title" class="page-title">
+							<div class="section-container">
+								<div class="content-title-heading">
+									<h1 class="text-title-heading">
+										About Us
+									</h1>
+								</div>
+								<div class="breadcrumbs">
+									<a href="{% url 'home' %}">Home</a><span class="delimiter"></span>About Us
+								</div>
+							</div>
+						</div>
+
+						<div id="content" class="site-content" role="main">
+							<div class="page-about-us">
+								<section class="section section-padding m-t-20 m-b-70">
+									<div class="section-container">
+										<!-- Block Banners -->
+										<div class="block block-banners banners-effect">
+											<div class="block-widget-wrap">
+												<div class="row">
+													<div class="col-md-4 sm-m-b-20">
+														<div class="block-widget-banner">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image hover-opacity">
+																		<a href="shop-grid-left.html">
+																			<img src="{% static 'media/banner/banner-about-1.jpg'%}" alt="Banner Image">
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-4 sm-m-b-20">
+														<div class="block-widget-banner">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image hover-opacity">
+																		<a href="shop-grid-left.html">
+																			<img src="{% static 'media/banner/banner-about-2.jpg'%}" alt="Banner Image">
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="block-widget-banner">
+															<div class="bg-banner">
+																<div class="banner-wrapper banners">
+																	<div class="banner-image hover-opacity">
+																		<a href="shop-grid-left.html">
+																			<img src="{% static 'media/banner/banner-about-3.jpg'%}" alt="Banner Image">
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+
+								<section class="section section-padding m-b-70">
+									<div class="section-container">
+										<!-- Block Intro (Layout 5) -->
+										<div class="block block-intro layout-5 text-center">
+											<div class="block-widget-wrap">
+												<div class="intro-wrap">
+													<div class="intro-icon animation-horizontal">
+														<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" height="512" viewBox="0 0 512.001 512.001" width="512"><g><g><g><g><path d="m479.371 131.029c-3.099 0-6.154-1.436-8.11-4.139-3.236-4.475-2.233-10.727 2.241-13.963l22.638-16.376c4.475-3.239 10.727-2.233 13.964 2.241 3.236 4.475 2.233 10.727-2.241 13.963l-22.638 16.376c-1.772 1.281-3.823 1.898-5.854 1.898z"></path></g></g><g><g><path d="m32.63 131.029c-2.032 0-4.082-.617-5.854-1.898l-22.637-16.376c-4.475-3.237-5.478-9.488-2.241-13.963 3.238-4.474 9.49-5.478 13.964-2.241l22.638 16.375c4.475 3.237 5.478 9.488 2.241 13.963-1.956 2.703-5.012 4.14-8.111 4.14z"></path></g></g><g><g><path d="m256.001 49.025c-5.522 0-10-4.477-10-10v-23.867c0-5.523 4.478-10 10-10s10 4.477 10 10v23.866c0 5.523-4.478 10.001-10 10.001z"></path></g></g><g><path d="m492.647 215.277-77.499-133.949c-1.787-3.09-5.086-4.992-8.655-4.992h-300.986c-3.569 0-6.868 1.902-8.655 4.992l-77.498 133.949c-2.092 3.614-1.717 8.147.939 11.369l227.991 276.558c1.899 2.305 4.729 3.639 7.716 3.639s5.816-1.334 7.716-3.639l85.631-103.871 1.009.399 22.572 57.368c1.505 3.824 5.196 6.338 9.306 6.338s7.801-2.514 9.306-6.338l22.572-57.368 57.228-22.623c3.817-1.509 6.324-5.196 6.324-9.3s-2.507-7.791-6.323-9.3l-57.229-22.623-4.026-10.231 81.621-99.009c2.657-3.222 3.032-7.754.94-11.369zm-25.994-4.992h-113.904l53.737-103.991zm-210.652 248.864-67.465-228.863h22.259c5.522 0 10-4.477 10-10s-4.478-10-10-10h-17.303l62.508-102.427 62.508 102.426h-17.301c-5.522 0-10 4.477-10 10s4.478 10 10 10h22.26zm79.601-259.246-63.204-103.567h116.722zm-167.918 30.382 65.943 223.697-184.414-223.697zm8.713-30.382-53.517-103.567h116.722zm-70.883-93.609 53.736 103.991h-113.902zm172.86 347.689 21.836-74.074 29.588 11.696zm162.089-86.174-37.741 14.919c-2.577 1.019-4.615 3.06-5.63 5.638l-14.857 37.76-14.857-37.76c-1.015-2.578-3.053-4.62-5.63-5.638l-37.741-14.919 37.742-14.92c2.576-1.019 4.614-3.06 5.629-5.638l14.857-37.76 14.857 37.76c1.015 2.578 3.053 4.62 5.629 5.638zm-48.923-89.291c-1.505-3.824-5.196-6.338-9.306-6.338s-7.801 2.514-9.306 6.338l-22.572 57.368-42.071 16.631 36.032-122.232h118.47l-61.075 74.087z"></path><g><path d="m256.18 230.291c-4.12 0-7.897-2.638-9.35-6.483-1.491-3.948-.269-8.58 3.006-11.255 3.235-2.643 7.897-2.987 11.481-.842 3.583 2.144 5.496 6.426 4.674 10.529-.924 4.61-5.103 8.051-9.811 8.051z"></path></g></g></g></g></svg>
+													</div>
+													<h2 class="intro-title">
+												 		Where It All Began
+													</h2>
+													<div class="intro-text">
+											 			Aenean imperdiet. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Vestibulum fringilla pede sit amet augue. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce fermentum odio nec arcu.Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed cursus turpis vitae tortor. Vestibulum eu odio. Sed in libero ut nibh placerat accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>	
+								</section>
+
+								<section class="section section-padding background-img bg-img-2 p-t-70 p-b-70 m-b-70">
+									<div class="section-container">
+										<!-- Block Intro (Layout 6) -->
+										<div class="block block-intro layout-6">
+											<div class="block-widget-wrap">
+												<div class="row">
+													<div class="section-column left">
+														<div class="intro-wrap">
+															<h2 class="intro-title">We Know Jewellery – <br> & We Know Our Customers</h2>
+															<div class="intro-item m-b-0">
+																Cenean imperdiet. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Vestibulum fringilla pede sit amet augue. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce fermentum odio nec arcu.
+															</div>
+														</div>
+													</div>
+													<div class="section-column right">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="intro-image left animation-horizontal hover-opacity">
+																	<img width="262" height="333" src="{% static 'media/banner/intro-about-1.jpg'%}" alt="intro">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="intro-image right animation-horizontal hover-opacity">
+																	<img width="330" height="419" src="{% static 'media/banner/intro-about-2.jpg'%}" alt="intro">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+
+								
+
+								<section class="section section-padding background-13 p-t-70 p-b-70 m-b-70">
+									<div class="section-container">
+										<!-- Block Intro (Layout 7) -->
+										<div class="block block-intro layout-7">
+											<div class="block-widget-wrap">
+												<div class="row">
+													<div class="section-column left animation-horizontal hover-opacity">
+														<img width="600" height="440" src="{% static 'media/banner/intro-about-3.jpg'%}" alt="intro">
+													</div>
+													<div class="section-column right">
+														<div class="intro-wrap">
+															<h2 class="intro-title">Top Jewellers at Ice Online</h2>
+															<div class="intro-item m-b-0">
+														 		Cenean imperdiet. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Vestibulum fringilla pede sit amet augue. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce fermentum odio nec arcu. 
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+
+								<section class="section section-padding m-b-70">
+									<div class="section-container">
+										<!-- Block Testimonial -->
+										<div class="block block-testimonial layout-2">
+											<div class="block-widget-wrap">
+												<div class="testimonial-wrap slick-wrap">
+													<div class="slick-sliders" data-slidestoscroll="true" data-slidestoscroll="true" data-nav="1" data-dots="0" data-columns4="1" data-columns3="1" data-columns2="1" data-columns1="2" data-columns="3">
+														<div class="testimonial-content">
+															<div class="item">
+																<div class="testimonial-item">
+																	<div class="testimonial-icon">
+																		<div class="rating">
+																			<div class="star star-5"></div>
+																		</div>
+																	</div>
+																	<h2 class="testimonial-title">“Amazing piece of history”</h2>
+																	<div class="testimonial-excerpt">
+																		Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep... 
+																	</div>								
+																</div>
+																<div class="testimonial-image image-position-top">
+																	<div class="thumbnail">
+																		<img width="110" height="110" src="{% static 'media/testimonial/1.jpg'%}" alt="">							
+																	</div>
+																	<div class="testimonial-info">
+																		<h2 class="testimonial-customer-name">Robet Smith</h2>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="testimonial-content">
+															<div class="item">
+																<div class="testimonial-item">
+																	<div class="testimonial-icon">
+																		<div class="rating">
+																			<div class="star star-4"></div>
+																		</div>
+																	</div>
+																	<h2 class="testimonial-title">“Fabulous Grounds”</h2>
+																	<div class="testimonial-excerpt">
+																		Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep... 
+																	</div>								
+																</div>
+																<div class="testimonial-image image-position-top">
+																	<div class="thumbnail">
+																		<img width="110" height="110" src="{% static 'media/testimonial/2.jpg'%}" alt="">							
+																	</div>
+																	<div class="testimonial-info">
+																		<h2 class="testimonial-customer-name">Saitama One</h2>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="testimonial-content">
+															<div class="item">
+																<div class="testimonial-item">
+																	<div class="testimonial-icon">
+																		<div class="rating">
+																			<div class="star star-5"></div>
+																		</div>
+																	</div>
+																	<h2 class="testimonial-title">“Great vineyard tour and tasting!”</h2>
+																	<div class="testimonial-excerpt">
+																		Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep... 
+																	</div>								
+																</div>
+																<div class="testimonial-image image-position-top">
+																	<div class="thumbnail">
+																		<img width="110" height="110" src="{% static 'media/testimonial/3.jpg'%}" alt="">							
+																	</div>
+																	<div class="testimonial-info">
+																		<h2 class="testimonial-customer-name">Sara Colinton</h2>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="testimonial-content">
+															<div class="item">
+																<div class="testimonial-item">
+																	<div class="testimonial-icon">
+																		<div class="rating">
+																			<div class="star star-5"></div>
+																		</div>
+																	</div>
+																	<h2 class="testimonial-title">“Stunning Design”</h2>
+																	<div class="testimonial-excerpt">
+																		Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep... 
+																	</div>								
+																</div>
+																<div class="testimonial-image image-position-top">
+																	<div class="thumbnail">
+																		<img width="110" height="110" src="{% static 'media/testimonial/4.jpg'%}" alt="">							
+																	</div>
+																	<div class="testimonial-info">
+																		<h2 class="testimonial-customer-name">Shetty Jamie</h2>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+
+								
+
+								<section class="section section-padding top-border p-t-10 p-b-10 m-b-0">
+									<div class="section-container">
+										<!-- Block Image -->
+										<div class="block block-image slider">
+											<div class="block-widget-wrap">
+												<div class="slick-wrap">
+													<div class="slick-sliders" data-nav="0" data-columns4="1" data-columns3="2" data-columns2="3" data-columns1="4" data-columns1440="4" data-columns="5">
+														<div class="item slick-slide">
+															<div class="item-image animation-horizontal">
+																<a href="#"> 
+																	<img width="450" height="450" src="{% static 'media/brand/1.jpg'%}" alt="Brand 1">
+																</a>
+															</div>
+														</div>
+														<div class="item slick-slide">
+															<div class="item-image animation-horizontal">
+																<a href="#"> 
+																	<img width="450" height="450" src="{% static 'media/brand/2.jpg'%}" alt="Brand 2">
+																</a>
+															</div>
+														</div>
+														<div class="item slick-slide">
+															<div class="item-image animation-horizontal">
+																<a href="#"> 
+																	<img width="450" height="450" src="{% static 'media/brand/3.jpg'%}" alt="Brand 3">
+																</a>
+															</div>
+														</div>
+														<div class="item slick-slide">
+															<div class="item-image animation-horizontal">
+																<a href="#"> 
+																	<img width="450" height="450" src="{% static 'media/brand/4.jpg'%}" alt="Brand 4">
+																</a>
+															</div>
+														</div>
+														<div class="item slick-slide">
+															<div class="item-image animation-horizontal">
+																<a href="#"> 
+																	<img width="450" height="450" src="{% static 'media/brand/5.jpg'%}" alt="Brand 5">
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer id="site-footer" class="site-footer background four-columns">
+                <div class="footer">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="block-widget-wrap">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 column-1">
+                                        <div class="block block-menu m-b-20">
+                                            <h2 class="block-title">Contact Us</h2>
+                                            <div class="block-content">
+                                                <ul>
+                                                    <li>
+                                                        <span>200k+ orders delivered globally. World class products, Proudly made in India. </span>
+                                                    
+                                                    <li>
+                                                        <span>Email:</span> <a
+                                                            href="mailto:support@mojuri.com">support@adore.com</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="block block-social ">
+                                            <ul class="social-link">
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+    
+                                    
+                                    <div class="col-lg-3 col-md-6 column-3 align-right">
+                                        <div class="block block-menu">
+                                            <h2 class="block-title"></h2>
+                                            <div class="block-content">
+                                                <div class="block-copyright">
+                                                    <p>© 2024 Adore </p>
+                                                </div>
+                                                <div class="block block-contact">
+                                                    <h2 class="block-title">About Us</h2>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-lg-3 col-md-6 column-4 align-right" style="margin-left: auto; margin-right: 0;">
+                                        <div class="block block-menu">
+                                            <h2 class="block-title">Catalog</h2>
+                                            <div class="block-content">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=earrings">Earrings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=necklaces">Necklaces</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=bracelets">Bracelets</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=rings">Rings</a>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="block-widget-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="footer-left">
+                                            <p class="copyright"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="footer-right">
+                                            <div class="block block-image">
+                                                <img width="309" height="32" src="{%static 'media/payments.png'%}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+		</div>
+
+		<!-- Back Top button -->
+		<div class="back-top button-show">
+			<i class="arrow_carrot-up"></i>
+		</div>
+
+		<!-- Search -->
+		<div class="search-overlay">
+			<div class="close-search"></div>
+			<div class="wrapper-search">
+				<form role="search" method="get" class="search-from ajax-search" action="#">
+					<a href="#" class="search-close"></a>
+					<div class="search-box">
+						<button id="searchsubmit" class="btn" type="submit">
+							<i class="icon-search"></i>
+						</button>
+						<input type="text" autocomplete="off" value="" name="s" class="input-search s" placeholder="Search...">
+						<div class="content-menu_search">
+							<label>Suggested</label>
+							<ul id="menu_search" class="menu">
+								<li><a href="#">Earrings</a></li>
+								<li><a href="#">Necklaces</a></li>
+								<li><a href="#">Bracelets</a></li>
+								<li><a href="#">Jewelry Box</a></li>
+							</ul>			
+						</div>
+					</div>
+				</form>	
+			</div>	
+		</div>
+
+		
+
+		<!-- Page Loader -->
+		<div class="page-preloader">
+	    	<div class="loader">
+	    		<div></div>
+	    		<div></div>
+	    	</div>
+	    </div>
+
+		<!-- Dependency Scripts -->
+        <script src="{%static 'libs/popper/js/popper.min.js' %}"></script>
+        <script src="{%static 'libs/jquery/js/jquery.min.js' %}"></script>
+        <script src="{%static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{%static 'libs/slick/js/slick.min.js' %}"></script>
+        <script src="{%static 'libs/mmenu/js/jquery.mmenu.all.min.js' %}"></script>
+        <script src="{%static 'libs/slider/js/tmpl.js' %}"></script>
+        <script src="{%static 'libs/slider/js/jquery.dependClass-0.1.js' %}"></script>
+        <script src="{%static 'libs/slider/js/draggable-0.1.js' %}"></script>
+        <script src="{%static 'libs/slider/js/jquery.slider.js' %}"></script>
+
+        <!-- Site Scripts -->
+        <script src="{%static 'assets/js/app.js' %}"></script>
+
+	</body>
+
+<!-- Mirrored from caketheme.com/html/mojuri/page-contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:33 GMT -->
+</html>

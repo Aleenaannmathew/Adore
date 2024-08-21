@@ -306,7 +306,6 @@ def verify_razorpay_payment(request):
 
             client.utility.verify_payment_signature(params_dict)
             order_data = data.get('orderData')  # Correctly access orderData from JSON data
-            print("hiiiiiiiii",order_data )
             cart_items = order_data.get('cartItems')
             address_id = order_data.get('addressId')
             payment_method = order_data.get('paymentMethod')
@@ -685,7 +684,7 @@ def cancel_order(request, order_id):
             variant.stock += order_item.quantity
             variant.save()
 
-        if order.payment_method in ['online']:
+        if order.payment_method in ['online','wallet']:
             refund_to_wallet(order)
 
         messages.success(request, "Order has been cancelled successfully.")

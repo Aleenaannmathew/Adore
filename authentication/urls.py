@@ -12,6 +12,9 @@ urlpatterns = [
     path('otp/<int:id>/<str:purpose>/', views.otp, name='otp'),
     path('resend_otp/<int:id>/',views.resend_otp,name='resend_otp'),
     path('logout/',views.user_logout,name='logout'),
+    path('contact/',views.contact, name='contact'),
+    path('faq/',views.faq, name='faq'),
+    path('about/', views.about, name='about'),
 
   
 

@@ -1,0 +1,551 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	
+<!-- Mirrored from caketheme.com/html/mojuri/page-contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:33 GMT -->
+<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Contact | Mojuri</title>
+		
+		<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'media/favicon.png'%}">
+
+	<!-- Dependency Styles -->
+	<link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/feather-font/css/iconfont.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/icomoon-font/css/icomoon.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/font-awesome/css/font-awesome.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/wpbingofont/css/wpbingofont.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/elegant-icons/css/elegant.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/slick/css/slick.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/slick/css/slick-theme.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'libs/mmenu/css/mmenu.min.css'%}" type="text/css">
+
+	<!-- Site Stylesheet -->
+	<link rel="stylesheet" href="{% static 'assets/css/app.css'%}" type="text/css">
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}" type="text/css">
+		
+		<!-- Google Web Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap" rel="stylesheet">
+	</head>
+	
+	<body class="page">
+		<div id="page" class="hfeed page-wrapper">
+			<header id="site-header" class="site-header header-v1 ">
+                <!-- mobile view -->
+                <div class="header-mobile">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-left">
+                                    <div class="navbar-header">
+                                        <button type="button" id="show-megamenu" class="navbar-toggle"></button>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
+                                    <div class="site-logo">
+                                        <a href="{% url 'home'%}">
+                                            <img width="400" height="79" src="{% static 'media/logo-white.png'%}"
+                                                alt="Mojuri – Jewelry Store HTML Template" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3 header-right">
+                                    <!-- cart-mobile -->
+                                    <div class="mojuri-topcart dropdown">
+                                        <div class="dropdown mini-cart top-cart">
+                                            <div class="remove-cart-shadow"></div>
+                                            <a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="cart-link" aria-haspopup="true" aria-expanded="false">
+                                                <div class="icons-cart">
+                                                  <i class="icon-large-paper-bag"></i>
+                                                  {% if request.session.email %}
+                                                    <span class="cart-count">{{ cart_count }}</span>
+                                                  {% endif %}
+                                                </div>
+                                              </a>
+                                              
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- three-dot-menu -->
+                    <div class="header-mobile-fixed">
+                        <!-- Shop  -->
+                        <div class="shop-page">
+                            <a href="{% url 'showproducts' %}"><i class="wpb-icon-shop"></i></a>
+                        </div>
+    
+                        <!--my-account-->
+                        <div class="my-account">
+                            <div class="login-header">
+                              <a id="account-link" href="{% if request.session.email %}{% url 'profile' %}{% else %}#{% endif %}">
+                                <i class="wpb-icon-user"></i>
+                              </a>
+                            </div>
+                          </div>
+                          
+    
+                        <!-- Search -->
+                        <div class="search-box">
+                            <div class="search-toggle"><i class="wpb-icon-magnifying-glass"></i></div>
+                        </div>
+    
+                        <!-- Wishlist -->
+                        <div class="wishlist-box">
+                            <a id="wishlist-link" href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}">
+                              <i class="wpb-icon-heart"></i>
+                            </a>
+                          </div>
+                    </div>
+                </div>
+                <!-- mobile-navbar-view-end desktop-nav-start -->
+                <div class="header-desktop">
+                    <div class="header-wrapper">
+                        <div class="section-padding">
+                            <div class="section-container large p-l-r">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-left">
+                                        <div class="site-logo">
+                                            <a href="{% url 'home'%}">
+                                                <img width="400" height="140" src="{% static 'media/logo-white.png'%}"
+                                                    alt="Adore – Jewelry Store HTML Template" />
+                                            </a>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-center header-center">
+                                        <div class="site-navigation">
+                                            <nav id="main-navigation">
+                                                <ul id="menu-main-menu" class="menu">
+                                                    <li class="level-0 menu-item  ">
+                                                        <a href="{% url 'home' %}"><span
+                                                                class="menu-item-text">Home</span></a>
+    
+                                                    </li>
+                                                    <li class="level-0 menu-item  current-menu-item ">
+                                                        <a href="{% url 'showproducts' %}"><span
+                                                                class="menu-item-text">Shop</span></a>
+    
+                                                    </li>
+    
+                                                    <li class="level-0 menu-item ">
+                                                        <a href="{% url 'about' %}"><span class="menu-item-text">About Us</span></a>
+    
+                                                    </li>
+                                                    <li class="level-0 menu-item">
+                                                        <a href="{% url 'contact' %}"><span
+                                                                class="menu-item-text">Contact</span></a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 header-right">
+                                        <div class="header-page-link">
+                                            <!-- Search -->
+                                            <div class="search-box">
+                                                <div class="search-toggle"><i class="icon-search"></i></div>
+                                            </div>
+    
+                                            <!-- Login -->
+    
+                                            <div class="login-header icon">
+    
+                                                <a class="active-login" href=""><i class="icon-user"></i></a>
+    
+    
+                                                <div class="form-login-register">
+                                                    <div class="box-form-login">
+                                                        <div class="active-login"></div>
+                                                        <div class="box-content">
+                                                            <div class="form-login active">
+    
+                                                                <h2>{% if request.session.email %}Profile{% else %}Login/Register{% endif %}</h2>
+                                                                <p class="status"></p>
+                                                                <div class="content">
+                                                                    {% if request.session.email %}
+                                                                    <a href="{% url 'profile' %}">
+                                                                        <div class="button-next-reregister">Profile</div>
+                                                                    </a>
+                                                                    <a href="{% url 'logout' %}"><div class="button-next-reregister">Logout</div></a>
+                                                                    {% else %}
+                                                                    <a href="{% url 'login' %}">
+                                                                        <div class="button-next-reregister">Login</div>
+                                                                    </a>
+    
+                                                                    <a href="{% url 'register' %}">
+                                                                        <div class="button-next-reregister">Register</div>
+                                                                    </a>
+    
+                                                                    {% endif %}
+                                                                </div>
+    
+                                                            </div>
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <!-- Wishlist -->
+                                            <div class="wishlist-box">
+                                                <a href="{% if request.session.email %}{% url 'wishlist' %}{% else %}#{% endif %}" id="desktop-wishlist-link">
+                                                    <i class="icon-heart"></i>
+                                                </a>
+                                                {% if request.session.email %}
+                                                <span class="count-wishlist">{{ wishlist_count }}</span>
+                                                {% endif %}
+                                            </div>
+    
+                                            <!-- Cart -->
+                                            <div class="mojuri-topcart dropdown light">
+                                                <div class="dropdown mini-cart top-cart">
+                                                    <div class="remove-cart-shadow"></div>
+                                                    <a class="dropdown-toggle cart-icon" href="{% if request.session.email %}{% url 'showcart' %}{% else %}#{% endif %}" id="desktop-cart-link" aria-expanded="false">
+                                                        <div class="icons-cart">
+                                                            <i class="icon-large-paper-bag"></i>
+                                                            {% if request.session.email %}
+                                                            <span class="cart-count">{{ cart_count }}</span>
+                                                            {% endif %}
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+			<div id="site-main" class="site-main">
+				<div id="main-content" class="main-content">
+					<div id="primary" class="content-area">
+						<div id="title" class="page-title">
+							<div class="section-container">
+								<div class="content-title-heading">
+									<h1 class="text-title-heading">
+										Frequently Asked Questions
+									</h1>
+								</div>
+								<div class="breadcrumbs">
+									<a href="{% url 'home' %}">Home</a><span class="delimiter"></span>Frequently Asked Questions
+								</div>
+							</div>
+						</div>
+
+						<div id="content" class="site-content" role="main">
+							<div class="section-padding">
+								<div class="section-container p-l-r">
+									<div class="page-faq">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="faq-section">
+													<div class="section-title">
+														<h2>01. The order</h2>
+													</div>
+													<div class="section-content">
+														<div class="faq-item">
+															<div class="faq-question">
+																When do I receive my order?
+															</div>
+															<div class="faq-answer">
+																When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																I now see the longer delivery time of (a part of) my order. How can I cancel it?
+															</div>
+															<div class="faq-answer">
+																If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																When will I receive the invoice for my order?
+															</div>
+															<div class="faq-answer">
+																When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="faq-section">
+													<div class="section-title">
+														<h2>02. Shipment</h2>
+													</div>
+													<div class="section-content">
+														<div class="faq-item">
+															<div class="faq-question">
+																When do I receive my order?
+															</div>
+															<div class="faq-answer">
+																When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																I now see the longer delivery time of (a part of) my order. How can I cancel it?
+															</div>
+															<div class="faq-answer">
+																If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																When will I receive the invoice for my order?
+															</div>
+															<div class="faq-answer">
+																When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="faq-section">
+													<div class="section-title">
+														<h2>03. The order</h2>
+													</div>
+													<div class="section-content">
+														<div class="faq-item">
+															<div class="faq-question">
+																When do I receive my order?
+															</div>
+															<div class="faq-answer">
+																When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																I now see the longer delivery time of (a part of) my order. How can I cancel it?
+															</div>
+															<div class="faq-answer">
+																If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																When will I receive the invoice for my order?
+															</div>
+															<div class="faq-answer">
+																When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="faq-section">
+													<div class="section-title">
+														<h2>04. Returns, exchanges and complaints</h2>
+													</div>
+													<div class="section-content">
+														<div class="faq-item">
+															<div class="faq-question">
+																When do I receive my order?
+															</div>
+															<div class="faq-answer">
+																When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																I now see the longer delivery time of (a part of) my order. How can I cancel it?
+															</div>
+															<div class="faq-answer">
+																If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.
+															</div>
+														</div>
+														<div class="faq-item">
+															<div class="faq-question">
+																When will I receive the invoice for my order?
+															</div>
+															<div class="faq-answer">
+																When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer id="site-footer" class="site-footer background four-columns">
+                <div class="footer">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="block-widget-wrap">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 column-1">
+                                        <div class="block block-menu m-b-20">
+                                            <h2 class="block-title">Contact Us</h2>
+                                            <div class="block-content">
+                                                <ul>
+                                                    <li>
+                                                        <span>200k+ orders delivered globally. World class products, Proudly made in India. </span>
+                                                    
+                                                    <li>
+                                                        <span>Email:</span> <a
+                                                            href="mailto:support@mojuri.com">support@adore.com</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="block block-social ">
+                                            <ul class="social-link">
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+    
+                                    
+                                    <div class="col-lg-3 col-md-6 column-3 align-right">
+                                        <div class="block block-menu">
+                                            <h2 class="block-title"></h2>
+                                            <div class="block-content">
+                                                <div class="block-copyright">
+                                                    <p>© 2024 Adore </p>
+                                                </div>
+                                                <div class="block block-contact">
+                                                    <h2 class="block-title">About Us</h2>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-lg-3 col-md-6 column-4 align-right" style="margin-left: auto; margin-right: 0;">
+                                        <div class="block block-menu">
+                                            <h2 class="block-title">Catalog</h2>
+                                            <div class="block-content">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=earrings">Earrings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=necklaces">Necklaces</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=bracelets">Bracelets</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'showproducts' %}?category=rings">Rings</a>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="section-padding">
+                        <div class="section-container">
+                            <div class="block-widget-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="footer-left">
+                                            <p class="copyright"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="footer-right">
+                                            <div class="block block-image">
+                                                <img width="309" height="32" src="{%static 'media/payments.png'%}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+		</div>
+
+		<!-- Back Top button -->
+		<div class="back-top button-show">
+			<i class="arrow_carrot-up"></i>
+		</div>
+
+		<!-- Search -->
+		<div class="search-overlay">
+			<div class="close-search"></div>
+			<div class="wrapper-search">
+				<form role="search" method="get" class="search-from ajax-search" action="#">
+					<a href="#" class="search-close"></a>
+					<div class="search-box">
+						<button id="searchsubmit" class="btn" type="submit">
+							<i class="icon-search"></i>
+						</button>
+						<input type="text" autocomplete="off" value="" name="s" class="input-search s" placeholder="Search...">
+						<div class="content-menu_search">
+							<label>Suggested</label>
+							<ul id="menu_search" class="menu">
+								<li><a href="#">Earrings</a></li>
+								<li><a href="#">Necklaces</a></li>
+								<li><a href="#">Bracelets</a></li>
+								<li><a href="#">Jewelry Box</a></li>
+							</ul>			
+						</div>
+					</div>
+				</form>	
+			</div>	
+		</div>
+
+		
+
+		<!-- Page Loader -->
+		<div class="page-preloader">
+	    	<div class="loader">
+	    		<div></div>
+	    		<div></div>
+	    	</div>
+	    </div>
+
+		<!-- Dependency Scripts -->
+        <script src="{%static 'libs/popper/js/popper.min.js' %}"></script>
+        <script src="{%static 'libs/jquery/js/jquery.min.js' %}"></script>
+        <script src="{%static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{%static 'libs/slick/js/slick.min.js' %}"></script>
+        <script src="{%static 'libs/mmenu/js/jquery.mmenu.all.min.js' %}"></script>
+        <script src="{%static 'libs/slider/js/tmpl.js' %}"></script>
+        <script src="{%static 'libs/slider/js/jquery.dependClass-0.1.js' %}"></script>
+        <script src="{%static 'libs/slider/js/draggable-0.1.js' %}"></script>
+        <script src="{%static 'libs/slider/js/jquery.slider.js' %}"></script>
+
+        <!-- Site Scripts -->
+        <script src="{%static 'assets/js/app.js' %}"></script>
+
+	</body>
+
+<!-- Mirrored from caketheme.com/html/mojuri/page-contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 May 2024 10:46:33 GMT -->
+</html>

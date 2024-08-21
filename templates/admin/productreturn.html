@@ -56,7 +56,6 @@
                 <li class="nav-item"> <a class="nav-link" href="{%url 'category' %}">Category</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{%url 'add_category' %}">Add Category</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{% url 'category_offers' %}">Category Offers</a></li>
-
               </ul>
             </div>
           </li>
@@ -103,6 +102,14 @@
             </a>
           </li>
           <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'bestsellers' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-trending-up"></i>
+              </span>
+              <span class="menu-title">Bestsellers</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#coupon-menu" aria-expanded="false" aria-controls="product-menu">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -127,8 +134,8 @@
             </a>
             <div class="collapse" id="banner-menu">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Banners</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Add Banners</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{%url 'banner_list' %}">Banners</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{%url 'add_banner' %}">Add Banners</a></li>
               </ul>
             </div>
           </li>
@@ -179,6 +186,7 @@
             </button>
           </div>
         </nav>
+
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">

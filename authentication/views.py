@@ -17,7 +17,7 @@ from django.urls import reverse
 from wishlist.models import Wishlist,WishlistItem
 from cart.models import Cart,CartItems
 from django.db.models import Q
-from django.db.models import OuterRef, Subquery, Q
+from django.db.models import OuterRef, Subquery, Q,Avg,Count
 from decimal import Decimal
 from django.utils import timezone
 
@@ -31,6 +31,7 @@ from django.utils import timezone
 def home(request):
     categories = Category.objects.filter(is_listed=True).all()
     products = Product.objects.filter(is_available=True).prefetch_related('variants__images')
+    
     search_query = request.GET.get('s','')
 
     wishlist_count = 0
@@ -44,7 +45,9 @@ def home(request):
     offers = ProductOffer.objects.filter(product=OuterRef('pk'), is_active=True)
     products = products.annotate(
         offer_exists=Subquery(offers.values('id')[:1]),
-        discount_percentage=Subquery(offers.values('discount_percentage')[:1])
+        discount_percentage=Subquery(offers.values('discount_percentage')[:1]),
+        average_rating=Avg('review__rating'),  
+        review_count=Count('review') 
     )
 
     for product in products:
@@ -214,7 +217,7 @@ def register(request):
             if referral_code:
                 try:
                     referred_by = Referral.objects.get(referral_code=referral_code).user
-                    print('hii',referred_by)
+                   
                     referral = Referral.objects.get(user=myuser)
                     referral.referred_by=referred_by
                     referral.save()
@@ -278,7 +281,7 @@ def resend_otp(request,id):
     # Get the user object based on the provided id
     user = get_object_or_404(Usermodels,id=id)
     otp = generate_otp(request)
-    print("resend")
+   
     send_otp_email(otp, user.email)
     return JsonResponse({"message": "OTP resent succesfully."})
 
@@ -315,3 +318,15 @@ def user_logout(request):
         pass
     messages.success(request, "You have logged out successfully.")
     return redirect("login") 
+
+def contact(request):
+
+    return render(request, 'user/contactus.html')
+
+
+def faq(request):
+
+    return render(request,'user/faq.html')
+
+def about(request):
+    return render(request, 'user/aboutus.html')

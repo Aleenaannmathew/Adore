@@ -148,11 +148,11 @@
 												</li>
 
 												<li class="level-0 menu-item ">
-													<a href="#"><span class="menu-item-text">About Us</span></a>
+													<a href="{% url 'about' %}"><span class="menu-item-text">About Us</span></a>
 
 												</li>
 												<li class="level-0 menu-item">
-													<a href="page-contact.html"><span
+													<a href="{% url 'contact' %}"><span
 															class="menu-item-text">Contact</span></a>
 												</li>
 											</ul>
@@ -252,7 +252,7 @@
 									</h1>
 								</div>
 								<div class="breadcrumbs">
-									<a href="index.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a><span class="delimiter"></span>Checkout
+									<a href="{% url 'home'%}">Home</a><span class="delimiter"></span><a href="{% url 'showproducts' %}">Shop</a><span class="delimiter"></span>Checkout
 								</div>
 							</div>
 						</div>
@@ -588,118 +588,97 @@
 		onclick="closeEditModal()"></div>
 
 
-			<footer id="site-footer" class="site-footer background four-columns">
-				<div class="footer">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-lg-3 col-md-6 column-1">
-										<div class="block block-menu m-b-20">
-											<h2 class="block-title">Contact Us</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<span>Head Office:</span> 26 Wyle Cop, Shrewsbury, Shropshire, SY1 1XD
-													</li>
-													<li>
-														<span>Tel:</span> 01743 234500
-													</li>
-													<li>
-														<span>Email:</span> <a href="mailto:support@mojuri.com">support@mojuri.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-
-										<div class="block block-social">
-											<ul class="social-link">
-												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-												<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-												<li><a href="#"><i class="fa fa-behance"></i></a></li>
+		<footer id="site-footer" class="site-footer background four-columns">
+			<div class="footer">
+				<div class="section-padding">
+					<div class="section-container">
+						<div class="block-widget-wrap">
+							<div class="row">
+								<div class="col-lg-3 col-md-6 column-1">
+									<div class="block block-menu m-b-20">
+										<h2 class="block-title">Contact Us</h2>
+										<div class="block-content">
+											<ul>
+												<li>
+													<span>200k+ orders delivered globally. World class products, Proudly made in India. </span>
+												
+												<li>
+													<span>Email:</span> <a
+														href="mailto:support@mojuri.com">support@adore.com</a>
+												</li>
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-6 column-2">
-										<div class="block block-menu">
-											<h2 class="block-title">Customer Services</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="shop-grid-left.html">Contact Us</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Track Your Order</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Product Care & Repair</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Book an Appointment</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Frequently Asked Questions</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Shipping & Returns</a>
-													</li>
-												</ul>
+
+									<div class="block block-social ">
+										<ul class="social-link">
+											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+											<li><a href="#"><i class="fa fa-behance"></i></a></li>
+										</ul>
+									</div>
+								</div>
+
+
+								
+								<div class="col-lg-3 col-md-6 column-3 align-right">
+									<div class="block block-menu">
+										<h2 class="block-title"></h2>
+										<div class="block-content">
+											<div class="block-copyright">
+												<p>© 2024 Adore </p>
+											</div>
+											<div class="block block-contact">
+												<h2 class="block-title">About Us</h2>
+												
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-6 column-3">
-										<div class="block block-menu">
-											<h2 class="block-title">About Us</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="#">About Us</a>
-													</li>
-													<li>
-														<a href="#">FAQ</a>
-													</li>
-													<li>
-														<a href="#">Our Producers</a>
-													</li>
-													<li>
-														<a href="#">Sitemap</a>
-													</li>
-													<li>
-														<a href="#">Terms & Conditions</a>
-													</li>
-													<li>
-														<a href="#">Privacy Policy</a>
-													</li>
-												</ul>
-											</div>
+								</div>
+
+								<div class="col-lg-3 col-md-6 column-4 align-right" style="margin-left: auto; margin-right: 0;">
+									<div class="block block-menu">
+										<h2 class="block-title">Catalog</h2>
+										<div class="block-content">
+											<ul>
+												<li>
+													<a href="{% url 'showproducts' %}?category=earrings">Earrings</a>
+												</li>
+												<li>
+													<a href="{% url 'showproducts' %}?category=necklaces">Necklaces</a>
+												</li>
+												<li>
+													<a href="{% url 'showproducts' %}?category=bracelets">Bracelets</a>
+												</li>
+												<li>
+													<a href="{% url 'showproducts' %}?category=rings">Rings</a>
+												</li>
+												
+											</ul>
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-6 column-4">
-										<div class="block block-menu">
-											<h2 class="block-title">Catalog</h2>
-											<div class="block-content">
-												<ul>
-													<li>
-														<a href="shop-grid-left.html">Earrings</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Necklaces</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Bracelets</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Rings</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Jewelry Box</a>
-													</li>
-													<li>
-														<a href="shop-grid-left.html">Studs</a>
-													</li>
-												</ul>
-											</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="section-padding">
+					<div class="section-container">
+						<div class="block-widget-wrap">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="footer-left">
+										<p class="copyright"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="footer-right">
+										<div class="block block-image">
+											<img width="309" height="32" src="{%static 'media/payments.png'%}" alt="">
 										</div>
 									</div>
 								</div>
@@ -707,29 +686,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer-bottom">
-					<div class="section-padding">
-						<div class="section-container">
-							<div class="block-widget-wrap">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="footer-left">
-											<p class="copyright">Copyright © 2023. All Right Reserved</p>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="footer-right">
-											<div class="block block-image">
-												<img width="309" height="32" src="{% static 'media/payments.png' %}" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+			</div>
+		</footer>
 		</div>
 
 		<!-- Back Top button -->
@@ -762,205 +720,7 @@
 			</div>	
 		</div>
 
-		<!-- Wishlist -->
-		<div class="wishlist-popup">
-			<div class="wishlist-popup-inner">
-                <div class="wishlist-popup-content">
-                    <div class="wishlist-popup-content-top">
-                        <span class="wishlist-name">Wishlist</span>
-						<span class="wishlist-count-wrapper"><span class="wishlist-count">2</span></span>                                
-						<span class="wishlist-popup-close"></span>
-                    </div>
-                    <div class="wishlist-popup-content-mid">
-						<table class="wishlist-items">                        
-							<tbody>
-								<tr class="wishlist-item">
-									<td class="wishlist-item-remove"><span></span></td>
-									<td class="wishlist-item-image">
-                                    	<a href="shop-details.html">
-											<img width="600" height="600" src="{% static 'media/product/3.jpg' %}" alt="">                                        
-										</a>
-		                       		</td>
-			                        <td class="wishlist-item-info">
-										<div class="wishlist-item-name">
-											<a href="shop-details.html">Twin Hoops</a>
-										</div>
-										<div class="wishlist-item-price">
-											<span>$150.00</span>
-										</div>
-										<div class="wishlist-item-time">June 4, 2022</div>                                
-									</td>
-			                        <td class="wishlist-item-actions">
-			                            <div class="wishlist-item-stock">
-											In stock 
-										</div>
-			                            <div class="wishlist-item-add">
-											<div data-title="Add to cart">
-												<a rel="nofollow" href="#">Add to cart</a>
-											</div>
-										</div>
-	                                </td>
-								</tr>
-								<tr class="wishlist-item">
-									<td class="wishlist-item-remove"><span></span></td>
-									<td class="wishlist-item-image">
-                                    	<a href="shop-details.html">
-											<img width="600" height="600" src="{% static 'media/product/4.jpg' %}" alt="">                                        
-										</a>
-		                       		</td>
-			                        <td class="wishlist-item-info">
-										<div class="wishlist-item-name">
-											<a href="shop-details.html">Yilver And Turquoise Earrings</a>
-										</div>
-										<div class="wishlist-item-price">
-											<del aria-hidden="true"><span>$150.00</span></del> 
-											<ins><span>$100.00</span></ins>
-										</div>
-										<div class="wishlist-item-time">June 4, 2022</div>                                
-									</td>
-			                        <td class="wishlist-item-actions">
-			                            <div class="wishlist-item-stock">
-											In stock 
-										</div>
-			                            <div class="wishlist-item-add">
-											<div data-title="Add to cart">
-												<a rel="nofollow" href="#">Add to cart</a>
-											</div>
-										</div>
-	                                </td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-                    <div class="wishlist-popup-content-bot">
-                        <div class="wishlist-popup-content-bot-inner">
-                            <a class="wishlist-page" href="shop-wishlist.html">
-								Open wishlist page                                    
-							</a>
-                            <span class="wishlist-continue" data-url="">
-                                Continue shopping                                        
-                            </span>
-                        </div>
-                        <div class="wishlist-notice wishlist-notice-show">Added to the wishlist!</div>
-                    </div>
-                </div>
-            </div>
-		</div>
-
-		<!-- Compare -->
-		<div class="compare-popup">
-		    <div class="compare-popup-inner">
-		        <div class="compare-table">
-		            <div class="compare-table-inner">
-                    	<a href="#" id="compare-table-close" class="compare-table-close">
-                    		<span class="compare-table-close-icon"></span>
-                    	</a>
-                    	<div class="compare-table-items">
-                    		<table id="product-table" class="product-table">
-                    			<thead>
-                    				<tr>
-                    					<th>
-                    						<a href="#" class="compare-table-settings">Settings</a>
-                    					</th>
-                    					<th>
-                    						<a href="shop-details.html">Twin Hoops</a> <span class="remove">remove</span>
-                    					</th>
-                    					<th>
-                    						<a href="shop-details.html">Medium Flat Hoops</a> <span class="remove">remove</span>
-                    					</th>
-                    					<th>
-                    						<a href="shop-details.html">Bold Pearl Hoop Earrings</a> <span class="remove">remove</span>
-                    					</th>
-                    				</tr>
-                    			</thead>
-                    			<tbody>
-                    				<tr class="tr-image">
-                    					<td class="td-label">Image</td>
-                    					<td>
-                    						<a href="shop-details.html">
-                    							<img width="600" height="600" src="{% static 'media/product/3.jpg' %}" alt="">
-                    						</a>
-                    					</td>
-                    					<td>
-                    						<a href="shop-details.html">
-                    							<img width="600" height="600" src="{% static 'media/product/1.jpg' %}" alt="">
-                    						</a>
-                    					</td>
-                    					<td>
-                    						<a href="shop-details.html">
-                    							<img width="600" height="600" src="{% static 'media/product/2.jpg' %}" alt="">
-                    						</a>
-                    					</td>
-                    				</tr>
-                    				<tr class="tr-sku">
-                    					<td class="td-label">SKU</td>
-                    					<td>VN00189</td>
-                    					<td></td>
-                    					<td>D1116</td>
-                    				</tr>
-                    				<tr class="tr-rating">
-                    					<td class="td-label">Rating</td>
-                    					<td>
-                    						<div class="star-rating">
-                    							<span style="width:80%"></span>
-                    						</div>
-                    					</td>
-                    					<td>
-                    						<div class="star-rating">
-                    							<span style="width:100%"></span>
-                    						</div>
-                    					</td>
-                    					<td></td>
-                    				</tr>
-                    				<tr class="tr-price">
-                    					<td class="td-label">Price</td>
-                    					<td><span class="amount">$150.00</span></td>
-                    					<td><del><span class="amount">$150.00</span></del> <ins><span class="amount">$100.00</span></ins></td>
-                    					<td><span class="amount">$200.00</span></td>
-                    				</tr>
-                    				<tr class="tr-add-to-cart">
-                    					<td class="td-label">Add to cart</td>
-                    					<td>
-                    						<div data-title="Add to cart">
-                    							<a href="#" class="button">Add to cart</a>
-                    						</div>
-                    					</td>
-                    					<td>
-                    						<div data-title="Add to cart">
-                    							<a href="#" class="button">Add to cart</a>
-                    						</div>
-                    					</td>
-                    					<td>
-                    						<div data-title="Add to cart">
-                    							<a href="#" class="button">Add to cart</a>
-                    						</div>
-                    					</td>
-                    				</tr>
-                    				<tr class="tr-description">
-                    					<td class="td-label">Description</td>
-                    					<td>Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget.</td>
-                    					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</td>
-                    					<td>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece comfort all year around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by using recycled polyester.7.8 ounce fleece sweatshirt made with up to 5 percent polyester created from recycled plastic.</td>
-                    				</tr>
-                    				<tr class="tr-content">
-                    					<td class="td-label">Content</td>
-                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
-                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
-                    					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</td>
-                    				</tr>
-                    				<tr class="tr-dimensions">
-                    					<td class="td-label">Dimensions</td>
-                    					<td>N/A</td>
-                    					<td>N/A</td>
-                    					<td>N/A</td>
-                    				</tr>
-                    			</tbody>
-                    		</table>
-                    	</div>
-		            </div>
-		        </div>
-		    </div>
-		</div>
+		
 
 		<!-- Page Loader -->
 		<div class="page-preloader">
@@ -1085,7 +845,7 @@
 				})
 					.then(response => response.json())
 					.then(data => {
-						console.log(data)
+						
 						if (data.success) {
 							const address = data.address;
            const addressHtml = `<div id="address-${address.id}" class="addresses-col" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: calc(50% - 10px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
@@ -1124,7 +884,7 @@
 						}
 					})
 					.catch(error => {
-						console.error('Error:', error);
+						
 						showToast('An error occurred while adding the address.', 'error');
 					});
 	
@@ -1160,7 +920,7 @@
 					zip: zip,
 					phone: phone
 				};
-				console.log(address)
+				
 				currentAddressId = id;
 				//openEditModal(address);
 				getEditAddress(id)
@@ -1169,7 +929,7 @@
 				fetch(`/get-address/${id}/`) // Fetch the latest address data from the server
 					.then(response => response.json())
 					.then(data => {
-						console.log('Editing address:', data);  // Debugging line
+						
 						openEditModal(data);
 					})
 					.catch(error => console.error('Error fetching address:', error));
@@ -1218,7 +978,7 @@
 				}
 	
 	
-				console.log(editedData);
+			
 	
 				fetch(`/update-address/${currentAddressId}/`, {
 					method: 'PUT',
@@ -1230,7 +990,7 @@
 				})
 					.then(response => response.json())
 					.then(data => {
-						console.log(data);
+						
 						if (data.success) {
 							updateAddressInDOM(currentAddressId, data.address);
 							closeEditModal();
@@ -1242,7 +1002,7 @@
 						}
 					})
 					.catch(error => {
-						console.error('Error:', error);
+						
 						showToast('An error occurred while updating the address.', 'error');
 					});
 			}
@@ -1256,7 +1016,7 @@
 			});
 			
 			function updateAddressInDOM(addressId, addressData) {
-				console.log("hii",addressData)
+				
 				const addressElement = document.getElementById(`address-${addressId}`);
 				if (addressElement) {
 					addressElement.querySelector('address').innerHTML = `
@@ -1317,7 +1077,7 @@
 							}
 						})
 						.catch(error => {
-							console.error('Error:', error);
+							
 							Swal.fire('Error!', 'An error occurred. Please try again later.', 'error');
 						});
 					}
@@ -1335,7 +1095,7 @@ function applyCoupon(couponCode, discountPrice) {
 	let shippingElement = document.getElementById('shipping');
 
 	if (!subtotalAmountElement || !totalAmountElement || !discountAmountElement || !shippingElement) {
-		console.error('Element with ID "subtotalAmount", "totalAmount", "discountAmount", or "shipping" not found.');
+	
 		return;
 	}
 
@@ -1350,6 +1110,7 @@ function applyCoupon(couponCode, discountPrice) {
 	// Show remove coupon link
 	document.getElementById('removeCouponLink').style.display = 'block';
 	document.getElementById('couponCodeInput').value = couponCode;
+	localStorage.setItem('appliedCoupon', JSON.stringify({ couponCode, discountPrice }));
 }
 
 
@@ -1374,8 +1135,18 @@ function removeCoupon() {
 	// Hide remove coupon link
 	document.getElementById('removeCouponLink').style.display = 'none';
 	document.getElementById('couponCodeInput').value = '';
+	localStorage.removeItem('appliedCoupon');
 
 }
+document.addEventListener('DOMContentLoaded', () => {
+    let currentUrl = window.location.href;
+    localStorage.setItem('lastUrl', currentUrl); // Store the current URL
+
+    let appliedCoupon = JSON.parse(localStorage.getItem('appliedCoupon'));
+    if (appliedCoupon) {
+        applyCoupon(appliedCoupon.couponCode, appliedCoupon.discountPrice);
+    }
+})
 
 document.addEventListener('DOMContentLoaded', function () {
 	let couponListItems = document.querySelectorAll('#couponList li');
@@ -1385,7 +1156,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			let couponCode = this.dataset.couponCode;
 			let discountPrice = parseFloat(this.dataset.discountPrice);
 
-			console.log(`Clicked on coupon: ${couponCode} with discount: ${discountPrice}`);
+		
 
 			// Apply the coupon
 			applyCoupon(couponCode, discountPrice);
@@ -1463,7 +1234,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			cartId: cartId
 		};
 	
-		console.log("HIIII", orderData);
 		 if(paymentMethod==="cod"){
 		// Send the data to the backend (example using fetch)
 		fetch('/place_order/', {
@@ -1476,8 +1246,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data)
+			
 			if (data.success) {
+				localStorage.removeItem('appliedCoupon');
 				// Clear the entire URL
 			   window.history.replaceState({}, document.title, '/');
 
@@ -1490,7 +1261,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		})
 		.catch(error => {
-			console.error('Error:', error);
+		
 		});
 	}else if(paymentMethod==="online"){
 		fetch('/create_razorpay_order/', {
@@ -1504,6 +1275,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		.then(response => response.json())
 		.then(data => {
 			if (data.success) {
+				localStorage.removeItem('appliedCoupon');
 				var options = {
 					"key": "rzp_test_JFRhohewvJ81Dl",
 					"amount": data.amount,
@@ -1547,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				};
 				var rzp1 = new Razorpay(options);
 				rzp1.once('payment.failed', function (response) {
-                console.log("Payment failed handler triggered");
+    
                 rzp1.close();
                 
                 // Call the backend to handle the failed payment
@@ -1565,11 +1337,11 @@ document.addEventListener('DOMContentLoaded', function () {
 						// Redirect to the order failed page if payment failed handling was successful
 						window.location.href = `/order_failed/${data.order_id}/`;
 					} else {
-						console.error('Failed to handle payment failure:', data.message);
+			
 					}
 				})
 				.catch(error => {
-					console.error('Error handling payment failure:', error);
+					
 				});
 			});
 				rzp1.open();
@@ -1578,7 +1350,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		})
 		.catch(error => {
-			console.error('Error:', error);
+			
 		});
 	}else if (paymentMethod === "wallet") {
             fetch('/create_wallet_order/', {
@@ -1592,6 +1364,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+						localStorage.removeItem('appliedCoupon');
                         // Process wallet payment logic
                         // Example: show success message and redirect to success page
                         showToast('Wallet payment successful.', 'success');
@@ -1601,7 +1374,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                  
                 });
         }
     });

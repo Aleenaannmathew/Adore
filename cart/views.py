@@ -80,7 +80,7 @@ def add_to_cart(request, variant_id):
         cart_item, created = CartItems.objects.get_or_create(cart=cart, product=variant)
         
         current_quantity = cart_item.quantity
-        print("hii",current_quantity,variant.stock)
+        
 
         if current_quantity + 1 > variant.max_quantity_per_person:
             return JsonResponse({'success': False, 'error': f'Maximum quantity per person is {variant.max_quantity_per_person}'}, status=400)

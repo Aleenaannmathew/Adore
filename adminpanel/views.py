@@ -298,7 +298,7 @@ def edit_category(request, category_id):
             category.image = img_data
         category.save()
         messages.success(request, f'Category "{category.category_name}" updated successfully.')
-        return render('admin/addcategory.html') 
+        return render(request, 'admin/addcategory.html', {'category': category}) 
     return render(request, 'admin/addcategory.html', {'category': category})
 
 
@@ -365,6 +365,11 @@ def add_products(request):
             return render(request, 'admin/addproducts.html', {'categories': Category.objects.all()})
             
         else:
+
+            product = Product.objects.filter(name=name)
+            if product.exists():
+                messages.error(request, 'product name already exist')
+                return render(request, 'admin/addproducts.html', {'categories': Category.objects.all()})
 
             product = Product.objects.create(
                 name = name,
@@ -462,6 +467,12 @@ def edit_products(request, product_id):
         if not product.name or not product.name.strip() or not product.name.isalpha():
             messages.error(request, 'Product name must be a valid character string.')
             return render(request, 'admin/editproducts.html', {'product': product, 'categories': categories})
+        
+        existing_product = Product.objects.filter(name__iexact=product.name).exclude(id=product_id).exists()
+        if existing_product:
+            messages.error(request, f'A product with the name "{product.name}" already exists.')
+            return render(request, 'admin/editproducts.html', {'product': product, 'categories': categories})
+
 
         elif not product.description or not product.description.strip():
             messages.error(request, 'Please provide a product description.')
@@ -469,8 +480,9 @@ def edit_products(request, product_id):
 
         elif not product.product_detail or not product.product_detail.strip():
             messages.error(request, 'Please provide product details.')
-            return render(request, 'admin/editproducts.html', {'product': product, 'categories': categories})    
+            return render(request, 'admin/editproducts.html', {'product': product, 'categories': categories}) 
 
+        
         product.save()
 
 
@@ -652,7 +664,7 @@ def variant_image_view(request, variant_id):
 def edit_variantimage(request, variant_id):
     if request.method == 'POST' and request.FILES.get('croppedImage'):
         cropped_image = request.FILES['croppedImage']
-        print(cropped_image,variant_id)
+       
         variant = get_object_or_404(Variant, pk=variant_id)
         new_image=Variant_image.objects.create(variant=variant, image=cropped_image) 
         serialized_image = serialize('json', [new_image,])

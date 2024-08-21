@@ -34,12 +34,19 @@ def show_allproducts(request):
     price_ranges = request.GET.getlist('price-range')
     colors = request.GET.getlist('color')
     search_query = request.GET.get('s','')
+    on_sale = request.GET.get('on_sale', None)
+    
+    
     
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug, is_listed=True)
         products = Product.objects.prefetch_related('variants__images').filter(category=category, is_available=True)
     else:
         products = Product.objects.prefetch_related('variants__images').filter(is_available=True)
+
+    explore_white = request.GET.get('explore_white', None)
+    if explore_white == 'true':
+        colors = ['white']  # Filter by white color
 
     if price_ranges:
         price_filter = Q()
@@ -67,9 +74,9 @@ def show_allproducts(request):
         products = products.filter(Q(name__icontains=search_query))
 
     products = products.annotate(
-        average_rating=Avg('review__rating'),
-        review_count=Count('review')
-    )
+    average_rating=Avg('review__rating'),
+    review_count=Count('review')
+).order_by('-average_rating')
 
     if sort_by == 'popularity':
         products = products.annotate(num_wishlist=Count('wishlistitem')).order_by('-num_wishlist')
@@ -111,6 +118,12 @@ def show_allproducts(request):
         category_discount_percentage=Subquery(category_offers.values('discount_percentage')[:1])
     )
     
+    if on_sale:
+        products = products.filter(
+            Q(offer_exists__isnull=False) |
+            Q(category_offer_exists__isnull=False)
+        )
+
     # Calculate discounted prices
     for product in products:
         original_price = None
@@ -128,7 +141,7 @@ def show_allproducts(request):
             discounted_price = product.variants.first().price if product.variants.exists() else None
 
         product.discounted_price = discounted_price
-        print(f"Product: {product.name}, Original Price: {original_price}, Discounted Price: {discounted_price}")
+        
 
     products = products.distinct()
 
@@ -224,7 +237,7 @@ def shop_details(request, product_slug):
     average_rating=Avg('rating')
      )['average_rating']
     rounded_rating = round_to_nearest_half(average_rating)
-    print( "hiiiii",  rounded_rating)
+   
     variants = product.variants.prefetch_related('images').all()
     first_variant = variants.first()
     related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4]
@@ -253,7 +266,7 @@ def shop_details(request, product_slug):
         wishlist = Wishlist.objects.filter(user=user).first()
         if wishlist:
             wishlist_products = [item.product for item in wishlist.items.all()]
-            print(wishlist_products)
+            
 
 
     context = {
@@ -318,7 +331,7 @@ def submit_comment(request):
             product_name = data.get('product_name')
             rating = data.get('rating')
             comment = data.get('comment')
-            print(product_name)
+            
             
             if not product_name or rating is None or comment is None:
                 return JsonResponse({'status': 'error', 'message': 'Missing required fields'}, status=400)
@@ -328,9 +341,9 @@ def submit_comment(request):
                 return JsonResponse({'status': 'error', 'message': 'Invalid rating value'}, status=400)
 
             user = get_object_or_404(Usermodels, email=user_email)
-            print(user)
+        
             product = get_object_or_404(Product, name__iexact=product_name)
-            print(f"Product: {product}")
+           
             
 
             if Review.objects.filter(user=user, product=product).exists():
@@ -346,8 +359,7 @@ def submit_comment(request):
 
             order = order_item.order
             order_status = order.order_status
-            print(f"Order Item: {order_item}")
-            print(f"Order Status: {order_status}")
+            
 
             if order_status.lower() != "delivered":
                 return JsonResponse({'status': 'error', 'message': 'Order not delivered yet'}, status=400)
