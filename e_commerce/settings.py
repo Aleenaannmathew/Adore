@@ -29,7 +29,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+# ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['13.60.170.26','0.0.0.0','localhost']
+CSRF_TRUSTED_ORIGINS = [
+  'http://13.60.170.26',
+  'https://13.60.170.26',
+  'https://www.adore.adorejewels.life',
+  'https://adore.adorejewels.life',
+]
+
 
 
 # Application definition
@@ -152,10 +160,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'static'),
+    
+# ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
-    
+
 ]
 
 
@@ -179,7 +194,7 @@ LOGOUT_REDIRECT_URL = 'login'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
-SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/auth/complete/google-oauth2/'
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://adore.adorejewels.life/auth/complete/google-oauth2/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50 MB in bytes
 
