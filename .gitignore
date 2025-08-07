@@ -1,3 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+
+# SQLite DB (if used)
+*.sqlite3
+*.db
+
+# VSCode settings
+.vscode/
+
+# Environment vars
 .env
-/media
-/e_commerce/settings.py
+
+# Static + Media (if collected/generated)
+staticfiles/
+media/

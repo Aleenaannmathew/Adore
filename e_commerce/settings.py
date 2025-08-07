@@ -15,7 +15,7 @@ import os
 from dotenv import load_dotenv
 import dj_database_url
 import django_heroku
-django_heroku.settings(locals())
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -108,7 +108,14 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
+    }
 }
 
 SOCIAL_AUTH_PIPELINE = (
@@ -191,7 +198,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://adore.adorejewels.life/auth/complete/google-oauth2/'
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50 MB in bytes
+DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024 
 
 #media urls
 
@@ -202,9 +209,9 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "aleenamathewinformal@gmail.com"
-EMAIL_HOST_PASSWORD = "yxjo tnlt jthl sboi"
-EMAIL_USE_TLS = True  # Set it to False if your email server doesn't support TLS
+EMAIL_HOST_PASSWORD = "lpbb cvyx sizi dnck"
+EMAIL_USE_TLS = True 
 
 
-
+django_heroku.settings(locals())
 
