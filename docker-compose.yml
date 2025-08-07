@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: adore_db
+      POSTGRES_USER: adore_user
+      POSTGRES_PASSWORD: adore_pass
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: gunicorn your_project_name.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db

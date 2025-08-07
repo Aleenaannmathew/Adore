@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-import django_heroku
+
 
 load_dotenv()
 
@@ -33,12 +33,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS = ['localhost','127.0.0.1']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
-CSRF_TRUSTED_ORIGINS = [
-  'http://13.60.170.26',
-  'https://13.60.170.26',
-  'https://www.adore.adorejewels.life',
-  'https://adore.adorejewels.life',
-]
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 
 
@@ -208,10 +203,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "aleenamathewinformal@gmail.com"
-EMAIL_HOST_PASSWORD = "lpbb cvyx sizi dnck"
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True 
 
 
-django_heroku.settings(locals())
+
 
