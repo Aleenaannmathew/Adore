@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "DJANGO_SETTINGS_MODULE": "projectname.settings",
+      "DJANGO_SETTINGS_MODULE": "e_commerce.settings",
       "PYTHONUNBUFFERED": "1"
     }
   }

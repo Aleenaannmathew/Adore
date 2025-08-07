@@ -17,5 +17,4 @@ venv/
 .env
 
 # Static + Media (if collected/generated)
-staticfiles/
 media/
