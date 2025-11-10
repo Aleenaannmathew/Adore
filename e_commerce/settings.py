@@ -33,8 +33,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS = ['localhost','127.0.0.1']
-ALLOWED_HOSTS = ['adore-ysnk.onrender.com', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://adore-ysnk.onrender.com']
+
 
 
 # Application definition
@@ -101,8 +102,7 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+# Default: SQLite (for local development)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,11 +110,15 @@ DATABASES = {
     }
 }
 
-# Override for production if DATABASE_URL is set
+# Use PostgreSQL on Render (if DATABASE_URL exists)
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL:
-    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
-    
+    DATABASES['default'] = dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=True,  # Important for Render
+    )
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
