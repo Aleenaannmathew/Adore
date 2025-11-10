@@ -45,7 +45,7 @@ urlpatterns = [
     #orders
     path('orders/', orders, name='orders'),
     path('order_view/<int:order_id>/', order_view, name='order_view'),
-    path('/admin/order/status/', update_order_status, name='update_order_status'),
+    path('admin/order/status/', update_order_status, name='update_order_status'),
     path('update-return-status/', update_return_status, name='update_return_status'),
     path('product-return-requests/', get_return_requested_items, name='product_return_requests'),
 

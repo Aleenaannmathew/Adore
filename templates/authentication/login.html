@@ -183,12 +183,12 @@
 															<div style="display: flex; justify-content: center; height: 15px; font:bold">
 																<p>or</p>
 															</div>
-															<div class="google-login " style="display:flex; justify-content:center; align-items: center; margin-top: 4px;">
+															{% comment %} <div class="google-login " style="display:flex; justify-content:center; align-items: center; margin-top: 4px;">
 
 																<a href="{% url 'social:begin' 'google-oauth2' %}" class="button " >
 																	<img src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="" style="height: 30px; width: 30px;"> Login with Google
 																</a>
-															</div>
+															</div> {% endcomment %}
 														</form>
 														{% if messages %}
 														<script>

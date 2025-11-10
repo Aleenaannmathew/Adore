@@ -18,3 +18,4 @@ venv/
 
 # Static + Media (if collected/generated)
 media/
+staticfiles/
