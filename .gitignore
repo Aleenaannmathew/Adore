@@ -16,6 +16,5 @@ venv/
 # Environment vars
 .env
 
-# Static + Media (if collected/generated)
-media/
+
 staticfiles/
